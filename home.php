@@ -1,15 +1,30 @@
 <html>
-<head>Webshop</head>
+
+<head>
+<title>Webshop</title>
+<style type="text/css">
+
+p {
+	margin: 8px;
+	font-size: 20px;
+	color: #0B615E;
+}
+
+</style>
+</head>
+
 <header>
-<?php 
-require_once 'footer.php';
+<?php
+require_once 'header.php';
 ?>
 </header>
-<body>
 
+<body>
+<p>TESTING THIS SHIT</p>
 </body>
+
 <footer>
-<?php 
+<?php
 require_once 'footer.php';
 ?>
 </footer>
