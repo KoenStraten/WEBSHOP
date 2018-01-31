@@ -26,6 +26,7 @@ require_once 'header.php';
 </header>
 
 <body>
+	<p>TEST STUFF</p>
 </body>
 
 <footer>

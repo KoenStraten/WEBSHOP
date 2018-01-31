@@ -6,14 +6,14 @@
 	width: 100%;
 	height: 250px;
 	z-index: 1;
-	position: absolute;
+	position: relative;
 	z-index: 1;
 }
 
 .logo {
 	width: 150px;
 	z-index: 2;
-	position: relative;
+	position: absolute;
 	left: 2%;
 	top: 50px;
 }
