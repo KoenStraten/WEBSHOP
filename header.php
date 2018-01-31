@@ -54,7 +54,6 @@ input[type=text]:focus {
 	margin: 4px 2px;
 	padding: 5px;
 	border-radius: 4px;
-	font-family: Arial,Helvetica,sans-serif;
 }
 
 .buttons {
@@ -64,7 +63,6 @@ input[type=text]:focus {
 	right: 5px;
 	top: 15px;
 }
-
 </style>
 </head>
 
@@ -76,8 +74,8 @@ input[type=text]:focus {
 		src="https://upload.wikimedia.org/wikipedia/commons/6/6f/HP_logo_630x630.png">
 
 	<div class="buttons">
-		<a href="#" class="button login">Log in</a>
-		<a href="#" class="button register">Register</a>
+		<a href="#" class="button login">Log in</a> <a href="#"
+			class="button register">Register</a>
 	</div>
 </body>
 

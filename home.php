@@ -3,6 +3,9 @@
 <head>
 <title>Webshop</title>
 <style type="text/css">
+html {
+	font-family: Arial, Helvetica, sans-serif;
+}
 
 p {
 	margin: 8px;
@@ -11,9 +14,8 @@ p {
 }
 
 body {
- margin: 0px;
+	margin: 0px;
 }
-
 </style>
 </head>
 
@@ -24,7 +26,6 @@ require_once 'header.php';
 </header>
 
 <body>
-<p>TESTING THIS SHIT</p>
 </body>
 
 <footer>
