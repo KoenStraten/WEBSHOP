@@ -1,11 +1,17 @@
 <html>
 <head>
 <style type="text/css">
+body {
+	height: 100%;
+	position: relative;
+}
+
 .footer {
-	background-color: #0B615E;
+	background: #6cf;
 	width: 100%;
 	position: absolute;
-	bottom: 0;
+	bottom: -243px;
+	padding-left: 50px;
 }
 
 ul {
@@ -14,6 +20,7 @@ ul {
 	list-style-type: none;
 	padding: 20px;
 	margin: 0;
+	font-size: 12px;
 }
 
 a {
@@ -21,10 +28,15 @@ a {
 	color: white;
 }
 
+a:hover {
+	color: red;
+}
+
 p {
 	color: black;
 	font-size: 12px;
 }
+
 </style>
 </head>
 
