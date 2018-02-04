@@ -11,12 +11,18 @@
 	position: relative;
 	z-index: 1;
 }
+
+img {
+	height: 50px;
+}
 </style>
 </head>
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Webshop</a>
+		<a class="navbar-brand" href="#"> <img
+			src="//www.deddensweb.nl/wp-content/uploads/2017/05/logo-deddensweb-1.png"
+			class="img-responsive"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -40,6 +46,10 @@
 
 				<li class="nav-item"><a class="nav-link" href="#">Product</a></li>
 			</ul>
+			
+			<button class="btn btn-outline-success my-2 my-sm-0 mr-2">Log in</button>
+			<button class="btn btn-outline-success my-2 my-sm-0 mr-2">Register</button>
+
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Search" aria-label="Search">
