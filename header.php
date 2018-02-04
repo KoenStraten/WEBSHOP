@@ -1,11 +1,25 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style type="text/css">
+.coverphoto {
+	background-size: cover;
+	width: 100%;
+	height: 250px;
+	z-index: 1;
+	position: relative;
+	z-index: 1;
+}
+</style>
 </head>
 
 <body>
+	<img class="coverphoto" alt="coverphoto"
+		src="https://cdn6.f-cdn.com/contestentries/508287/15863345/57603d491b226_thumb900.jpg">
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Navbar</a>
+		<a class="navbar-brand" href="#">Webshop</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -17,18 +31,17 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link" href="#">Home <span
 						class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
 				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 					href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-					aria-haspopup="true" aria-expanded="false"> Dropdown </a>
+					aria-haspopup="true" aria-expanded="false"> Categories </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Action</a> <a
-							class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Cheeseletters</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
+						<a class="dropdown-item" href="#">Other cheese products</a>
 					</div></li>
-				<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
-				</li>
+				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
+
+				<li class="nav-item"><a class="nav-link" href="#">Product</a></li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search"
