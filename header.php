@@ -15,9 +15,6 @@
 </head>
 
 <body>
-	<img class="coverphoto" alt="coverphoto"
-		src="https://cdn6.f-cdn.com/contestentries/508287/15863345/57603d491b226_thumb900.jpg">
-
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">Webshop</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
