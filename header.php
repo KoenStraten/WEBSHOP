@@ -3,17 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style type="text/css">
-.coverphoto {
-	background-size: cover;
-	width: 100%;
-	height: 250px;
-	z-index: 1;
-	position: relative;
-	z-index: 1;
-}
-
 img {
-	height: 50px;
+	width: 100px;
 }
 </style>
 </head>
@@ -21,7 +12,7 @@ img {
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#"> <img
-			src="//www.deddensweb.nl/wp-content/uploads/2017/05/logo-deddensweb-1.png"
+			src="./images/kaaslogotjeee.png"
 			class="img-responsive"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
