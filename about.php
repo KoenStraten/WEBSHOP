@@ -10,28 +10,27 @@ html {
 body {
 	margin: 0;
 }
-
-h3 {
-	margin-top: 50px;
-	margin-left: 10px;
-	position: absolute;
-}
 </style>
 </head>
 
-<header>
+<header> 
 <?php
-require_once 'headerOLD.php';
+require_once 'header.php';
 ?>
 </header>
 
 <body>
 	<h3>About</h3>
+		<!-- scripts  -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+	</script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 
 <footer>
 <?php
-require_once 'footerOLD.php';
+require_once 'footer.php';
 ?>
 </footer>
 

@@ -2,6 +2,9 @@
 
 <head>
 <title>Webshop</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style type="text/css">
 html {
 	font-family: Arial, Helvetica, sans-serif;
@@ -20,9 +23,11 @@ h3 {
 </head>
 
 <header>
-<?php
-require_once 'headerOLD.php';
-?>
+	<!-- scripts  -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+	</script>
+	<script src="js/bootstrap.min.js"></script>
 </header>
 
 <body>
@@ -32,7 +37,7 @@ require_once 'headerOLD.php';
 
 <footer>
 <?php
-require_once 'footerOLD.php';
+require_once 'footer.php';
 ?>
 </footer>
 

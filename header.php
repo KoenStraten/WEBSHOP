@@ -1,6 +1,7 @@
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
 
 <style type="text/css">
 img {
@@ -23,8 +24,8 @@ img {
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Home <span
-						class="sr-only">(current)</span></a></li>
+				<li class="nav-item active"><a class="nav-link" href="/workspace/webshop/webshop/home.php">Home</a></li>
+				
 				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 					href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false"> Categories </a>
@@ -32,15 +33,17 @@ img {
 						<a class="dropdown-item" href="#">Cheeseletters</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">Other cheese products</a>
-					</div></li>
-				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
+					</div>
+				</li>
+				
+				<li class="nav-item"><a class="nav-link" href="/workspace/webshop/webshop/about.php">About</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="#">Product</a></li>
+				<li class="nav-item"><a class="nav-link" href="/workspace/webshop/webshop/product.php">Product</a></li>
 			</ul>
 			
-			<button class="btn btn-outline-success my-2 my-sm-0 mr-2">Log in</button>
-			<button class="btn btn-outline-success my-2 my-sm-0 mr-2">Register</button>
-
+			<a href="/workspace/webshop/webshop/login.php" class="btn btn-outline-success my-2 my-sm-0 mr-2" role="button">Log in</a>
+			<a href="/workspace/webshop/webshop/register.php" class="btn btn-outline-success my-2 my-sm-0 mr-2" role="button">Register</a>
+			
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Search" aria-label="Search">
