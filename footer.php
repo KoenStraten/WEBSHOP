@@ -5,7 +5,7 @@
 </head>
 
 <body>
-	<footer class="card-footer text-muted">
+	<footer class="card-footer text-muted" style="font-size: 80%">
 		<div class="pull-right">
 			<ul class="list-inline float-left pr-3">
 				<li><a href="#">Contact</a></li>

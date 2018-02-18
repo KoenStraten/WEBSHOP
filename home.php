@@ -25,9 +25,9 @@ require_once 'header.php';
 </header>
 
 <body>
-<h3>Home</h3>
-	<div class="container justify-content-md-center">
-		<div class="row mt-5">
+	<div class="container">
+		<h3 class="pt-3">Home</h3>
+		<div class="row">
 			<div class="col-sm-12">
 				<div class="row">
 					<div class="col-sm-4">

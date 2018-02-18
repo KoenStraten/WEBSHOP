@@ -12,7 +12,7 @@ img {
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#"> <img
+		<a class="navbar-brand" href="/workspace/webshop/webshop/home.php"> <img
 			src="./images/kaaslogotjeee.png"
 			class="img-responsive"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
