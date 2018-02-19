@@ -13,8 +13,7 @@ img {
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="/workspace/webshop/view/home.php"> <img
-			src="../images/kaaslogotjeee.png"
-			class="img-responsive"></a>
+			src="../images/kaaslogotjeee.png" class="img-responsive"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -24,7 +23,8 @@ img {
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="/workspace/webshop/view/home.php">Home</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/workspace/webshop/view/home.php">Home</a></li>
 
 				<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
 					href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -37,25 +37,28 @@ img {
                         $counter = 0;
                         while ($row = $database->getRecord()) {
                             echo "<a class='dropdown-item' href='#'>" . $row['category'] . "</a>";
-
-                            $counter++;
+                            
+                            $counter ++;
                             if ($counter < $database->getAmountOfResults()) {
                                 echo "<div class=\"dropdown-divider\"></div>";
                             }
-
                         }
+                        
                         ?>
-					</div>
-				</li>
-				
-				<li class="nav-item"><a class="nav-link" href="/workspace//webshop/view/about.php">About</a></li>
+					</div></li>
 
-				<li class="nav-item"><a class="nav-link" href="/workspace/webshop/view/product.php">Product</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/workspace/webshop/view/about.php">About</a></li>
+
+				<li class="nav-item"><a class="nav-link"
+					href="/workspace/webshop/view/product.php">Product</a></li>
 			</ul>
-			
-			<a href="/workspace/webshop/view/login.php" class="btn btn-outline-success my-2 my-sm-0 mr-2" role="button">Log in</a>
-			<a href="/workspace/webshop/view/register.php" class="btn btn-outline-success my-2 my-sm-0 mr-2" role="button">Register</a>
-			
+
+			<a href="/workspace/webshop/view/login.php"
+				class="btn btn-outline-success my-2 my-sm-0 mr-2" role="button">Log
+				in</a> <a href="/workspace/webshop/view/register.php"
+				class="btn btn-outline-success my-2 my-sm-0 mr-2" role="button">Register</a>
+
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="Search" aria-label="Search">
