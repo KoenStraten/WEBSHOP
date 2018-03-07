@@ -7,84 +7,17 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="row">
-                    <div class="col-sm-4">
-                        <div class="product">
-                            <h2>Kaasletter 'S'</h2>
-                            <p>dit product is vet lekker</p>
-                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
-                        </div>
 
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product">
-                            <h2>Kaasletter 'S'</h2>
-                            <p>dit product is vet lekker</p>
-                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
+                    @foreach ($products as $product)
+                        <div class="col-sm-4">
+                            <div class="product">
+                                <h2>{{ $product->name }}</h2>
+                                <p>{{ $product->description }}</p>
+                                <a href={{ url('product/' . $product->id ) }}>{{ __('Bestel') }}</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product">
-                            <h2>Kaasletter 'S'</h2>
-                            <p>dit product is vet lekker</p>
-                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="product">
-                            <h2>Kaasletter 'S'</h2>
-                            <p>dit product is vet lekker</p>
-                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
-                        </div>
+                    @endforeach
 
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product">
-                            <h2>Kaasletter 'S'</h2>
-                            <p>dit product is vet lekker</p>
-                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product">
-                            <h2>Kaasletter 'S'</h2>
-                            <p>dit product is vet lekker</p>
-                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="product">
-                            <h2>Kaasletter 'S'</h2>
-                            <p>dit product is vet lekker</p>
-                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
-                        </div>
-
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product">
-                            <h2>Kaasletter 'S'</h2>
-                            <p>dit product is vet lekker</p>
-                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product">
-                            <h2>Kaasletter 'S'</h2>
-                            <p>dit product is vet lekker</p>
-                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
