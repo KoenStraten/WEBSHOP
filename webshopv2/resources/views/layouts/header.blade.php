@@ -12,7 +12,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    @guest
 
                         <li><a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a></li>
                         <li class="nav-item dropdown">
@@ -38,7 +37,6 @@
                             </div>
                         </li>
                         <li><a class="nav-link" href="{{ url('about') }}">{{ __('About') }}</a></li>
-                        @endguest
                 </ul>
 
                 <!-- Right Side Of Navbar -->
