@@ -8,10 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style type="text/css">
-        .faggot {
-            background-color: blue;
-            height: 50px;
-        }
     </style>
 </head>
 
@@ -44,7 +40,7 @@
                                     <input type="checkbox" tabindex="3" class="" name="remember"
                                            id="remember"> <label for="remember"> Remember Me</label>
                                 </div>
-                                <div class=" btn-outline-success form-group text-center">
+                                <div class="btn-outline-success form-group text-center">
                                     <input type="submit" name="login-submit" id="login-submit"
                                            tabindex="4" class="form-control btn btn-login"
                                            value="Log In">
