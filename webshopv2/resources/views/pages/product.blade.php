@@ -48,9 +48,43 @@
 
         </div>
 
-        <h3 class="pt-3">Reviews</h3>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Reviews
+                        </button>
+                    </h5>
+                </div>
 
-        <h3 class="pt-3 pb-3">Specifications</h3>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        hi!
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Specifications
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        @foreach ($specifications as $spec)
+                            <div class="row">
+                                <h5 class="col-md-4">{{ $spec->type  }}</h5>
+                                <h5 class="col-md-4 text-muted">{{ ": " . $spec->answer }}</h5>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- scripts  -->
     </div>
 
