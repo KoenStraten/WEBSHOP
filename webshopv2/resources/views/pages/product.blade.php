@@ -2,7 +2,7 @@
 @section ('content')
 
     <div class="container">
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-md-6">
                 <img style="max-height:500px;"
                      src="{{ $product->image }}"
@@ -23,8 +23,8 @@
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <span class='fa fa-star unchecked'></span>
+                            <span class='fa fa-star unchecked'></span>
                         </div>
                         <div class="col-md-3">
                             <select class="">
@@ -35,7 +35,7 @@
                             </select>
                         </div>
                         <div class="col-md-1">
-                            <input type="number">
+                            <input type="number" value="1">
                         </div>
                         <button class="btn btn-block btn-warning">Add to shopping cart</button>
                     </div>
