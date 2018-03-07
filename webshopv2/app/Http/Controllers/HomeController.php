@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Review;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Specification;
 
 class HomeController extends Controller
 {
@@ -32,7 +33,9 @@ class HomeController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+        $specifications = Specification::getAllById($id);
 
-        return view('pages.product', compact('product'));
+        return view('pages.product', compact('product', 'specifications'));
+
     }
 }
