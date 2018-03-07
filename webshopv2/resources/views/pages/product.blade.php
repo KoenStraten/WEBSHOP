@@ -2,8 +2,13 @@
 @section ('content')
 
     <div class="container">
+<<<<<<< HEAD
         <div class="row mt-4">
             <div class="col-md-6">
+=======
+        <div class="row">
+            <div class="col-md-8">
+>>>>>>> 796a451402c76f3c2c6ca4cd0b08cd565aa5973c
                 <img style="max-height:500px;"
                      src="{{ $product->image }}"
                      class="image-responsive" alt="Kaas">
@@ -23,8 +28,9 @@
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
-                            <span class='fa fa-star unchecked'></span>
-                            <span class='fa fa-star unchecked'></span>
+                            <span class="fa fa-star unchecked"></span>
+                            <span class="fa fa-star unchecked"></span>
+
                         </div>
                         <div class="form-group">
                             <label>Cheese type</label>
