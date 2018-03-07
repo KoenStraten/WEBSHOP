@@ -11,7 +11,7 @@
                         <div class="product">
                             <h2>Kaasletter 'S'</h2>
                             <p>dit product is vet lekker</p>
-                            <a href="/workspace/webshop/webshop/product.php">Bestel</a>
+                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
                         </div>
 
                     </div>
@@ -19,14 +19,14 @@
                         <div class="product">
                             <h2>Kaasletter 'S'</h2>
                             <p>dit product is vet lekker</p>
-                            <a href="/workspace/webshop/webshop/product.php">Bestel</a>
+                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="product">
                             <h2>Kaasletter 'S'</h2>
                             <p>dit product is vet lekker</p>
-                            <a href="/workspace/webshop/webshop/product.php">Bestel</a>
+                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                         <div class="product">
                             <h2>Kaasletter 'S'</h2>
                             <p>dit product is vet lekker</p>
-                            <a href="/workspace/webshop/webshop/product.php">Bestel</a>
+                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
                         </div>
 
                     </div>
@@ -47,14 +47,14 @@
                         <div class="product">
                             <h2>Kaasletter 'S'</h2>
                             <p>dit product is vet lekker</p>
-                            <a href="/workspace/webshop/webshop/product.php">Bestel</a>
+                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="product">
                             <h2>Kaasletter 'S'</h2>
                             <p>dit product is vet lekker</p>
-                            <a href="/workspace/webshop/webshop/product.php">Bestel</a>
+                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                         <div class="product">
                             <h2>Kaasletter 'S'</h2>
                             <p>dit product is vet lekker</p>
-                            <a href="/workspace/webshop/webshop/product.php">Bestel</a>
+                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
                         </div>
 
                     </div>
@@ -75,21 +75,21 @@
                         <div class="product">
                             <h2>Kaasletter 'S'</h2>
                             <p>dit product is vet lekker</p>
-                            <a href="/workspace/webshop/webshop/product.php">Bestel</a>
+                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="product">
                             <h2>Kaasletter 'S'</h2>
                             <p>dit product is vet lekker</p>
-                            <a href="/workspace/webshop/webshop/product.php">Bestel</a>
+                            <a href={{ url('product') }}>{{ __('Bestel') }}</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    </body>
     <!-- scripts  -->
 
 @endsection
