@@ -52,7 +52,8 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true" aria-controls="collapseOne">
                             Reviews
                         </button>
                     </h5>
@@ -60,14 +61,20 @@
 
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
-                        hi!
+                        @foreach ($reviews as $review)
+                            <div class="row">
+                                <h6 class="col-md-4" style="color: blue;">{{ $review->text }}</h6>
+                                <div class="divider"></div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="false" aria-controls="collapseTwo">
                             Specifications
                         </button>
                     </h5>
@@ -76,8 +83,8 @@
                     <div class="card-body">
                         @foreach ($specifications as $spec)
                             <div class="row">
-                                <h6 class="col-md-4">{{ $spec->type  }}</h6>
-                                <h6 class="col-md-4 text-muted">{{ ": " . $spec->answer }}</>
+                                <h6 class="col-md-4">{{ $spec->type }}</h6>
+                                <h6 class="col-md-4 text-muted">{{ ": " . $spec->answer }}</h6>
                             </div>
                         @endforeach
                     </div>

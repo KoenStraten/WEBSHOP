@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    public function product()
-    {
-        $this->belongsTo(Product::Class);
+    public static function getAllById($id) {
+        return static::where('product_id', $id)->get();
     }
 }
