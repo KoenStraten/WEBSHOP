@@ -15,6 +15,8 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/product/{product}', 'HomeController@show');
 
+Route::get('/category/{category}', 'CategoryController@show');
+
 Route::get('/about', function () {
     return view('pages/about');
 });

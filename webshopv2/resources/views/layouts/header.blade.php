@@ -26,7 +26,7 @@
                                     $counter = 0;
 
                                     foreach ($categories as $category) {
-                                        echo "<a class='dropdown-item' href=#>" . $category->category . "</a>";
+                                        echo "<a class='dropdown-item' href=../category/$category->category>" . $category->category . "</a>";
 
                                         $counter++;
                                         if ($counter < count($categories)) {

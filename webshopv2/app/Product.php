@@ -10,4 +10,8 @@ class Product extends Model
     {
         return $this->has_many(Review::Class);
     }
+
+    public static function getAllProductsByCategory($category) {
+        return static::where('category', $category)->get();
+    }
 }
