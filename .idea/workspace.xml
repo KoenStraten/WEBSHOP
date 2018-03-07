@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f3dace3-2ead-4302-ade0-293396f54e6a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webshopv2/public/css/product.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webshopv2/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/webshopv2/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webshopv2/resources/views/auth/login.blade.php" afterPath="$PROJECT_DIR$/webshopv2/resources/views/auth/login.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webshopv2/resources/views/layouts/master.blade.php" afterPath="$PROJECT_DIR$/webshopv2/resources/views/layouts/master.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webshopv2/resources/views/pages/product.blade.php" afterPath="$PROJECT_DIR$/webshopv2/resources/views/pages/product.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webshopv2/resources/views/welcome.blade.php" afterPath="$PROJECT_DIR$/webshopv2/resources/views/welcome.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -86,8 +80,8 @@
       <file leaf-file-name="product.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webshopv2/resources/views/pages/product.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+            <state relative-caret-position="270">
+              <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
               <folding>
                 <element signature="e#175#209#0#HTML" expanded="true" />
                 <marker date="1520440626000" expanded="true" signature="345:641" ph="..." />
@@ -401,16 +395,15 @@
       <workItem from="1519654247748" duration="614000" />
       <workItem from="1520422469344" duration="7266000" />
       <workItem from="1520430152806" duration="167000" />
-      <workItem from="1520430336851" duration="7678000" />
+      <workItem from="1520430336851" duration="7791000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19591000" />
+    <option name="totallyTimeSpent" value="19704000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="872" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2081545" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -740,8 +733,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webshopv2/resources/views/pages/product.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="25" lean-forward="false" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        <state relative-caret-position="270">
+          <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding>
             <element signature="e#175#209#0#HTML" expanded="true" />
             <marker date="1520440626000" expanded="true" signature="345:641" ph="..." />
