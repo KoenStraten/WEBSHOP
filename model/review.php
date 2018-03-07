@@ -18,7 +18,5 @@ class Review
         // find customer by id
         $this->product_id = $dbReview->product_id;  
     }
-    
-    
 }
 ?>

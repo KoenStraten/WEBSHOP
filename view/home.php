@@ -22,9 +22,11 @@
 <?php
 require_once 'header.php';
 ?>
+
 </header>
 
 <body>
+
 	<div class="container">
 		<h3 class="pt-3">Home</h3>
 		<div class="row">
@@ -117,7 +119,7 @@ require_once 'header.php';
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
 	</script>
-	<script src="../js/bootstrap.min.js"></script>
+	<script src="../webshopv2/resources/assets/js/bootstrap.min.js"></script>
 </body>
 
 <footer>

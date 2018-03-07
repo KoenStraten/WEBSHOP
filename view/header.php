@@ -1,6 +1,6 @@
 <html>
 <head>
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../webshopv2/public/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/styles.css" rel="stylesheet">
 
 <style type="text/css">
