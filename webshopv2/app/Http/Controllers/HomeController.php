@@ -30,11 +30,12 @@ class HomeController extends Controller
         return view('welcome', compact('products'));
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $product = Product::find($id);
         $specifications = Specification::getAllById($id);
-        $reviews = Review::find($product->review_id);
-//        $reviews = Review::findBy(['product_id' => $id]);
+
         return view('pages.product', compact('product', 'specifications'));
+
     }
 }

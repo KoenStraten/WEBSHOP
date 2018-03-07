@@ -10,13 +10,6 @@
     <style type="text/css">
     </style>
 </head>
-
-<header>
-<!--    --><?php
-//    require_once 'header.php';
-//    ?>
-</header>
-
 <body>
 <h3>Register</h3>
 <div class="container pt-5">
