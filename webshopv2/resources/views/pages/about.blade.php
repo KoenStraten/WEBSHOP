@@ -2,7 +2,7 @@
 @section ('content')
 
 <div class="container">
-    <h3 class="pt-3">Productnaam</h3>
+    <h3 class="pt-3">About</h3>
     <img style="float: left; width: 23%"
          src="http://www.clker.com/cliparts/c/2/4/3/1194986855125869974rubik_s_cube_random_petr_01.svg.med.png"
          class="img-fluid mr-5 mt-3" alt="Cinque Terre"> <br>
@@ -35,9 +35,6 @@
         culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
         dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-
-    <h3 class="pt-3">Reviews</h3>
-    <h3 class="pt-3 pb-3">Statistics</h3>
 
     <!-- scripts  -->
 </div>

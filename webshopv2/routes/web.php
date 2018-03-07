@@ -23,6 +23,10 @@ Route::get('/about', function () {
     return view('pages/about');
 });
 
+Route::get('/category', function () {
+    return view('pages/category');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
