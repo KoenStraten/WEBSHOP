@@ -1,6 +1,6 @@
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="/images/logo.jpg" style="width: 100px;" class="img-responsive">
             </a>
