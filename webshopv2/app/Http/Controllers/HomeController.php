@@ -31,7 +31,7 @@ class HomeController extends Controller
 
     public function show($id) {
         $product = Product::find($id);
-        $reviews = Review::find($product->review_id);
+//        $reviews = Review::findBy(['product_id' => $id]);
 
         return view('pages.product', compact('product'));
     }

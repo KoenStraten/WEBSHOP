@@ -39,7 +39,7 @@
 
                         <div class="form-group">
                             <label>Amount</label>
-                            <input id="amount" type="number" class="form-control">
+                            <input id="amount" type="number" value="1" class="form-control">
                         </div>
                         <button class="btn btn-block btn-warning">Add to shopping cart</button>
                     </div>
