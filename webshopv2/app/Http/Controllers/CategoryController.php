@@ -8,7 +8,7 @@ use App\Product;
 
 class CategoryController extends Controller
 {
-    public function show($category) {
+    public function index($category) {
         $products = Product::getAllProductsByCategory($category);
 
         return view('pages.category', compact('products', 'category'));

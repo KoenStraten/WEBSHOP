@@ -4,13 +4,23 @@
         <h3 class="pt-3">{{ $category }}</h3>
 
         <div class="my-3 p-3 bg-white rounded box-shadow">
+            <?php $counter = 0 ?>
             @foreach ($products as $p)
-                <div class="row productline">
+                <?php
+                    $counter++;
+                    if ($counter < count($products)) {
+                        echo "<div class='row productline'>";
+                    } else {
+                        echo "<div class='row lastline'>";
+                    }
+                    ?>
                     <div class="col-md-4">
-                        <img src="{{ $p->image }}" style="max-height: 200px">
+                        <a href="../product/{{ $p->id }}">
+                            <img src="{{ $p->image }}" style="max-height: 200px">
+                        </a>
                     </div>
                     <div class="col-md-6">
-                        <h4>{{ $p->name }}</h4>
+                        <h4><a class="text-dark" href="../product/{{ $p->id }}">{{ $p->name }}</a></h4>
                         <p>{{ $p->description  }}</p>
                     </div>
                     <div class="col-md-2">

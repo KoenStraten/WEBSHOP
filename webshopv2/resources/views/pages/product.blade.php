@@ -56,22 +56,31 @@
             <div class="collapse multi-collapse" id="multiCollapseExample1">
                 <div class="card card-body">
                     @foreach ($reviews as $review)
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h6>{{ "Review: " . $review->text }}</h6>
+                        <div class="row productline">
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <?php
+                                    $rating = $review->rating;
+                                    $counter = 0;
+                                    while ($counter < $rating) {
+                                        echo "<span class='fa fa-star checked'></span>";
+                                        $counter++;
+                                    }
+                                    while ($counter < 5) {
+                                        echo "<span class='fa fa-star unchecked'></span>";
+                                        $counter++;
+                                    }
+                                    ?>
+                                    <h5 class="col-md-6">{{ $review->title }}</h5>
+                                </div>
+                                <?php
+                                    $user = DB::table('users')->find($review->user_id);
+                                    $adress = DB::table('adresses')->find($user->adress_id);
+                                    $date = date_format( $review->created_at, "j F Y");
+                                    echo "<p class='col-md-10'>" . $user->name . " | " . $adress->city . " | " . $date . "</p>";
+                                ?>
+                                <p>{{ $review->text }}</p>
                             </div>
-                            <?php
-                            $rating = $review->rating;
-                            $counter = 0;
-                            while ($counter < $rating) {
-                                echo "<span class='fa fa-star checked'></span>";
-                                $counter++;
-                            }
-                            while ($counter < 5) {
-                                echo "<span class='fa fa-star unchecked'></span>";
-                                $counter++;
-                            }
-                            ?>
                         </div>
                     @endforeach
                 </div>
