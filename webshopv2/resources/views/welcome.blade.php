@@ -1,22 +1,7 @@
 @extends ('layouts.master')
-
 @section ('content')
 
-    <head>
-        <style type="text/css">
-            .product {
-                text-align: center;
-                background-image: url("http://ak3.picdn.net/shutterstock/videos/16468963/thumb/1.jpg");
-                color: white;
-                height: 250px;
-                margin-bottom: 50px;
-            }
-        </style>
-    </head>
-
-
     <body>
-
     <div class="container">
         <h3 class="pt-3">Home</h3>
         <div class="row">
