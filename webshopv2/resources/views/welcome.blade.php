@@ -7,7 +7,6 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="row">
-
                     @foreach ($products as $product)
                         <div class="col-sm-4">
                             <div class="product">
@@ -17,7 +16,6 @@
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         </div>

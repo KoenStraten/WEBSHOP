@@ -11,10 +11,13 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/product.css">
     <script rel="script" href="/js/app.js"></script>
 
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/product.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
