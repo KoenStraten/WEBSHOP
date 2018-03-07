@@ -26,16 +26,19 @@
                             <span class='fa fa-star unchecked'></span>
                             <span class='fa fa-star unchecked'></span>
                         </div>
-                        <div class="col-md-3">
-                            <select class="">
+                        <div class="form-group">
+                            <label>Cheese type</label>
+                            <select class="form-control">
                                 <option>Jong</option>
                                 <option>Jong belegen</option>
                                 <option>Belegen</option>
                                 <option>Extra belegen</option>
                             </select>
                         </div>
-                        <div class="col-md-1">
-                            <input type="number" value="1">
+
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input id="amount" type="number" class="form-control">
                         </div>
                         <button class="btn btn-block btn-warning">Add to shopping cart</button>
                     </div>
