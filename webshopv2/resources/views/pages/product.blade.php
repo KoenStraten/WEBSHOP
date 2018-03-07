@@ -76,8 +76,8 @@
                     <div class="card-body">
                         @foreach ($specifications as $spec)
                             <div class="row">
-                                <h5 class="col-md-4">{{ $spec->type  }}</h5>
-                                <h5 class="col-md-4 text-muted">{{ ": " . $spec->answer }}</h5>
+                                <h6 class="col-md-4">{{ $spec->type  }}</h6>
+                                <h6 class="col-md-4 text-muted">{{ ": " . $spec->answer }}</>
                             </div>
                         @endforeach
                     </div>
