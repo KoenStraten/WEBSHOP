@@ -29,9 +29,9 @@ class HomeController extends Controller
         return view('welcome', compact('products'));
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $product = Product::find($id);
-//        $reviews = Review::findBy(['product_id' => $id]);
 
         return view('pages.product', compact('product'));
     }
