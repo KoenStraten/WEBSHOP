@@ -38,26 +38,19 @@
                                aria-haspopup="true" aria-expanded="false"> Categories </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item">Kaas</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item">Kaas1</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item">Kaas2</a>
                                 <?php
-                                //                    include '../database.php';
-                                //                    $database = new Database('tljverku_db');
-                                //                    $database->doSQL("SELECT * FROM category");
-                                //                    $counter = 0;
-                                //                    while ($row = $database->getRecord()) {
-                                //                        echo "<a class='dropdown-item' href='#'>" . $row['category'] . "</a>";
-                                //
-                                //                        $counter ++;
-                                //                        if ($counter < $database->getAmountOfResults()) {
-                                //                            echo "<div class=\"dropdown-divider\"></div>";
-                                //                        }
-                                //                    }
-                                //
-                                //                    ?>
+                                    $categories = DB::table('categories')->get();
+                                    $counter = 0;
+
+                                    foreach ($categories as $category) {
+                                        echo "<a class='dropdown-item' href=#>" . $category->category . "</a>";
+
+                                        $counter++;
+                                        if ($counter < count($categories)) {
+                                            echo "<div class=\"dropdown-divider\"></div>";
+                                        }
+                                    }
+                                    ?>
                             </div>
                         </li>
                         <li><a class="nav-link" href="{{ url('about') }}">{{ __('About') }}</a></li>

@@ -19,14 +19,6 @@ Route::get('/product', function () {
     return view('pages/product');
 });
 
-//Route::get('/register', function () {
-//    return view('pages/register');
-//});
-//
-//Route::get('/login', function () {
-//    return view('pages/login');
-//});
-
 Route::get('/about', function () {
     return view('pages/about');
 });
