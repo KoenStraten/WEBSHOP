@@ -55,8 +55,25 @@
         <div class="col">
             <div class="collapse multi-collapse" id="multiCollapseExample1">
                 <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    @foreach ($reviews as $review)
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>{{ "Review: " . $review->text }}</h6>
+                            </div>
+                            <?php
+                            $rating = $review->rating;
+                            $counter = 0;
+                            while ($counter < $rating) {
+                                echo "<span class='fa fa-star checked'></span>";
+                                $counter++;
+                            }
+                            while ($counter < 5) {
+                                echo "<span class='fa fa-star unchecked'></span>";
+                                $counter++;
+                            }
+                            ?>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -73,8 +90,9 @@
                 <div class="card card-body">
                     @foreach ($specifications as $spec)
                         <div class="row">
-                            <h6 class="col-md-4">{{ $spec->type  }}</h6>
+                            <h6 class="col-md-4">{{ $spec->type }}</h6>
                             <h6 class="col-md-4 text-muted">{{ ": " . $spec->answer }}</h6>
+                            <div class="dropdown-divider"></div>
                         </div>
                     @endforeach
                 </div>
