@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('specification_id')->unsigned();
             $table->integer('review_id')->unsigned();
             $table->string('category');
+            $table->timestamps();
         });
 
         Schema::table('products', function (Blueprint $table) {

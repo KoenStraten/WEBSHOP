@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('adress_id')->references('id')->on('adress')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('adress_id')->references('id')->on('adresses')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
