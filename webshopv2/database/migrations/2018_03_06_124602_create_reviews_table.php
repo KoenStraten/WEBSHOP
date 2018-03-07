@@ -19,6 +19,7 @@ class CreateReviewsTable extends Migration
             $table->integer('rating');
             $table->text('text');
             $table->integer('user_id')->unsigned();
+            $table->timestamps();
         });
 
         Schema::table('reviews', function (Blueprint $table) {

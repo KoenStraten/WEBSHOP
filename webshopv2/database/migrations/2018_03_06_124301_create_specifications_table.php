@@ -17,6 +17,7 @@ class CreateSpecificationsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->string('answer');
+            $table->timestamps();
         });
     }
 
