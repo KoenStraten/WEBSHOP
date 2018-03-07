@@ -2,7 +2,7 @@
 @section ('content')
 
     <div class="container">
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-md-8">
                 <img style="max-height:500px;"
                      src="{{ $product->image }}"
@@ -25,6 +25,7 @@
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star unchecked"></span>
                             <span class="fa fa-star unchecked"></span>
+
                         </div>
                         <div class="form-group">
                             <label>Cheese type</label>
@@ -35,6 +36,7 @@
                                 <option>Extra belegen</option>
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label>Amount</label>
                             <input id="amount" type="number" class="form-control">
