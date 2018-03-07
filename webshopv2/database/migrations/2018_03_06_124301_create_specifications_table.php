@@ -17,7 +17,12 @@ class CreateSpecificationsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->string('answer');
+            $table->integer('product_id')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('specifications', function (Blueprint $table) {
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

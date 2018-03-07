@@ -3,18 +3,46 @@
 
     <div class="container">
         <div class="row">
-            <h3>{{ $product->name }}</h3>
-        </div>
+            <div class="col-md-6">
+                <img style="max-height:500px;"
+                     src="{{ $product->image }}"
+                     class="image-responsive" alt="Kaas">
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-1">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ $product->name }}</h2>
+                        <br>
+                        <h5 class="card-subtitle mb-2 text-muted">Description</h5>
+                        <p class="card-text">{{ $product->description }}</p>
+                        <h5 class="card-subtitle mb-2 text-muted">Category</h5>
+                        <p class="card-text">{{ $product->category }}</p>
+                        <h5 class="card-subtitle mb-2 text-muted">Price</h5>
+                        <p class="card-text price">${{ $product->price }}</p>
+                        <div class="rating">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="">
+                                <option>Jong</option>
+                                <option>Jong belegen</option>
+                                <option>Belegen</option>
+                                <option>Extra belegen</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <input type="number">
+                        </div>
+                        <button class="btn btn-block btn-warning">Add to shopping cart</button>
+                    </div>
+                </div>
+            </div>
 
-        <img style="float: left; height:200px;"
-             src="{{ $product->image }}"
-             class="img mr-3 mt-3" alt="Kaas"> <br>
-        <h5>Description</h5>
-        <p>{{ $product->description }}</p>
-        <h5>Category</h5>
-        <p>{{ $product->category }}</p>
-        <h5>Price</h5>
-        <p>${{ $product->price }}</p>
+        </div>
 
         <h3 class="pt-3">Reviews</h3>
 
