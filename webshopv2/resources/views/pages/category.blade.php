@@ -24,7 +24,8 @@
                         <p>{{ $p->description  }}</p>
                     </div>
                     <div class="col-md-2">
-                        <p class="price">{{ $p->price }}</p>
+                        <p class="price">{{ "$" . $p->price }}</p>
+                        <button class="btn btn-warning">Add to shopping cart</button>
                     </div>
                 </div>
             @endforeach

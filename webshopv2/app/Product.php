@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function reviews()
+    public static function getReviewScore($product_id)
     {
-
+        return Review::where('product_id', $product_id)->avg('rating');
     }
 
     public static function getAllProductsByCategory($category) {

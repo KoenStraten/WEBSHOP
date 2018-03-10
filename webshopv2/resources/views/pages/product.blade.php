@@ -20,11 +20,18 @@
                         <h5 class="card-subtitle mb-2 text-muted">Price</h5>
                         <p class="card-text price">${{ $product->price }}</p>
                         <div class="rating">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star unchecked"></span>
-                            <span class="fa fa-star unchecked"></span>
+                            <?php
+                            $counter = 0;
+                            while ($counter < $rating) {
+                                echo "<span class='fa fa-star checked'></span>";
+                                $counter++;
+                            }
+                            while ($counter < 5) {
+                                echo "<span class='fa fa-star unchecked'></span>";
+                                $counter++;
+                            }
+                            echo "<span class='card-text'> ( ". count($reviews) ." )</span>"
+                            ?>
 
                         </div>
                         <div class="form-group">
@@ -55,6 +62,46 @@
         <div class="col">
             <div class="collapse multi-collapse" id="multiCollapseExample1">
                 <div class="card card-body">
+
+                    @if(\Illuminate\Support\Facades\Auth::check())
+                    <div class="row productline">
+                        <div class="col-md-10">
+                            <h5>Plaats hier een review</h5>
+                            <div class="row">
+                                <form class="col-md-10" method="post" action="../postReview">
+                                    {{ csrf_field() }}
+
+                                    <div class="stars">
+                                        <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+
+                                        <label class="star star-5" for="star-5"></label>
+                                        <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+
+                                        <label class="star star-4" for="star-4"></label>
+                                        <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+
+                                        <label class="star star-3" for="star-3"></label>
+                                        <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+
+                                        <label class="star star-2" for="star-2"></label>
+                                        <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+
+                                        <label class="star star-1" for="star-1"></label>
+
+                                    </div>
+
+                                    <input class="form-control" name="titel" type="text" placeholder="Titel">
+                                    <div class="form-space"></div>
+                                    <textarea class="form-control" name="content" placeholder="Plaats hier uw opmerkingen"></textarea>
+                                    <div class="form-space"></div>
+                                    <input type="hidden" name="product" value="{{ $product->id }}">
+                                    <input class="btn btn-primary" type="submit">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+
                     @foreach ($reviews as $review)
                         <div class="row productline">
                             <div class="col-md-10">

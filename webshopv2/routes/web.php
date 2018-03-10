@@ -28,3 +28,5 @@ Route::get('/category', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/postReview', 'ReviewController@store');
