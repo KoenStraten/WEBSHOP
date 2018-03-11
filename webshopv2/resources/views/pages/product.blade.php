@@ -34,21 +34,23 @@
                             ?>
 
                         </div>
-                        <div class="form-group">
-                            <label>Cheese type</label>
-                            <select class="form-control">
-                                <option>Jong</option>
-                                <option>Jong belegen</option>
-                                <option>Belegen</option>
-                                <option>Extra belegen</option>
-                            </select>
-                        </div>
+                        <form method="post" action="">
+                            <div class="form-group">
+                                <label>Cheese type</label>
+                                <select name="cheeseType" class="form-control">
+                                    <option>Jong</option>
+                                    <option>Jong belegen</option>
+                                    <option>Belegen</option>
+                                    <option>Extra belegen</option>
+                                </select>
+                            </div>
 
-                        <div class="form-group">
-                            <label>Amount</label>
-                            <input id="amount" type="number" value="1" class="form-control">
-                        </div>
-                        <button class="btn btn-block btn-warning">Add to shopping cart</button>
+                            <div class="form-group">
+                                <label>Amount</label>
+                                <input name="amount" id="amount" type="number" value="1" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-block btn-warning">Add to shopping cart</button>
+                        </form>
                     </div>
                 </div>
             </div>

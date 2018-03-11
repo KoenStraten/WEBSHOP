@@ -4,11 +4,14 @@
         <h3 class="pt-3">{{ $category }}</h3>
 
         <div class="my-3 p-3 bg-white rounded box-shadow">
-            <?php $counter = 0 ?>
+            <?php
+                $pcounter = 0;
+                $productCount = count($products);
+            ?>
             @foreach ($products as $p)
                 <?php
-                    $counter++;
-                    if ($counter < count($products)) {
+                    $pcounter++;
+                    if ($pcounter < $productCount) {
                         echo "<div class='row productline'>";
                     } else {
                         echo "<div class='row lastline'>";
@@ -21,11 +24,25 @@
                     </div>
                     <div class="col-md-6">
                         <h4><a class="text-dark" href="../product/{{ $p->id }}">{{ $p->name }}</a></h4>
-                        <p>{{ $p->description  }}</p>
+                        <p>{{ $p->description  }} <br><br>
+                        <?php
+                        $reviews = \App\Review::getAllById($p->id);
+                        $rating = \App\Product::getReviewScore($p->id);
+                        $counter = 0;
+                        while ($counter < $rating) {
+                            echo "<span class='fa fa-star checked'></span>";
+                            $counter++;
+                        }
+                        while ($counter < 5) {
+                            echo "<span class='fa fa-star unchecked'></span>";
+                            $counter++;
+                        }
+                        echo "<span class='card-text'> ( ". count($reviews) ." )</span>"
+                        ?>
                     </div>
                     <div class="col-md-2">
                         <p class="price">{{ "$" . $p->price }}</p>
-                        <button class="btn btn-warning">Add to shopping cart</button>
+                        <a href="../product/{{ $p->id }}" class="btn btn-warning">To product page ></a>
                     </div>
                 </div>
             @endforeach
