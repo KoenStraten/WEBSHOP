@@ -13,61 +13,62 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
 
-                        <li><a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"
-                               href="#" id="navbarDropdown" role="button"
-                               data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false"> Categories </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"> Categories </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                <?php
-                                    $categories = DB::table('categories')->get();
-                                    $counter = 0;
+                            <?php
+                            $categories = DB::table('categories')->get();
+                            $counter = 0;
 
-                                    foreach ($categories as $category) {
-                                        echo "<a class='dropdown-item' href=../category/$category->category>" . $category->category . "</a>";
+                            foreach ($categories as $category) {
+                                echo "<a class='dropdown-item' href=../category/$category->category>" . $category->category . "</a>";
 
-                                        $counter++;
-                                        if ($counter < count($categories)) {
-                                            echo "<div class=\"dropdown-divider\"></div>";
-                                        }
-                                    }
-                                    ?>
-                            </div>
-                        </li>
-                        <li><a class="nav-link" href="{{ url('about') }}">{{ __('About') }}</a></li>
+                                $counter++;
+                                if ($counter < count($categories)) {
+                                    echo "<div class=\"dropdown-divider\"></div>";
+                                }
+                            }
+                            ?>
+                        </div>
+                    </li>
+                    <li><a class="nav-link" href="{{ url('about') }}">{{ __('About') }}</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                    @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
+                        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
 
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item">my account</a>
-                            <a class="dropdown-item">purchase history</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item">My account</a>
+                                    <a class="dropdown-item">Purchase history</a>
+                                    <a class="dropdown-item" href="../shoppingcart">Shopping cart</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+                                        {{ __('Log out') }}
+                                    </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                  style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                    @endguest
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                            @endguest
                 </ul>
             </div>
         </div>

@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-    public function store() {
+    public function store()
+    {
         $this->validate(request(), [
             'titel' => 'required',
             'content' => 'required',

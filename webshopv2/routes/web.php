@@ -21,6 +21,10 @@ Route::get('/about', function () {
     return view('pages/about');
 });
 
+Route::post('/shoppingcart/store', 'ShoppingCartController@store');
+
+Route::get('/shoppingcart', 'ShoppingCartController@index');
+
 Route::get('/category', function () {
     return view('pages/category');
 });

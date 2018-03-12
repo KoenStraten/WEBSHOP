@@ -1,26 +1,69 @@
 @extends ('layouts.master')
 @section ('content')
 
-    <body>
     <div class="container">
-        <h3 class="pt-3">Home</h3>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="row">
-                    @foreach ($products as $product)
-                        <div class="col-sm-4">
-                            <div class="product">
-                                <h2>{{ $product->name }}</h2>
-                                <p>{{ $product->description }}</p>
-                                <a href={{ url('product/' . $product->id ) }}>{{ __('Bestel') }}</a>
-                            </div>
-                        </div>
-                    @endforeach
+        <h3>Home</h3>
+        <div class="my-3 p-3 bg-white rounded box-shadow">
+            <?php
+            $pcounter = 0;
+            $productCount = count($products);
+            ?>
+            @foreach ($products as $p)
+                <?php
+                $pcounter++;
+                if ($pcounter < $productCount) {
+                    echo "<div class='row productline'>";
+                } else {
+                    echo "<div class='row lastline'>";
+                }
+                ?>
+                <div class="col-md-4">
+                    <a href="../product/{{ $p->id }}">
+                        <img src="{{ $p->image }}" style="max-height: 200px">
+                    </a>
                 </div>
-            </div>
+                <div class="col-md-6">
+                    <h4><a class="text-dark" href="../product/{{ $p->id }}">{{ $p->name }}</a></h4>
+                    <p>{{ $p->description  }} <br><br>
+                    <?php
+                    $reviews = \App\Review::getAllById($p->id);
+                    $rating = \App\Product::getReviewScore($p->id);
+                    $counter = 0;
+                    while ($counter < $rating) {
+                        echo "<span class='fa fa-star checked'></span>";
+                        $counter++;
+                    }
+                    while ($counter < 5) {
+                        echo "<span class='fa fa-star unchecked'></span>";
+                        $counter++;
+                    }
+                    echo "<span class='card-text'> ( " . count($reviews) . " )</span>"
+                    ?>
+                </div>
+                <div class="col-md-2">
+                    <p class="price">{{ "$" . $p->price }}</p>
+                    <a href="../product/{{ $p->id }}" class="btn btn-warning">To product page ></a>
+                </div>
         </div>
+        @endforeach
     </div>
-    </body>
+    {{--<h3>Home</h3>--}}
+    {{--<div class="row">--}}
+    {{--<div class="col-sm-12">--}}
+    {{--<div class="row">--}}
+    {{--@foreach ($products as $product)--}}
+    {{--<div class="col-sm-4">--}}
+    {{--<div class="product">--}}
+    {{--<h2>{{ $product->name }}</h2>--}}
+    {{--<p>{{ $product->description }}</p>--}}
+    {{--<a href={{ url('product/' . $product->id ) }}>{{ __('Bestel') }}</a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--@endforeach--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
     <!-- scripts  -->
 
 @endsection

@@ -11,7 +11,13 @@ class Product extends Model
         return Review::where('product_id', $product_id)->avg('rating');
     }
 
-    public static function getAllProductsByCategory($category) {
+    public static function getAllProductsByCategory($category)
+    {
         return static::where('category', $category)->get();
+    }
+
+    public static function getProductsInShoppingCart($user_id)
+    {
+
     }
 }
