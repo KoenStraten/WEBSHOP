@@ -6,9 +6,12 @@ use App\Product;
 use App\ProductInCart;
 use App\ShoppingCart;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ShoppingCartController extends Controller
 {
+
+    public $shoppingCart;
 
     public function index()
     {
@@ -75,16 +78,20 @@ class ShoppingCartController extends Controller
     {
         $product_id = request('product');
 
+        $product = Product::find($product_id);
+
         $user = Auth::user();
 
         $cart = $user->shoppingCarts->where('paid', 0)->last();
 
-        $product = Product::find($product_id);
+        $totalCost = $cart->total_cost;
 
-        $cart->products()->delete($product);
+        $cart->total_cost = $totalCost - $product->price;
 
         $cart->save();
 
-        return view('pages/shoppingcart');
+        ProductInCart::all()->where('product_id', $product_id)->where('shopping_cart_id', $cart->id)->first()->delete();
+
+        return redirect('/shoppingcart/');
     }
 }

@@ -7,7 +7,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-
     public function shoppingCarts()
     {
         return $this->hasMany(ShoppingCart::class);

@@ -42,5 +42,29 @@ class ProductSeeder extends Seeder
             'image' => 'https://catalogs.seacommerce.nl/versop/SD_large/large_kaashaas_0.png',
             'category' => 'Kaasfiguren',
         ]);
+
+        DB::table('products')->insert([
+            'name' => 'Kaasletter A',
+            'price' => 14.99,
+            'description' => "De lekkerste 'A' ter wereld!",
+            'image' => 'https://catalogs.seacommerce.nl/versop/SD_large/large_kaashaas_0.png',
+            'category' => 'Kaasletters',
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Kaasletter B',
+            'price' => 14.99,
+            'description' => "De lekkerste 'B' ter wereld!",
+            'image' => 'https://catalogs.seacommerce.nl/versop/SD_large/large_kaashaas_0.png',
+            'category' => 'Kaasletters',
+        ]);
+
+        DB::table('products')->insert([
+            'name' => 'Kaasletter C',
+            'price' => 14.99,
+            'description' => "De lekkerste 'C' ter wereld!",
+            'image' => 'https://catalogs.seacommerce.nl/versop/SD_large/large_kaashaas_0.png',
+            'category' => 'Kaasletters',
+        ]);
     }
 }

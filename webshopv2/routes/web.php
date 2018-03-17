@@ -23,7 +23,7 @@ Route::get('/about', function () {
 
 Route::post('/shoppingcart/store/', 'ShoppingCartController@store');
 
-Route::post('/shoppingcart/remove/', 'ShoppingCartController@remove');
+Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');
 
 Route::get('/shoppingcart', 'ShoppingCartController@show');
 
