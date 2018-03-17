@@ -45,6 +45,9 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+                                        <a class="dropdown-item" href="/../admin/dashboard">Dasbhoard</a>
+                                    @endif
                                     <a class="dropdown-item">My account</a>
                                     <a class="dropdown-item">Purchase history</a>
                                     <a class="dropdown-item" href="../shoppingcart">Shopping cart</a>
