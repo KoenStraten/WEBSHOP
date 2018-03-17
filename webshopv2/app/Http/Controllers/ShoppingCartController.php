@@ -46,6 +46,8 @@ class ShoppingCartController extends Controller
         }
         $shoppingCart->save();
 
+        session()->flash('message', 'Het product is toegevoegd aan je winkelmandje.');
+
         return redirect('/product/' . $product_id);
     }
 

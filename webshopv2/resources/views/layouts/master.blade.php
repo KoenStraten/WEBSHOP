@@ -28,6 +28,12 @@
 <body>
 @include('layouts.header')
 
+@if ($flash = session('message'))
+    <div id="flash-message" class="alert alert-info">
+        {{ $flash }}
+    </div>
+@endif
+
 {{--@yield('content')--}}
 
 @include('layouts.footer')
