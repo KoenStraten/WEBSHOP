@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/product.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="https://catalogs.seacommerce.nl/versop/images/S-0.png">
     <script rel="script" href="/js/app.js"></script>
 
     <link rel="stylesheet" href="/css/bootstrap.css">

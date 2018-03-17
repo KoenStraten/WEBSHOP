@@ -18,25 +18,17 @@
                         <a class="nav-link dropdown-toggle"
                            href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false"> Categories </a>
+                           aria-haspopup="true" aria-expanded="false"> Categorieën </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                            <?php
-                            $categories = DB::table('categories')->get();
-                            $counter = 0;
-
-                            foreach ($categories as $category) {
-                                echo "<a class='dropdown-item' href=../category/$category->category>" . $category->category . "</a>";
-
-                                $counter++;
-                                if ($counter < count($categories)) {
-                                    echo "<div class=\"dropdown-divider\"></div>";
-                                }
-                            }
-                            ?>
+                            @foreach($categories as $category)
+                                <a class="dropdown-item" href="{{ "/../category/" . $category->category }}">{{ $category->category }}</a>
+                                @if(!$loop->last)
+                                    <div class="dropdown-divider"></div>
+                                @endif
+                            @endforeach
                         </div>
                     </li>
-                    <li><a class="nav-link" href="{{ url('about') }}">{{ __('About') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('about') }}">{{ __('Over ons') }}</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
