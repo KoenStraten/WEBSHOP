@@ -61,13 +61,13 @@ class ShoppingCartController extends Controller
         $productsInCarts = array();
 
         foreach ($carts as $cart) {
-            echo $productIds = $cart->ProductsInCart();
+            $productIds = $cart->ProductsInCart();
         }
 
-//        foreach ($productIds as $productId) {
-//            $product = Product::find($productId);
-//            array_push($productsInCarts, $product);
-//        }
+        foreach ($productIds as $productId) {
+            $product = Product::find($productId);
+            array_push($productsInCarts, $product);
+        }
         return view('pages/shoppingcart', compact('productsInCart'));
     }
 }

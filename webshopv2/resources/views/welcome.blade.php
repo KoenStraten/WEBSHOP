@@ -25,20 +25,20 @@
                 <div class="col-md-6">
                     <h4><a class="text-dark" href="../product/{{ $p->id }}">{{ $p->name }}</a></h4>
                     <p>{{ $p->description  }} <br><br>
-                    <?php
-                    $reviews = \App\Review::getAllById($p->id);
-                    $rating = \App\Product::getReviewScore($p->id);
-                    $counter = 0;
-                    while ($counter < $rating) {
-                        echo "<span class='fa fa-star checked'></span>";
-                        $counter++;
-                    }
-                    while ($counter < 5) {
-                        echo "<span class='fa fa-star unchecked'></span>";
-                        $counter++;
-                    }
-                    echo "<span class='card-text'> ( " . count($reviews) . " )</span>"
-                    ?>
+<!--                    --><?php
+//                    $reviews = \App\Review::getAllById($p->id);
+//                    $rating = \App\Product::getReviewScore($p->id);
+//                    $counter = 0;
+//                    while ($counter < $rating) {
+//                        echo "<span class='fa fa-star checked'></span>";
+//                        $counter++;
+//                    }
+//                    while ($counter < 5) {
+//                        echo "<span class='fa fa-star unchecked'></span>";
+//                        $counter++;
+//                    }
+//                    echo "<span class='card-text'> ( " . count($reviews) . " )</span>"
+//                    ?>
                 </div>
                 <div class="col-md-2">
                     <p class="price">{{ "$" . $p->price }}</p>
