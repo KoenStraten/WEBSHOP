@@ -19,12 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('role');
             $table->rememberToken();
             $table->timestamps();
         });
 
         Schema::table('users', function (Blueprint $table) {
             $table->foreign('adress_id')->references('id')->on('adresses')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('role')->references('role')->on('user_roles')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

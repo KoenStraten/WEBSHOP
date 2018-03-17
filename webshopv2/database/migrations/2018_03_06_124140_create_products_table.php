@@ -20,12 +20,14 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->text('image');
             $table->string('category');
+            $table->string('cheese_type')->nullable();
             $table->integer('times_sold')->default(0);
             $table->timestamps();
         });
 
         Schema::table('products', function (Blueprint $table) {
             $table->foreign('category')->references('category')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cheese_type')->references('type')->on('cheese_types')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
