@@ -34,10 +34,8 @@ class HomeController extends Controller
     {
         $product = Product::find($id);
         $specifications = Specification::getAllById($id);
-        $reviews = Review::getAllById($id);
-        $rating = Product::getReviewScore($id);
 
-        return view('pages.product', compact('product', 'specifications', 'reviews', 'rating'));
+        return view('pages.product', compact('product', 'specifications'));
 
     }
 }

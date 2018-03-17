@@ -5,12 +5,7 @@
         <div class="row mt-4">
             <div class="col-md-8">
                 <div class="row justify-content-center">
-                    <img style="max-height:500px;"
-                         src="{{ $product->image }}"
-                         <?php
-                         $product->image;
-                         ?>
-                         class="image-responsive" alt="Kaas">
+                    <img src="{{ $product->image }}" class="image-responsive pic" alt="Kaas">
                 </div>
             </div>
             <div class="col-md-4">
@@ -25,18 +20,14 @@
                         <h5 class="card-subtitle mb-2 text-muted">Price</h5>
                         <p class="card-text price">${{ $product->price }}</p>
                         <div class="rating">
-                            <?php
-                            $counter = 0;
-                            while ($counter < $rating) {
-                                echo "<span class='fa fa-star checked'></span>";
-                                $counter++;
-                            }
-                            while ($counter < 5) {
-                                echo "<span class='fa fa-star unchecked'></span>";
-                                $counter++;
-                            }
-                            echo "<span class='card-text'> ( " . count($reviews) . " )</span>"
-                            ?>
+                            @for($i = 0; $i < 5; $i++)
+                                @if($i < $product->rating())
+                                    <span class="fa fa-star checked"></span>
+                                @else
+                                    <span class="fa fa-star unchecked"></span>
+                                @endif
+                            @endfor
+                            <span class="card-text">{{ " ( " . count($product->reviews) . " )" }}</span>
 
                         </div>
 
@@ -118,30 +109,20 @@
                         </div>
                     @endif
 
-                    @foreach ($reviews as $review)
+                    @foreach ($product->reviews as $review)
                         <div class="row productline">
                             <div class="col-md-10">
                                 <div class="row">
-                                    <?php
-                                    $rating = $review->rating;
-                                    $counter = 0;
-                                    while ($counter < $rating) {
-                                        echo "<span class='fa fa-star checked'></span>";
-                                        $counter++;
-                                    }
-                                    while ($counter < 5) {
-                                        echo "<span class='fa fa-star unchecked'></span>";
-                                        $counter++;
-                                    }
-                                    ?>
+                                        @for($i = 0; $i < 5; $i++)
+                                            @if($i < $review->rating)
+                                                <span class="fa fa-star checked"></span>
+                                            @else
+                                                <span class="fa fa-star unchecked"></span>
+                                            @endif
+                                        @endfor
                                     <h5 class="col-md-6">{{ $review->title }}</h5>
                                 </div>
-                                <?php
-                                $user = DB::table('users')->find($review->user_id);
-                                $adress = DB::table('adresses')->find($user->adress_id);
-                                $date = date_format($review->created_at, "j F Y");
-                                echo "<p class='col-md-10'>" . $user->name . " | " . $adress->city . " | " . $date . "</p>";
-                                ?>
+                                <p class="col-md-10 text-muted">{{ $review->getReviewString() }}</p>
                                 <p>{{ $review->text }}</p>
                             </div>
                         </div>
