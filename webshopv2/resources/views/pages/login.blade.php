@@ -11,12 +11,6 @@
     </style>
 </head>
 
-<header>
-    <!--    --><?php
-    //    require_once 'header.php';
-    //    ?>
-</header>
-
 <body>
 <div class="container pt-5">
     <div class="row">

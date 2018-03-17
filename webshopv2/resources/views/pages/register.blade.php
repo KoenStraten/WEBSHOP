@@ -68,10 +68,4 @@
 <script src="../webshopv2/resources/assets/js/bootstrap.min.js"></script>
 </body>
 
-<footer>
-    <?php
-    require_once 'footer.php';
-    ?>
-</footer>
-
 </html>
