@@ -68,9 +68,10 @@ class ShoppingCartController extends Controller
 
         $product = Product::find($product_id);
 
-        //$cart->products()->delete($product);
+        $cart->products()->delete($product);
 
-        echo $product;
-        //return view('pages/shoppingcart');
+        $cart->save();
+
+        return view('pages/shoppingcart');
     }
 }
