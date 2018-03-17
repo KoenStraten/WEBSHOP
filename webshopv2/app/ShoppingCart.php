@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ShoppingCart extends Model
 {
-    public function ProductsInCart()
+    public function products()
     {
-        return $this->belongsToMany('App\Product', 'product_in_shopping_cart');
-        //return $this->hasMany('App\Product', 'product_in_shopping_cart'); ik denk deze
-
+        return $this->belongsToMany(Product::class, 'product_in_shopping_cart');
     }
 }

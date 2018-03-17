@@ -10,7 +10,12 @@ class User extends Authenticatable
 
     public function shoppingCarts()
     {
-        return $this->hasMany('App\ShoppingCart');
+        return $this->hasMany(ShoppingCart::class);
+    }
+
+    public function products()
+    {
+        return $this->hasManyThrough('App\ProductInCart', 'App\ShoppingCart');
     }
 
     use Notifiable;
@@ -33,7 +38,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function adress() {
+    public function adress()
+    {
         return $this->belongsTo(Adress::class);
     }
 }

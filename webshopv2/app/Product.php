@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function reviews() {
+    public function reviews()
+    {
         return $this->hasMany(Review::class);
     }
 
@@ -20,8 +21,8 @@ class Product extends Model
         return static::where('category', $category)->get();
     }
 
-    public function ShoppingCarts()
+    public function shoppingCarts()
     {
-        return $this->belongsToMany('App\ShoppingCart', 'product_in_shopping_cart');
+        return $this->belongsToMany(ShoppingCart::class);
     }
 }
