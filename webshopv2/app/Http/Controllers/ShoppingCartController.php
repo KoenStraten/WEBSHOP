@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\ProductInCart;
 use App\ShoppingCart;
+use Illuminate\Support\Facades\Auth;
 
 class ShoppingCartController extends Controller
 {
@@ -19,20 +20,18 @@ class ShoppingCartController extends Controller
         $product_id = request('product');
         $amount = request('amount');
 
-        $user = \Illuminate\Support\Facades\Auth::user();
-        $carts = $user->shoppingCarts->where('paid', '0')->where('user_id', $user->id);
+        $user = Auth::user();
+        $cart = $user->shoppingCarts->where('paid', '0')->last();
 
-        if (count($carts) == 0) {
+        if (!isset($cart)) {
             $shoppingCart = new ShoppingCart();
             $shoppingCart->user_id = $user->id;
             $totalCost = 0;
             $shoppingCart->total_cost = $totalCost;
             $shoppingCart->save();
         } else {
-            foreach ($carts as $cart) {
-                $totalCost = $cart->total_cost;
-                $shoppingCart = $cart;
-            }
+            $totalCost = $cart->total_cost;
+            $shoppingCart = $cart;
         }
 
         $product = Product::find($product_id);
@@ -40,11 +39,9 @@ class ShoppingCartController extends Controller
 
         $counter = 0;
         while ($counter < $amount) {
-            $productInCart = new ProductInCart();
+            $shoppingCart->products()->attach($product);
             $totalCost = $totalCost + $price;
-            $productInCart->product_id = $product_id;
-            $carts = $user->shoppingCarts->where('paid', '0')->where('user_id', $user->id);
-
+            $shoppingCart->total_cost = $totalCost;
             $counter++;
         }
         $shoppingCart->save();
@@ -54,20 +51,26 @@ class ShoppingCartController extends Controller
 
     public function show()
     {
-        $user = \Illuminate\Support\Facades\Auth::user();
+        $user = Auth::user();
 
-        $carts = $user->shoppingCarts->where('paid', '0');
+        $cart = $user->shoppingCarts->where('paid', 0)->last();
 
-        $productsInCarts = array();
+        return view('pages/shoppingcart', compact('cart'));
+    }
 
-        foreach ($carts as $cart) {
-            $productIds = $cart->ProductsInCart();
-        }
+    public function remove()
+    {
+        $product_id = request('product');
 
-        foreach ($productIds as $productId) {
-            $product = Product::find($productId);
-            array_push($productsInCarts, $product);
-        }
-        return view('pages/shoppingcart', compact('productsInCart'));
+        $user = Auth::user();
+
+        $cart = $user->shoppingCarts->where('paid', 0)->last();
+
+        $product = Product::find($product_id);
+
+        //$cart->products()->delete($product);
+
+        echo $product;
+        //return view('pages/shoppingcart');
     }
 }

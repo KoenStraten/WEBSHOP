@@ -112,13 +112,13 @@
                         <div class="row productline">
                             <div class="col-md-10">
                                 <div class="row">
-                                        @for($i = 0; $i < 5; $i++)
-                                            @if($i < $review->rating)
-                                                <span class="fa fa-star checked"></span>
-                                            @else
-                                                <span class="fa fa-star unchecked"></span>
-                                            @endif
-                                        @endfor
+                                    @for($i = 0; $i < 5; $i++)
+                                        @if($i < $review->rating)
+                                            <span class="fa fa-star checked"></span>
+                                        @else
+                                            <span class="fa fa-star unchecked"></span>
+                                        @endif
+                                    @endfor
                                     <h5 class="col-md-6">{{ $review->title }}</h5>
                                 </div>
                                 <p class="col-md-10 text-muted">{{ $review->getReviewString() }}</p>
