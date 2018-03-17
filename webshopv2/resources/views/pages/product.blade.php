@@ -36,10 +36,9 @@
                                 <div class="form-group">
                                     <label>Cheese type</label>
                                     <select name="cheeseType" class="form-control">
-                                        <option>Jong</option>
-                                        <option>Jong belegen</option>
-                                        <option>Belegen</option>
-                                        <option>Extra belegen</option>
+                                        @foreach($cheeseTypes as $cheeseType)
+                                            <option value="{{ $cheeseType->type }}">{{ $cheeseType->type }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

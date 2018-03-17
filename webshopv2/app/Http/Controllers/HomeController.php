@@ -6,6 +6,7 @@ use App\Review;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Specification;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -34,8 +35,9 @@ class HomeController extends Controller
     {
         $product = Product::find($id);
         $specifications = Specification::getAllById($id);
+        $cheeseTypes = DB::table('cheese_types')->get();
 
-        return view('pages.product', compact('product', 'specifications'));
+        return view('pages.product', compact('product', 'specifications', 'cheeseTypes'));
 
     }
 }
