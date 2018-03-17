@@ -17,6 +17,7 @@ class CreateShoppingCartsTable extends Migration
             $table->increments('id');
             $table->integer('total_cost');
             $table->integer('user_id')->unsigned();
+            $table->boolean('paid')->default(false);
             $table->timestamps();
         });
 
