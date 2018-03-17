@@ -60,6 +60,17 @@ class ShoppingCartController extends Controller
         return view('pages/shoppingcart', compact('cart'));
     }
 
+    public static function newCart()
+    {
+        $user = Auth::user();
+
+        $shoppingCart = new ShoppingCart();
+        $shoppingCart->user_id = $user->id;
+        $totalCost = 0;
+        $shoppingCart->total_cost = $totalCost;
+        $shoppingCart->save();
+    }
+
     public function remove()
     {
         $product_id = request('product');
