@@ -15,7 +15,7 @@ class CreateShoppingCartsTable extends Migration
     {
         Schema::create('shopping_carts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('total_cost');
+            $table->double('total_cost');
             $table->integer('user_id')->unsigned();
             $table->boolean('paid')->default(false);
             $table->timestamps();
