@@ -20,8 +20,8 @@ class Product extends Model
         return static::where('category', $category)->get();
     }
 
-    public static function getProductsInShoppingCart($user_id)
+    public function ShoppingCarts()
     {
-
+        return $this->belongsToMany('App\ShoppingCart', 'product_in_shopping_cart');
     }
 }

@@ -14,6 +14,7 @@ class CreateProductInShoppingCartTable extends Migration
     public function up()
     {
         Schema::create('product_in_shopping_cart', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('shopping_cart_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->timestamps();
