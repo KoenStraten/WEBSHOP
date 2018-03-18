@@ -94,4 +94,11 @@ class ShoppingCartController extends Controller
 
         return redirect('/shoppingcart/');
     }
+
+    public function purchase($cart_id)
+    {
+        $user = Auth::user();
+        $cart = ShoppingCart::find($cart_id);
+        return view('pages/purchase', compact('cart', 'user'));
+    }
 }

@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/images.css') }}" rel="stylesheet">
     <link href="{{ asset('css/product.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
@@ -33,8 +33,6 @@
         {{ $flash }}
     </div>
 @endif
-
-{{--@yield('content')--}}
 
 @include('layouts.footer')
 </body>

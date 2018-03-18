@@ -21,7 +21,8 @@
                            aria-haspopup="true" aria-expanded="false"> Categorieën </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach($categories as $category)
-                                <a class="dropdown-item" href="{{ "/../category/" . $category->category }}">{{ $category->category }}</a>
+                                <a class="dropdown-item"
+                                   href="{{ "/../category/" . $category->category }}">{{ $category->category }}</a>
                                 @if(!$loop->last)
                                     <div class="dropdown-divider"></div>
                                 @endif
@@ -38,6 +39,8 @@
                         <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
+                            <li><a class="nav-link" href="../shoppingcart"><i class="fas fa-shopping-cart"></i> Shopping
+                                    cart</a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +53,6 @@
                                     @endif
                                     <a class="dropdown-item">My account</a>
                                     <a class="dropdown-item">Purchase history</a>
-                                    <a class="dropdown-item" href="../shoppingcart">Shopping cart</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

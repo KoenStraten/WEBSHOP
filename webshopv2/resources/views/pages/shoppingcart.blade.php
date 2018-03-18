@@ -9,7 +9,7 @@
                         <div class="row productline">
                             <div class="col-md-4">
                                 <a href="../product/{{ $product->id }}">
-                                    <img src="{{ $product->image }}" class="img-fluid">
+                                    <img src="{{ $product->image }}" class="img-fluid imgmax">
                                 </a>
                             </div>
                             <div class="col-md-6">
@@ -32,19 +32,22 @@
                                     <input type="hidden" name="product" value="{{ $product->id }}">
                                     <button type="submit" class="btn btn-block btn-warning">Delete</button>
                                 </form>
+                                <a href="#" class="btn btn-block btn-warning mt-4">Edit</a>
                             </div>
                         </div>
                     @endforeach
                     <div class="row lastline">
                         <div class="col-md-4 offset-6">
-                            <p class="pt-3 price">Total price:</p>
+                            <p class="pt-3 text-right price">Total price:</p>
                         </div>
                         <div class="col-md-2">
                             <p class="pt-3 price">{{" $" . $cart->total_cost }}</p>
-                            <form method="POST" action="../shoppingcart/purchase/">
-                                <input type="hidden" name="product" value="{{ $cart->id }}">
-                                <button type="submit" class="btn btn-block btn-warning">Purchase</button>
-                            </form>
+                            @guest
+                                <a class="btn btn-warning btn-block" disabled="">Log in to purchase these products</a>
+                                @else
+                                    <a class="btn btn-warning btn-block"
+                                       href="../purchase/{{ $cart->id }}">Purchase</a>
+                                    @endguest
                         </div>
                     </div>
                 @else

@@ -27,6 +27,8 @@ Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');
 
 Route::get('/shoppingcart', 'ShoppingCartController@show');
 
+Route::get('/purchase/{cart}', 'ShoppingCartController@purchase');
+
 Route::get('/category', function () {
     return view('pages/category');
 });
