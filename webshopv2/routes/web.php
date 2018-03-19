@@ -17,22 +17,24 @@ Route::get('/product/{product}', 'HomeController@show');
 
 Route::get('/category/{category}', 'CategoryController@index');
 
-Route::get('/about', function () {
-    return view('pages/about');
-});
-
 Route::post('/shoppingcart/store/', 'ShoppingCartController@store');
-
 Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');
-
 Route::get('/shoppingcart', 'ShoppingCartController@show');
-
-Route::get('/category', function () {
-    return view('pages/category');
-});
 
 Auth::routes();
 
 Route::post('/postReview', 'ReviewController@store');
 
 Route::get('/admin/dashboard', 'AdminController@index');
+
+Route::get('/about', function () {
+    return view('pages/about');
+});
+
+Route::get('/category', function () {
+    return view('pages/category');
+});
+
+Route::get('/database_eer', function () {
+    return view('designs/eer');
+});

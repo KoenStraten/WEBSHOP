@@ -3,17 +3,16 @@
         <div class="row justify-content-center">
             <ul class="list-inline float-left pr-3">
                 <li><a href="#">Contact</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/../about">Over ons</a></li>
             </ul>
             <ul class="list-inline float-left pr-3">
-                <li><a href="#">Facebook</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
+                <li><a href="www.facebook.com">Facebook</a></li>
+                <li><a href="www.twitter.com">Twitter</a></li>
+                <li><a href="www.instagram.com">Instagram</a></li>
             </ul>
             <ul class="list-inline">
-                <li><a href="#">Nog meer</a></li>
-                <li><a href="#">Etc</a></li>
-                <li><a href="#">Etc</a></li>
+                <li><a href="/../wireframes">Wireframes</a></li>
+                <li><a href="/../database_eer">Database EER</a></li>
             </ul>
         </div>
         <div class="row justify-content-center">
