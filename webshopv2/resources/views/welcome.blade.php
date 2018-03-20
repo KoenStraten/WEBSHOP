@@ -2,7 +2,7 @@
 @section ('content')
 
     <div class="container">
-        <h3><i class="fas fa-home"></i></h3>
+        <h3>Thuis</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             @foreach ($products as $p)
                 @if (!$loop->last)
