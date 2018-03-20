@@ -22,6 +22,7 @@ class ShoppingCartController extends Controller
     {
         $product_id = request('product');
         $amount = request('amount');
+        $cheeseType = request('cheeseType');
 
         $user = Auth::user();
         $cart = $user->shoppingCarts->where('paid', '0')->last();
@@ -42,7 +43,13 @@ class ShoppingCartController extends Controller
 
         $counter = 0;
         while ($counter < $amount) {
-            $shoppingCart->products()->attach($product);
+            //$shoppingCart->products()->attach($product);
+            $productInCart = new ProductInCart();
+            $productInCart->shopping_cart_id = $cart->id;
+            $productInCart->product_id = $product->id;
+            $productInCart->cheese_type = $cheeseType;
+            $productInCart->save();
+
             $totalCost = $totalCost + $price;
             $shoppingCart->total_cost = $totalCost;
             $counter++;
