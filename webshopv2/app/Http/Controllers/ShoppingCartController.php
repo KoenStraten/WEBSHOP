@@ -67,7 +67,9 @@ class ShoppingCartController extends Controller
 
         $cart = $user->shoppingCarts->where('paid', 0)->last();
 
-        return view('pages/shoppingcart', compact('cart'));
+        $productsInCart = ProductInCart::where('shopping_cart_id', $cart->id);
+        dd($productsInCart);
+        //return view('pages/shoppingcart', compact('cart'));
     }
 
     public static function newCart()
