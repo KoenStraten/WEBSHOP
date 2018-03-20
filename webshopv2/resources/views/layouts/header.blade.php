@@ -33,10 +33,9 @@
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
-                    <form action="/search" method="POST">
-                        {{ csrf_field() }}
+                    <form action="/search" method="GET">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="searchTerm"
+                            <input type="text" class="form-control" name="query"
                                    placeholder="What do you need?">
                             <button type="submit" class="btn">Search</button>
                         </div>

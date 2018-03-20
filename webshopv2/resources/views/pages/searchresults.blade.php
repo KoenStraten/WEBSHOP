@@ -2,7 +2,7 @@
 @section ('content')
     <div class="container">
         <h3>Search results</h3>
-        <p>You searched on {{ $searchTerm }}</p>
+        <p>You searched on '{{ $query }}'</p>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             @if(count($searchProductResults) > 0)
                 <h4>Products</h4>
