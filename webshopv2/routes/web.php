@@ -25,8 +25,16 @@ Auth::routes();
 
 Route::post('/postReview', 'ReviewController@store');
 
+/*Admin*/
 Route::get('/admin/dashboard', 'AdminController@index');
 
+Route::get('/admin/products', 'ProductController@index');
+
+Route::get('/admin/users', 'UserController@index');
+
+Route::get('/admin/categories', 'CategoryController@categoryIndex');
+
+/*Pages without controllers*/
 Route::get('/about', function () {
     return view('pages/about');
 });

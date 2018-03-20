@@ -13,4 +13,10 @@ class CategoryController extends Controller
 
         return view('pages.category', compact('products', 'category'));
     }
+
+    public function categoryIndex() {
+        $categories = Category::all();
+
+        return view('pages.admin.categories.index', compact('categories'));
+    }
 }
