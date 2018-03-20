@@ -45,7 +45,7 @@ class ShoppingCartController extends Controller
         while ($counter < $amount) {
             //$shoppingCart->products()->attach($product);
             $productInCart = new ProductInCart();
-            $productInCart->shopping_cart_id = $cart->id;
+            $productInCart->shopping_cart_id = $shoppingCart->id;
             $productInCart->product_id = $product->id;
             $productInCart->cheese_type = $cheeseType;
             $productInCart->save();
