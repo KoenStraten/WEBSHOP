@@ -1,11 +1,11 @@
 @extends ('layouts.master')
 @section ('content')
     <div class="container">
-        <h3>Search results</h3>
-        <p>You searched on '{{ $query }}'</p>
+        <h3>Zoekresultaten</h3>
+        <p>Je hebt gezocht op '{{ $query }}'</p>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             @if(count($searchProductResults) > 0)
-                <h4>Products</h4>
+                <h4>Producten</h4>
                 @foreach ($searchProductResults as $product)
                     @if (!$loop->last)
                         <div class="row productline">
@@ -34,16 +34,14 @@
                                     <div class="col-md-2">
                                         <p class="price">{{ "$" . $product->price }}</p>
                                         <a href="../product/{{ $product->id }}"
-                                           class="btn btn-warning">To product
-                                            page ></a>
-                                        <a href="../product/{{ $product->id }}" class="btn btn-warning mt-3">Add to
-                                            shopping
-                                            cart</a>
+                                           class="btn btn-warning">Naar productpagina ></a>
+                                        <a href="../product/{{ $product->id }}" class="btn btn-warning mt-3"><i class="fas fa-plus"></i> In winkelwagen
+                                            </a>
                                     </div>
                                 </div>
                                 @endforeach
                                 @else
-                                    <p>There are no results that match your search</p>
+                                    <p>Er zijn geen resultaten</p>
                                 @endif
                         </div>
         </div>

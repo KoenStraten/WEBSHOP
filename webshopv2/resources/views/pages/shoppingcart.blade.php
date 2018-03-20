@@ -30,7 +30,7 @@
                             <form method="POST" action="../shoppingcart/remove/">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="productInCart" value="{{ $productInCart->id }}">
-                                <button type="submit" class="btn btn-block btn-warning">Delete</button>
+                                <button type="submit" class="btn btn-block btn-warning">Verwijder</button>
                             </form>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <p class="pt-3 price">{{" $" . $productInCart->shoppingCart->total_cost }}</p>
                         <form method="POST" action="../shoppingcart/purchase/">
                             <input type="hidden" name="product" value="{{ $productInCart->shopping_cart_id }}">
-                            <button type="submit" class="btn btn-block btn-warning">Purchase</button>
+                            <button type="submit" class="btn btn-block btn-warning">Afrekenen</button>
                         </form>
                     </div>
                 </div>

@@ -13,7 +13,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
 
-                    <li><a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a></li>
+                    <li><a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle"
                            href="#" id="navbarDropdown" role="button"
@@ -33,17 +33,17 @@
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
-                    <form action="/search" method="GET">
+                    <form action="/search" class="pr-3" method="GET">
                         <div class="input-group">
                             <input type="text" class="form-control" name="query"
-                                   placeholder="What do you need?">
-                            <button type="submit" class="btn">Search</button>
+                                   placeholder="Waar heb je zin in?">
+                            <button type="submit" class="btn">Zoeken</button>
                         </div>
                     </form>
                     <!-- Authentication Links -->
                     @guest
-                        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a></li>
+                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Registreren') }}</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -53,15 +53,15 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
-                                        <a class="dropdown-item" href="/../admin/dashboard">Dasbhoard</a>
+                                        <a class="dropdown-item" href="/../admin/dashboard">Dashboard</a>
                                     @endif
-                                    <a class="dropdown-item">My account</a>
-                                    <a class="dropdown-item">Purchase history</a>
-                                    <a class="dropdown-item" href="../shoppingcart">Shopping cart</a>
+                                    <a class="dropdown-item">Mijn account</a>
+                                    <a class="dropdown-item">Aankoop geschiedenis</a>
+                                    <a class="dropdown-item" href="../shoppingcart">Winkelwagen</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Log out') }}
+                                        {{ __('Uitloggen') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"

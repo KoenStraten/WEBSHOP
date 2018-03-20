@@ -2,7 +2,7 @@
 @section ('content')
 
     <div class="container">
-        <h3>Home</h3>
+        <h3><i class="fas fa-home"></i></h3>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             @foreach ($products as $p)
                 @if (!$loop->last)
@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <p class="price">{{ "$" . $p->price }}</p>
-                                    <a href="../product/{{ $p->id }}" class="btn btn-warning">To product page ></a>
+                                    <a href="../product/{{ $p->id }}" class="btn btn-warning">Naar productpagina ></a>
                                 </div>
                             </div>
                             @endforeach

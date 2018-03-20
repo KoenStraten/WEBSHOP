@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-2">
                     <p class="price">{{ "$" . $p->price }}</p>
-                    <a href="../product/{{ $p->id }}" class="btn btn-warning">To product page ></a>
+                    <a href="../product/{{ $p->id }}" class="btn btn-warning">Naar productpagina ></a>
                 </div>
         </div>
         @endforeach
