@@ -67,12 +67,16 @@ class ShoppingCartController extends Controller
 
         $cart = $user->shoppingCarts->where('paid', 0)->last();
 
-        $productsInCart = ProductInCart::where('shopping_cart_id', $cart->id);
-        dd($productsInCart);
-        //return view('pages/shoppingcart', compact('cart'));
+        if(isset($cart)) {
+            $productsInCart = ProductInCart::where('shopping_cart_id', $cart->id)->get();
+        } else {
+            $this->newCart();
+        }
+
+        return view('pages/shoppingcart', compact('productsInCart'));
     }
 
-    public static function newCart()
+    public function newCart()
     {
         $user = Auth::user();
 
@@ -85,9 +89,9 @@ class ShoppingCartController extends Controller
 
     public function remove()
     {
-        $product_id = request('product');
-
-        $product = Product::find($product_id);
+        $productInCart_id = request('productInCart');
+        $productInCart = ProductInCart::find($productInCart_id);
+        $product = Product::find($productInCart->product_id);
 
         $user = Auth::user();
 
@@ -99,7 +103,9 @@ class ShoppingCartController extends Controller
 
         $cart->save();
 
-        ProductInCart::all()->where('product_id', $product_id)->where('shopping_cart_id', $cart->id)->first()->delete();
+        ProductInCart::find($productInCart->id)->delete();
+
+        session()->flash('message', 'Het product is verwijderd van je winkelmandje.');
 
         return redirect('/shoppingcart/');
     }
