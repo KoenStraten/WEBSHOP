@@ -21,7 +21,8 @@
                            aria-haspopup="true" aria-expanded="false"> Categorieën </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach($categories as $category)
-                                <a class="dropdown-item" href="{{ "/../category/" . $category->category }}">{{ $category->category }}</a>
+                                <a class="dropdown-item"
+                                   href="{{ "/../category/" . $category->category }}">{{ $category->category }}</a>
                                 @if(!$loop->last)
                                     <div class="dropdown-divider"></div>
                                 @endif
@@ -30,9 +31,16 @@
                     </li>
                     <li><a class="nav-link" href="{{ url('about') }}">{{ __('Over ons') }}</a></li>
                 </ul>
-
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                    <form action="/search" method="POST">
+                        {{ csrf_field() }}
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="searchTerm"
+                                   placeholder="What do you need?">
+                            <button type="submit" class="btn">Search</button>
+                        </div>
+                    </form>
                     <!-- Authentication Links -->
                     @guest
                         <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>

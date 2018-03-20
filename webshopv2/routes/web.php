@@ -27,6 +27,8 @@ Route::post('/postReview', 'ReviewController@store');
 
 Route::get('/admin/dashboard', 'AdminController@index');
 
+Route::post('/search', 'SearchController@index');
+
 Route::get('/about', function () {
     return view('pages/about');
 });
