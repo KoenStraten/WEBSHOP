@@ -8,11 +8,6 @@ use App\Product;
 
 class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
-
     public function index($category) {
         $products = Product::getAllProductsByCategory($category);
 
