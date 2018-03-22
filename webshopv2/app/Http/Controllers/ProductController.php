@@ -32,6 +32,8 @@ class ProductController extends Controller
 
         $path = $request->file('image')->store('public');
 
+        $path = str_replace('public', '/storage', $path);
+
         $product = new Product();
         $product->name = request('name');
         $product->price = request('price');
