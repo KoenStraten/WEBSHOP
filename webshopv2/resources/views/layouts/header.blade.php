@@ -61,7 +61,7 @@
                                     @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
                                         <a class="dropdown-item" href="/../admin/dashboard">Dashboard</a>
                                     @endif
-                                    <a class="dropdown-item">Mijn account</a>
+                                    <a class="dropdown-item" href="/../user/">Mijn account</a>
                                     <a class="dropdown-item">Aankoop geschiedenis</a>
                                     <a class="dropdown-item" href="../shoppingcart">Winkelwagen</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
