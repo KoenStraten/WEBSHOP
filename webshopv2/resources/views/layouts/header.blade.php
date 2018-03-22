@@ -36,8 +36,8 @@
                     <form action="/search" class="pr-3" method="GET">
                         <div class="input-group">
                             <input type="text" class="form-control" name="query"
-                                   placeholder="Waar heb je zin in?">
-                            <button type="submit" class="btn">Zoeken</button>
+                                   placeholder="Waar heb je zin in?"/>
+                            <button type="submit" class=" btn btn-secondary notcurved"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
                     <!-- Authentication Links -->

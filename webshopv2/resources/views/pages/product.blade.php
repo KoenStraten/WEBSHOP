@@ -52,7 +52,6 @@
                                     winkelwagen
                                 </button>
                             </form>
-                            </a>
                         @else
                             <button disabled class="btn btn-block btn-warning">Log in</button>
                         @endif

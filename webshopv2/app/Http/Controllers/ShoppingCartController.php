@@ -58,7 +58,7 @@ class ShoppingCartController extends Controller
 
         session()->flash('message', 'Het product is toegevoegd aan je winkelmandje.');
 
-        return redirect('/product/' . $product_id);
+        return back();
     }
 
     public function show()
@@ -67,7 +67,7 @@ class ShoppingCartController extends Controller
 
         $cart = $user->shoppingCarts->where('paid', 0)->last();
 
-        if(isset($cart)) {
+        if (isset($cart)) {
             $productsInCart = ProductInCart::where('shopping_cart_id', $cart->id)->get();
         } else {
             $this->newCart();
