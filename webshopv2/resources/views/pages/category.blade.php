@@ -13,7 +13,7 @@
                                 <div class="col-md-4">
                                     <a href="../product/{{ $p->id }}">
                                         @if(strpos($p->image, 'https') === false)
-                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($p->image) }}"
+                                            <img src="{{ $p->image }}"
                                                  style="max-height: 200px">
                                         @else
                                             <img src="{{ $p->image }}" style="max-height: 200px">
