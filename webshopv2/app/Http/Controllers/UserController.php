@@ -31,7 +31,7 @@ class UserController extends Controller
         return view('pages/admin/users/edit', compact('roles', 'user'));
     }
 
-    public function update(Request $request) {
+    public function update() {
         $this->validate(request(), [
             'name' => 'required|min:2',
             'email' => 'required|email',
@@ -40,6 +40,19 @@ class UserController extends Controller
             'housenumber' => 'required|numeric',
             'streetname' => 'required',
         ]);
+
+        $adress = Adress::find(request('address_id'));
+        $adress->city = request('city');
+        $adress->zipcode = request('zipcode');
+        $adress->streetname = request('streetname');
+        $adress->housenumber = request('housenumber');
+        $adress->save();
+
+        $user = User::find(request('user_id'));
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->role = request('role');
+        $user->save();
 
         return redirect('/admin/users');
     }

@@ -19,7 +19,7 @@
                     </div>
                 @endif
 
-                <form class="mb-3" method="POST" action="/../admin/users/store">
+                <form class="mb-3" method="POST" action="/../admin/users/edit">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label>Naam</label>
@@ -64,8 +64,8 @@
                         <input class="form-control" name="streetname" type="text" value="{{ $user->adress->streetname }}" required>
                     </div>
 
-                    <input type="hidden" name="address_id">
-                    <input type="hidden" name="user_id">
+                    <input type="hidden" name="address_id" value="{{ $user->adress->id }}">
+                    <input type="hidden" name="user_id" value="{{ $user->id }}">
 
                     <button type="submit" class="btn btn-primary">aanpassen</button>
                 </form>
