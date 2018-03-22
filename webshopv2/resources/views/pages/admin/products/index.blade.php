@@ -30,7 +30,7 @@
                                     <td>{{ $product->description }}</td>
                                     <td>{{ $product->category }}</td>
                                     <td>
-                                        <form action="/../admin/products/edit/{{ $product->id }}">
+                                        <form method="get" action="/../admin/products/edit/{{ $product->id }}">
                                             <button class="btn btn-outline-info btn-sm" type="submit"><span data-feather="edit"></span></button>
                                         </form>
                                     </td>

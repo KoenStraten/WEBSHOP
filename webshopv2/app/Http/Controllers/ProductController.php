@@ -22,6 +22,36 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('pages/admin/products/create', compact('categories'));
     }
+
+    public function edit($id) {
+        $categories = Category::all();
+        $product = Product::find($id);
+        return view('pages/admin/products/edit', compact('categories', 'product'));
+    }
+
+    public function update(Request $request) {
+        $this->validate(request(), [
+            'name' => 'required|min:4',
+            'price' => 'required|numeric|min:0',
+            'description' => 'required|min:20',
+            'category' => 'required',
+        ]);
+
+        $path = $request->file('image')->store('public');
+
+        $path = str_replace('public', '/storage', $path);
+
+        $product = Product::find(request('id'));
+        $product->name = request('name');
+        $product->price = request('price');
+        $product->description = request('description');
+        $product->image = $path;
+        $product->category = request('category');
+        $product->save();
+
+        return redirect('/admin/products');
+    }
+
     public function store(Request $request) {
         $this->validate(request(), [
             'name' => 'required|min:4',

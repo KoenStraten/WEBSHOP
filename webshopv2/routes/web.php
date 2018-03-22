@@ -23,7 +23,7 @@ Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');
 Route::get('/shoppingcart/purchase', 'ShoppingCartController@purchase');
 Route::get('/shoppingcart', 'ShoppingCartController@show');
 
-Route::get('/user', 'UserController@index');
+Route::get('/user', 'UserController@user');
 
 Auth::routes();
 
@@ -36,10 +36,17 @@ Route::get('/admin/dashboard', 'AdminController@index');
 
 Route::get('/admin/products', 'ProductController@index');
 Route::get('/admin/products/create', 'ProductController@create');
+Route::get('/admin/products/edit/{id}', 'ProductController@edit');
+Route::post('/admin/products/edit', 'ProductController@update');
 Route::post('/admin/products/store', 'productController@store');
 Route::post('/admin/products/remove/{id}', 'ProductController@remove');
 
 Route::get('/admin/users', 'UserController@index');
+Route::get('/admin/users/create', 'UserController@create');
+Route::get('/admin/users/edit/{id}', 'UserController@edit');
+Route::post('/admin/users/edit', 'UserController@update');
+Route::post('/admin/users/store', 'UserController@store');
+Route::post('/admin/users/remove/{id}', 'UserController@remove');
 
 Route::get('/admin/categories', 'CategoryController@categoryIndex');
 

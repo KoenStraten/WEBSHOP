@@ -12,12 +12,8 @@
                                 @endif
                                 <div class="col-md-4">
                                     <a href="../product/{{ $p->id }}">
-                                        @if(strpos($p->image, 'https') === false)
-                                            <img src="{{ $p->image }}"
-                                                 style="max-height: 200px">
-                                        @else
-                                            <img src="{{ $p->image }}" style="max-height: 200px">
-                                        @endif
+                                        <img src="{{ $p->image }}"
+                                             style="max-height: 200px">
                                     </a>
                                 </div>
                                 <div class="col-md-6">
