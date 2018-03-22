@@ -15,7 +15,8 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/product/{product}', 'HomeController@show');
 
-Route::get('/category/{category}', 'CategoryController@index');
+Route::get('/category/{category}', 'CategoryController@show');
+Route::get('/categoryoverview/', 'CategoryController@index');
 
 Route::post('/shoppingcart/store/', 'ShoppingCartController@store');
 Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');

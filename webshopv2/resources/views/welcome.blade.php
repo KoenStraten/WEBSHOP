@@ -30,14 +30,18 @@
                                 <div class="col-md-2">
                                     <p class="price">{{ "$" . $p->price }}</p>
                                     <a href="../product/{{ $p->id }}" class="btn btn-warning">Naar productpagina ></a>
-                                    <form class="pt-3" method="POST" action="../shoppingcart/store/">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="product" value="{{ $p->id }}">
-                                        <button type="submit" class="btn btn-block btn-warning"><i
-                                                    class="fas fa-plus"></i>
-                                            In winkelwagen
-                                        </button>
-                                    </form>
+                                    @if(\Illuminate\Support\Facades\Auth::check())
+                                        <form class="pt-3" method="POST" action="../shoppingcart/store/">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="product" value="{{ $p->id }}">
+                                            <button type="submit" class="btn btn-block btn-warning"><i
+                                                        class="fas fa-plus"></i>
+                                                In winkelwagen
+                                            </button>
+                                        </form>
+                                    @else
+                                        <button disabled class="mt-3 btn btn-block btn-warning">Log in</button>
+                                    @endif
                                 </div>
                             </div>
                             @endforeach

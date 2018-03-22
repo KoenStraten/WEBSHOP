@@ -3,7 +3,7 @@
     <div class="container">
         <h3>Shopping cart</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow">
-            @if(isset($productsInCart))
+            @if(isset($productsInCart) && count($productsInCart) > 0)
                 @foreach ($productsInCart as $productInCart)
                     <div class="row productline">
                         <div class="col-md-4">
@@ -13,7 +13,8 @@
                         </div>
                         <div class="col-md-6">
                             <h4><a class="text-dark"
-                                   href="../product/{{ $productInCart->product->id }}">{{ $productInCart->product->name }}</a></h4>
+                                   href="../product/{{ $productInCart->product->id }}">{{ $productInCart->product->name }}</a>
+                            </h4>
                             <p>{{ "Smaak: " . $productInCart->cheese_type }}</p>
                             <p>{{ $productInCart->product->description  }} <br><br>
                                 @for($i = 0; $i < 5; $i++)
