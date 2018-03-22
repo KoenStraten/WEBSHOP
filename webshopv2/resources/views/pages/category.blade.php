@@ -12,7 +12,12 @@
                                 @endif
                                 <div class="col-md-4">
                                     <a href="../product/{{ $p->id }}">
-                                        <img src="{{ $p->image }}" style="max-height: 200px">
+                                        @if(strpos($p->image, 'https') === false)
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($p->image) }}"
+                                                 style="max-height: 200px">
+                                        @else
+                                            <img src="{{ $p->image }}" style="max-height: 200px">
+                                        @endif
                                     </a>
                                 </div>
                                 <div class="col-md-6">
@@ -29,7 +34,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <p class="price">{{ "$" . $p->price }}</p>
-                                    <a href="../product/{{ $p->id }}" class="btn btn-warning">Naar productpagina ></a>
+                                    <a href="../product/{{ $p->id }}" class="btn btn-warning">To product page ></a>
                                     @if(\Illuminate\Support\Facades\Auth::check())
                                         <form class="pt-3" method="POST" action="../shoppingcart/store/">
                                             {{ csrf_field() }}
