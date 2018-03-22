@@ -26,10 +26,21 @@ Auth::routes();
 
 Route::post('/postReview', 'ReviewController@store');
 
-Route::get('/admin/dashboard', 'AdminController@index');
-
 Route::get('/search', 'SearchController@index');
 
+/*Admin*/
+Route::get('/admin/dashboard', 'AdminController@index');
+
+Route::get('/admin/products', 'ProductController@index');
+Route::get('/admin/products/create', 'ProductController@create');
+Route::post('/admin/products/store', 'productController@store');
+Route::post('/admin/products/remove/{id}', 'ProductController@remove');
+
+Route::get('/admin/users', 'UserController@index');
+
+Route::get('/admin/categories', 'CategoryController@categoryIndex');
+
+/*Pages without controllers*/
 Route::get('/about', function () {
     return view('pages/about');
 });
