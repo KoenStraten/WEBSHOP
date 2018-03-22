@@ -29,7 +29,9 @@ class ProductController extends Controller
             'description' => 'required|min:20',
             'category' => 'required',
         ]);
-        $path = $request->file('image')->store('images');
+
+        $path = $request->file('image')->store('public');
+
         $product = new Product();
         $product->name = request('name');
         $product->price = request('price');
