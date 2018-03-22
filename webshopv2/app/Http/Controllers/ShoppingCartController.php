@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\ProductInCart;
 use App\ShoppingCart;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -118,6 +119,12 @@ class ShoppingCartController extends Controller
 
     public function purchase()
     {
-        return view('pages.purchase');
+        $cart_id = request('cart_id');
+
+        $user = Auth::user();
+
+        $productsInCart = ProductInCart::where('shopping_cart_id', $cart_id)->get();
+
+        return view('pages.purchase', compact('productsInCart', 'user'));
     }
 }

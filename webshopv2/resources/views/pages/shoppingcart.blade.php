@@ -42,9 +42,9 @@
                     </div>
                     <div class="col-md-2">
                         <p class="pt-3 price">{{" $" . $productInCart->shoppingCart->total_cost }}</p>
-                        <form method="POST" action="../shoppingcart/purchase/">
+                        <form method="GET" action="../shoppingcart/purchase/">
                             {{ csrf_field() }}
-                            <input type="hidden" name="product" value="{{ $productInCart->shopping_cart_id }}">
+                            <input type="hidden" name="cart_id" value="{{ $productInCart->shopping_cart_id }}">
                             <button type="submit" class="btn btn-block btn-warning">Afrekenen</button>
                         </form>
                     </div>
