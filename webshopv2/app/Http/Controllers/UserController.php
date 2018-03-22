@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -12,7 +11,8 @@ class UserController extends Controller
         $this->middleware('admin');
     }
 
-    public function index() {
+    public function index()
+    {
         $users = User::all();
         return view('pages/admin/users/index', compact('users'));
     }

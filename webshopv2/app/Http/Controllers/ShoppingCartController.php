@@ -115,4 +115,9 @@ class ShoppingCartController extends Controller
 
         return redirect('/shoppingcart/');
     }
+
+    public function purchase()
+    {
+        return view('pages.purchase');
+    }
 }
