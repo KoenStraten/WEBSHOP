@@ -5,3 +5,12 @@
     height: 250px;
     margin-bottom: 50px;
 }
+
+.notcurved {
+    border-bottom-left-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+}
+
+.w-100px{
+    width: 100px;
+}

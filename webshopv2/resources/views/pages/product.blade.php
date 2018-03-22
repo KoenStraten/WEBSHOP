@@ -13,11 +13,11 @@
                     <div class="card-body">
                         <h2 class="card-title">{{ $product->name }}</h2>
                         <br>
-                        <h5 class="card-subtitle mb-2 text-muted">Description</h5>
+                        <h5 class="card-subtitle mb-2 text-muted">Beschrijving</h5>
                         <p class="card-text">{{ $product->description }}</p>
-                        <h5 class="card-subtitle mb-2 text-muted">Category</h5>
+                        <h5 class="card-subtitle mb-2 text-muted">Categorie</h5>
                         <p class="card-text">{{ $product->category }}</p>
-                        <h5 class="card-subtitle mb-2 text-muted">Price</h5>
+                        <h5 class="card-subtitle mb-2 text-muted">Prijs</h5>
                         <p class="card-text price">${{ $product->price }}</p>
                         <div class="rating">
                             @for($i = 0; $i < 5; $i++)
@@ -48,11 +48,12 @@
                                     <input name="amount" id="amount" type="number" value="1" class="form-control">
                                 </div>
                                 <input type="hidden" name="product" value="{{ $product->id }}">
-                                <button type="submit" class="btn btn-block btn-warning">Add to shopping cart</button>
+                                <button type="submit" class="btn btn-block btn-warning"><i class="fas fa-plus"></i> In
+                                    winkelwagen
+                                </button>
                             </form>
                         @else
-                            <button disabled class="btn btn-block btn-warning">Log in to order this delicious product
-                            </button>
+                            <button disabled class="btn btn-block btn-warning">Log in</button>
                         @endif
                     </div>
                 </div>
@@ -134,7 +135,7 @@
 
         <h3>
             <a class="text-dark card-header card" data-toggle="collapse" href="#multiCollapseExample2"
-               role="button" aria-expanded="false" aria-controls="multiCollapseExample2">Specifications</a>
+               role="button" aria-expanded="false" aria-controls="multiCollapseExample2">Specificaties</a>
         </h3>
 
         <div class="col">

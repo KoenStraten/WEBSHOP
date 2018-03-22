@@ -2,7 +2,7 @@
 @section ('content')
 
     <div class="container">
-        <h3>Home</h3>
+        <h3>Thuis</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             @foreach ($products as $p)
                 @if (!$loop->last)
@@ -29,7 +29,19 @@
                                 </div>
                                 <div class="col-md-2">
                                     <p class="price">{{ "$" . $p->price }}</p>
-                                    <a href="../product/{{ $p->id }}" class="btn btn-warning">To product page ></a>
+                                    <a href="../product/{{ $p->id }}" class="btn btn-warning">Naar productpagina ></a>
+                                    @if(\Illuminate\Support\Facades\Auth::check())
+                                        <form class="pt-3" method="POST" action="../shoppingcart/store/">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="product" value="{{ $p->id }}">
+                                            <button type="submit" class="btn btn-block btn-warning"><i
+                                                        class="fas fa-plus"></i>
+                                                In winkelwagen
+                                            </button>
+                                        </form>
+                                    @else
+                                        <button disabled class="mt-3 btn btn-block btn-warning">Log in</button>
+                                    @endif
                                 </div>
                             </div>
                             @endforeach

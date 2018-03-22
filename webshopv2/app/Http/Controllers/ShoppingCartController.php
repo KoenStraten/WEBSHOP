@@ -23,6 +23,10 @@ class ShoppingCartController extends Controller
         $product_id = request('product');
         $amount = request('amount');
         $cheeseType = request('cheeseType');
+        if (!isset($cheeseType) && !isset($amount)) {
+            $cheeseType = 'belegen';
+            $amount = 1;
+        }
 
         $user = Auth::user();
         $cart = $user->shoppingCarts->where('paid', '0')->last();
@@ -58,7 +62,7 @@ class ShoppingCartController extends Controller
 
         session()->flash('message', 'Het product is toegevoegd aan je winkelmandje.');
 
-        return redirect('/product/' . $product_id);
+        return back();
     }
 
     public function show()
@@ -67,7 +71,7 @@ class ShoppingCartController extends Controller
 
         $cart = $user->shoppingCarts->where('paid', 0)->last();
 
-        if(isset($cart)) {
+        if (isset($cart)) {
             $productsInCart = ProductInCart::where('shopping_cart_id', $cart->id)->get();
         } else {
             $this->newCart();
@@ -85,6 +89,8 @@ class ShoppingCartController extends Controller
         $totalCost = 0;
         $shoppingCart->total_cost = $totalCost;
         $shoppingCart->save();
+
+        return $shoppingCart;
     }
 
     public function remove()

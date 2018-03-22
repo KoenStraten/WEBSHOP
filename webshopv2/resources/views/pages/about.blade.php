@@ -2,7 +2,7 @@
 @section ('content')
 
     <div class="container">
-        <h3>About</h3>
+        <h3>Over ons</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <img style="float: left; width: 23%"
                  src="http://www.clker.com/cliparts/c/2/4/3/1194986855125869974rubik_s_cube_random_petr_01.svg.med.png"
