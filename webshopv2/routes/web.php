@@ -20,7 +20,7 @@ Route::get('/categoryoverview/', 'CategoryController@index');
 
 Route::post('/shoppingcart/store/', 'ShoppingCartController@store');
 Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');
-Route::post('/shoppingcart/purchase', 'ShoppingCartController@purchase');
+Route::get('/shoppingcart/purchase', 'ShoppingCartController@purchase');
 Route::get('/shoppingcart', 'ShoppingCartController@show');
 
 Route::get('/user', 'UserController@user');

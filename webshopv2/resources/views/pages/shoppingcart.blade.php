@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 @section ('content')
     <div class="container">
-        <h3>Shopping cart</h3>
+        <h3 class="pt-3">Shopping cart</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             @if(isset($productsInCart) && count($productsInCart) > 0)
                 @foreach ($productsInCart as $productInCart)
@@ -42,9 +42,9 @@
                     </div>
                     <div class="col-md-2">
                         <p class="pt-3 price">{{" $" . $productInCart->shoppingCart->total_cost }}</p>
-                        <form method="POST" action="../shoppingcart/purchase/">
+                        <form method="GET" action="../shoppingcart/purchase/">
                             {{ csrf_field() }}
-                            <input type="hidden" name="product" value="{{ $productInCart->shopping_cart_id }}">
+                            <input type="hidden" name="cart_id" value="{{ $productInCart->shopping_cart_id }}">
                             <button type="submit" class="btn btn-block btn-warning">Afrekenen</button>
                         </form>
                     </div>
