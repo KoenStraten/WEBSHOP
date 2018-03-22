@@ -32,4 +32,41 @@ class CategoryController extends Controller
 
         return view('pages.admin.categories.index', compact('categories'));
     }
+
+    public function create() {
+        return view('pages/admin/categories/create');
+    }
+
+    public function edit($category) {
+        $category = Category::find($category);
+        return view('pages/admin/categories/edit', compact('category'));
+    }
+
+    public function update() {
+        $this->validate(request(), [
+            'category' => 'required|min:2',
+        ]);
+        
+        $category = Category::find(request('category_old'));
+        $category->category = request('category');
+        $category->save();
+
+        return redirect('/admin/categories');
+    }
+
+    public function store() {
+        $this->validate(request(), [
+            'category' => 'required|min:2',
+        ]);
+
+        $category = new Category();
+        $category->category = request('category');
+        $category->save();
+
+        return redirect('/../admin/categories');
+    }
+    public function remove($category) {
+        Category::find($category)->delete();
+        return redirect('/../admin/categories');
+    }
 }

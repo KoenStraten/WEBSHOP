@@ -7,9 +7,8 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Products</h1>
-                    <form action="/../admin/categories/create">
-                        <button type="submit" class="btn btn-primary float-right"><span data-feather="plus"></span></button>
-                    </form>
+                    <a role="button" href="/../admin/categories/create" type="submit" class="btn btn-primary float-right"><span
+                                data-feather="plus"></span></a>
                 </div>
 
                 <div class="table-responsive">
@@ -24,13 +23,16 @@
                             <tr>
                                 <td>{{ $category->category }}</td>
                                 <td>
-                                    <form action="/../admin/categories/edit/{{ $category->category }}">
-                                        <button class="btn btn-outline-info btn-sm" type="submit"><span data-feather="edit"></span></button>
+                                    <form method="get" action="/../admin/categories/edit/{{ $category->category }}">
+                                        <button class="btn btn-outline-info btn-sm" type="submit"><span
+                                                    data-feather="edit"></span></button>
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="/../admin/categories/remove/{{ $category->category }}">
-                                        <button class="btn btn-outline-danger btn-sm" type="submit"><span data-feather="trash-2"></span></button>
+                                    <form method="post" action="/../admin/categories/remove/{{ $category->category }}">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-outline-danger btn-sm" type="submit"><span
+                                                    data-feather="trash-2"></span></button>
                                     </form>
                                 </td>
                             </tr>

@@ -49,6 +49,11 @@ Route::post('/admin/users/store', 'UserController@store');
 Route::post('/admin/users/remove/{id}', 'UserController@remove');
 
 Route::get('/admin/categories', 'CategoryController@categoryIndex');
+Route::get('/admin/categories/create', 'CategoryController@create');
+Route::get('/admin/categories/edit/{category}', 'CategoryController@edit');
+Route::post('/admin/categories/edit', 'CategoryController@update');
+Route::post('/admin/categories/store', 'CategoryController@store');
+Route::post('/admin/categories/remove/{category}', 'CategoryController@remove');
 
 /*Pages without controllers*/
 Route::get('/about', function () {

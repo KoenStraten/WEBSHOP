@@ -24,9 +24,9 @@ class UserController extends Controller
         return view('pages/admin/users/create', compact('roles'));
     }
 
-    public function edit($id) {
+    public function edit($category) {
         $roles = UserRole::orderBy('role', 'desc')->get();
-        $user = User::find($id);
+        $user = User::find($category);
 
         return view('pages/admin/users/edit', compact('roles', 'user'));
     }
