@@ -7,6 +7,28 @@
 
                 @if (!$loop->last)
                     <div class='row productline'>
+<<<<<<< HEAD
+=======
+                @else
+                    <div class='row lastline'>
+                @endif
+                <div class="col-md-4">
+                    <a href="../product/{{ $p->id }}">
+                        @if(strpos($p->image, 'https') === false)
+                            {{ storage_path() }}
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($p->image) }}" style="max-height: 200px">
+                        @else
+                            <img src="{{ $p->image }}" style="max-height: 200px">
+                        @endif
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <h4><a class="text-dark" href="../product/{{ $p->id }}">{{ $p->name }}</a></h4>
+                    <p>{{ $p->description  }} <br><br>
+                    @for($i = 0; $i < 5; $i++)
+                        @if($i < $p->rating())
+                                <span class="fa fa-star checked"></span>
+>>>>>>> 00b0f4a3ccc882c3d1c1489018a1a8f1a2124459
                         @else
                             <div class='row lastline'>
                                 @endif

@@ -1,35 +1,25 @@
-@extends ('layouts.master')
-@section ('content')
+<?php $__env->startSection('content'); ?>
 
     <div class="container-fluid bg-white">
         <div class="row">
-            @include('layouts.sidenav')
+            <?php echo $__env->make('layouts.sidenav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Product Aanmaken</h1>
                 </div>
 
-                @if(count($errors))
-<<<<<<< HEAD
+                <?php if(count($errors)): ?>
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
+                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <li><?php echo e($error); ?></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
-=======
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
->>>>>>> 00b0f4a3ccc882c3d1c1489018a1a8f1a2124459
-                @endif
+                <?php endif; ?>
                 <form method="POST" action="/../admin/products/store" enctype="multipart/form-data">
-                    {{ csrf_field() }}
+                    <?php echo e(csrf_field()); ?>
+
                     <div class="form-group">
                         <label>Naam</label>
                         <input class="form-control" name="name" type="text" required>
@@ -53,9 +43,9 @@
                     <div class="form-group">
                         <label>Categorie</label>
                         <select class="form-control" name="category">
-                            @foreach($categories as $category)
-                                <option value="{{ $category->category }}">{{ $category->category }}</option>
-                            @endforeach
+                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($category->category); ?>"><?php echo e($category->category); ?></option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">aanmaken</button>
@@ -64,6 +54,7 @@
         </div>
     </div>
 
-    @include('layouts.scripts')
+    <?php echo $__env->make('layouts.scripts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

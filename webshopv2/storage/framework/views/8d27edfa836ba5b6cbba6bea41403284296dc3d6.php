@@ -1,9 +1,8 @@
-@extends ('layouts.master')
-@section ('content')
+<?php $__env->startSection('content'); ?>
 
     <div class="container-fluid bg-white">
         <div class="row">
-            @include('layouts.sidenav')
+            <?php echo $__env->make('layouts.sidenav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Products</h1>
@@ -22,26 +21,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($products as $product)
+                            <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td>{{ $product->id }}</td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->price }}</td>
-                                    <td>{{ $product->description }}</td>
-                                    <td>{{ $product->category }}</td>
+                                    <td><?php echo e($product->id); ?></td>
+                                    <td><?php echo e($product->name); ?></td>
+                                    <td><?php echo e($product->price); ?></td>
+                                    <td><?php echo e($product->description); ?></td>
+                                    <td><?php echo e($product->category); ?></td>
                                     <td>
-                                        <form action="/../admin/products/edit/{{ $product->id }}">
+                                        <form action="/../admin/products/edit/<?php echo e($product->id); ?>">
                                             <button class="btn btn-outline-info btn-sm" type="submit"><span data-feather="edit"></span></button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form method="POST" action="/../admin/products/remove/{{ $product->id }}">
-                                            {{ csrf_field() }}
+                                        <form method="POST" action="/../admin/products/remove/<?php echo e($product->id); ?>">
+                                            <?php echo e(csrf_field()); ?>
+
                                             <button class="btn btn-outline-danger btn-sm" type="submit"><span data-feather="trash-2"></span></button>
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -49,6 +49,7 @@
         </div>
     </div>
 
-    @include('layouts.scripts')
+    <?php echo $__env->make('layouts.scripts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

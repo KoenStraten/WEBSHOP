@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Event\PostResponseEvent;
 
 class ProductController extends Controller
 {
@@ -18,6 +20,7 @@ class ProductController extends Controller
     }
 
     public function create() {
+<<<<<<< HEAD
                 $categories = Category::all();
                 return view('pages/admin/products/create', compact('categories'));
     }
@@ -49,5 +52,38 @@ class ProductController extends Controller
             Product::find($id)->delete();
 
             return redirect('/../admin/products');
+=======
+        $categories = Category::all();
+        return view('pages/admin/products/create', compact('categories'));
+    }
+
+    public function store(Request $request) {
+        $this->validate(request(), [
+            'name' => 'required|min:4',
+            'price' => 'required|numeric|min:0',
+            'description' => 'required|min:20',
+            'category' => 'required',
+        ]);
+
+        $path = $request->file('image')->store('images');
+
+        $product = new Product();
+        $product->name = request('name');
+        $product->price = request('price');
+        $product->description = request('description');
+        $product->image = $path;
+        $product->category = request('category');
+        $product->save();
+        //$product = array(request(['name', 'price', 'description', 'category'], $path));
+
+       // Product::create($product);
+        return redirect('/../admin/products');
+    }
+
+    public function remove($id) {
+        Product::find($id)->delete();
+
+        return redirect('/../admin/products');
+>>>>>>> 00b0f4a3ccc882c3d1c1489018a1a8f1a2124459
     }
 }
