@@ -12,25 +12,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-
                     <li><a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
-                    {{--<li class="nav-item dropdown">--}}
-                    {{--<a class="nav-link dropdown-toggle"--}}
-                    {{--href="#" id="navbarDropdown" role="button"--}}
-                    {{--data-toggle="dropdown"--}}
-                    {{--aria-haspopup="true" aria-expanded="false"> Categorieën </a>--}}
-                    {{--<div class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
-                    {{--@foreach($categories as $category)--}}
-                    {{--<a class="dropdown-item"--}}
-                    {{--href="{{ "/../category/" . $category->category }}">{{ $category->category }}</a>--}}
-                    {{--@if(!$loop->last)--}}
-                    {{--<div class="dropdown-divider"></div>--}}
-                    {{--@endif--}}
-                    {{--@endforeach--}}
-                    {{--</div>--}}
-                    {{--</li>--}}
-                    <li>
-                        <a class="nav-link" href="{{ url('categoryoverview') }}">{{ __('Categorieën') }}</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           href="{{ url('categoryoverview') }}" id="navbarDropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false"> Categorieën </a>
+                        <div class="dropdown-menu droponhover" aria-labelledby="navbarDropdown">
+                            @foreach($categories as $category)
+                                <a class="dropdown-item"
+                                   href="{{ "/../category/" . $category->category }}">{{ $category->category }}</a>
+                                @if(!$loop->last)
+                                    <div class="dropdown-divider"></div>
+                                @endif
+                            @endforeach
+                        </div>
                     </li>
                     <li>
                         <a class="nav-link" href="{{ url('about') }}">{{ __('Over ons') }}</a>

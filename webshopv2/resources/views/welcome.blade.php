@@ -29,7 +29,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <p class="price">{{ "$" . $p->price }}</p>
-                                    <a href="../product/{{ $p->id }}" class="btn btn-warning">Naar productpagina ></a>
+                                    <a href="../product/{{ $p->id }}" class="btn btn-warning">To product page ></a>
                                     @if(\Illuminate\Support\Facades\Auth::check())
                                         <form class="pt-3" method="POST" action="../shoppingcart/store/">
                                             {{ csrf_field() }}

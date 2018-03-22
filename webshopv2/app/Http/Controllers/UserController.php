@@ -19,10 +19,12 @@ class UserController extends Controller
         return view('pages/admin/users/index', compact('users'));
     }
 
-    public function create() {
+    public function create()
+    {
         $roles = UserRole::orderBy('role', 'desc')->get();
         return view('pages/admin/users/create', compact('roles'));
     }
+
 
     public function edit($category) {
         $roles = UserRole::orderBy('role', 'desc')->get();
@@ -30,6 +32,7 @@ class UserController extends Controller
 
         return view('pages/admin/users/edit', compact('roles', 'user'));
     }
+
 
     public function update() {
         $this->validate(request(), [
@@ -57,7 +60,8 @@ class UserController extends Controller
         return redirect('/admin/users');
     }
 
-    public function store() {
+    public function store()
+    {
         $this->validate(request(), [
             'name' => 'required|min:2',
             'email' => 'required|email',
@@ -81,7 +85,9 @@ class UserController extends Controller
 
         return redirect('/../admin/users');
     }
-    public function remove($id) {
+
+    public function remove($id)
+    {
         User::find($id)->delete();
         return redirect('/../admin/users');
     }

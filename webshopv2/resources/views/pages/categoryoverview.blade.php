@@ -18,7 +18,8 @@
                                     <div class="row">
                                         <a class="text-dark" href="{{ "/../category/" . $category->category }}">
                                             <h4>{{ $category->category }}</h4>
-                                        </a></div>
+                                        </a>
+                                    </div>
                                     <div class="row">
                                         <p>{{ $category->description }}</p>
                                     </div>
