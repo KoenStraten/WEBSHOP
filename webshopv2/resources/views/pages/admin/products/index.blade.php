@@ -7,9 +7,7 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Products</h1>
-                    <form action="/../admin/products/create">
-                        <button type="submit" class="btn btn-primary float-right"><span data-feather="plus"></span></button>
-                    </form>
+                    <a class="btn btn-primary float-right" href="/../admin/products/create"><span data-feather="plus"></span></a>
                 </div>
 
                 <div class="table-responsive">
@@ -37,7 +35,8 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="/../admin/products/remove/{{ $product->id }}">
+                                        <form method="POST" action="/../admin/products/remove/{{ $product->id }}">
+                                            {{ csrf_field() }}
                                             <button class="btn btn-outline-danger btn-sm" type="submit"><span data-feather="trash-2"></span></button>
                                         </form>
                                     </td>
