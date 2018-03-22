@@ -11,6 +11,10 @@
     border-top-left-radius: 0px !important;
 }
 
-.w-100px{
+.w-100px {
     width: 100px;
+}
+
+.dropdown:hover > .droponhover {
+    display: block;
 }
