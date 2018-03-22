@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 @section ('content')
     <div class="container">
-        <h3>Afrekenen</h3>
+        <h3 class="pt-3">Afrekenen</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <h4>Naam</h4>
             <p>{{ $user->name }}</p>

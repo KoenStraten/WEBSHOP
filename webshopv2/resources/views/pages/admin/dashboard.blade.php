@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 @section ('content')
-
     <div class="container-fluid bg-white">
+        <h3 class="pt-3">Dashboard</h3>
         <div class="row">
             @include('layouts.sidenav')
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">

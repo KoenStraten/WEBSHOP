@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 @section ('content')
     <div class="container">
-        <h3>Zoekresultaten</h3>
+        <h3 class="pt-3">Zoekresultaten</h3>
         <p>Je hebt gezocht op '{{ $query }}'</p>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             @if(count($searchProductResults) > 0)
