@@ -39,8 +39,7 @@ class ProductController extends Controller
         $product->image = $path;
         $product->category = request('category');
         $product->save();
-        //$product = array(request(['name', 'price', 'description', 'category'], $path));
-        // Product::create($product);
+
         return redirect('/../admin/products');
     }
     public function remove($id) {
