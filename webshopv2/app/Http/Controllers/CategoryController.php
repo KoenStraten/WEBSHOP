@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
     public function show($category)
     {
-        $products = Product::getAllProductsByCategory($category);
+        $products = Product::getAllProductsByCategory($category)->paginate(10);
 
         return view('pages.category', compact('products', 'category'));
     }

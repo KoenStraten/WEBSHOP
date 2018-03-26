@@ -18,7 +18,7 @@ class Product extends Model
 
     public static function getAllProductsByCategory($category)
     {
-        return static::where('category', $category)->get();
+        return static::where('category', $category);
     }
 
     public function shoppingCarts()
