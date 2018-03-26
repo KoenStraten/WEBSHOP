@@ -45,6 +45,4 @@
         </div>
     </div>
 
-    @include('layouts.scripts')
-
 @endsection
