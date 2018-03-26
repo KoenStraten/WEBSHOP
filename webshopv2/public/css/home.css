@@ -6,6 +6,15 @@
     margin-bottom: 50px;
 }
 
+.h-200px {
+    height: 200px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
 .notcurved {
     border-bottom-left-radius: 0px !important;
     border-top-left-radius: 0px !important;

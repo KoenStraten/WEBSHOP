@@ -64,7 +64,7 @@
                                 @endif
                                 <div class="col-md-4">
                                     <a href="../product/{{ $p->id }}">
-                                        <img src="{{ $p->image }}" style="max-height: 200px">
+                                        <img class="h-200px" src="{{ $p->image }}">
                                     </a>
                                 </div>
                                 <div class="col-md-6">
