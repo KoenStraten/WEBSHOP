@@ -134,7 +134,11 @@ class ShoppingCartController extends Controller
     {
         $cart_id = request('cart_id');
 
-        ShoppingCart::find($cart_id)->delete();
+        $cart = ShoppingCart::find($cart_id);
+
+        $cart->paid = 1;
+
+        $cart->save();
 
         return redirect('/');
     }
