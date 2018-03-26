@@ -19,11 +19,21 @@
                     </div>
                 @endif
 
-                <form class="mb-3" method="POST" action="/../admin/categories/store">
+                <form class="mb-3" method="POST" action="/../admin/categories/store" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label>Categorie</label>
+                        <label>Naam</label>
                         <input class="form-control" name="category" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Beschrijving</label>
+                        <input class="form-control" name="description" type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Foto: </label>
+                        <input name="image" type="file" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">aanmaken</button>

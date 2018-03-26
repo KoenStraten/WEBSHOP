@@ -54,13 +54,21 @@ class CategoryController extends Controller
         return redirect('/admin/categories');
     }
 
-    public function store() {
+    public function store(Request $request) {
         $this->validate(request(), [
             'category' => 'required|min:2',
+            'description' => 'required',
+            'image' => 'required'
         ]);
+
+        $path = $request->file('image')->store('public');
+
+        $path = str_replace('public', '/storage', $path);
 
         $category = new Category();
         $category->category = request('category');
+        $category->image = $path;
+        $category->description = request('description');
         $category->save();
 
         return redirect('/../admin/categories');
