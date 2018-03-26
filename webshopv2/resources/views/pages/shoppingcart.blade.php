@@ -1,5 +1,7 @@
 @extends ('layouts.master')
 @section ('content')
+    {{ Breadcrumbs::render('shoppingCart') }}
+
     <div class="container">
         <h3 class="pt-3">Shopping cart</h3>
         <div class="my-3 p-3 bg-white rounded box-shadow">

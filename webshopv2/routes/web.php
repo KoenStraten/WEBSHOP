@@ -11,19 +11,19 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/product/{product}', 'HomeController@show');
+Route::get('/product/{product}', 'HomeController@show')->name('product');
 
-Route::get('/category/{category}', 'CategoryController@show');
-Route::get('/categoryoverview/', 'CategoryController@index');
+Route::get('/category/{category}', 'CategoryController@show')->name('category');
+Route::get('/categoryoverview/', 'CategoryController@index')->name('categories');
 
 Route::post('/shoppingcart/store/', 'ShoppingCartController@store');
 Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');
-Route::get('/shoppingcart/purchase', 'ShoppingCartController@purchase');
-Route::get('/shoppingcart', 'ShoppingCartController@show');
+Route::get('/shoppingcart/purchase', 'ShoppingCartController@purchase')->name('shoppingCartPurchase');
+Route::get('/shoppingcart', 'ShoppingCartController@show')->name('shoppingCart');
 
-Route::get('/user', 'UserController@user');
+//Route::get('/user', 'UserController@user');
 
 Auth::routes();
 
@@ -58,12 +58,8 @@ Route::post('/admin/categories/remove/{category}', 'CategoryController@remove');
 /*Pages without controllers*/
 Route::get('/about', function () {
     return view('pages/about');
-});
-
-Route::get('/category', function () {
-    return view('pages/category');
-});
+})->name('about');
 
 Route::get('/database_eer', function () {
     return view('designs/eer');
-});
+})->name('dbEER');
