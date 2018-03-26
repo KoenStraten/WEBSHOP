@@ -14,11 +14,6 @@
                     </div>
                     <div class="col-md-2">
                         <p class="price">{{ "$" . $productInCart->product->price }}</p>
-                        {{--<form method="POST" action="../shoppingcart/remove/">--}}
-                        {{--{{ csrf_field() }}--}}
-                        {{--<input type="hidden" name="productInCart" value="{{ $productInCart->id }}">--}}
-                        {{--<button type="submit" class="btn btn-block btn-warning">Verwijder</button>--}}
-                        {{--</form>--}}
                     </div>
                 </div>
             @endforeach
@@ -30,11 +25,25 @@
                     <h2><b>${{ $productInCart->shoppingCart->total_cost }}</b></h2>
                 </div>
             </div>
-            <h4>Persoonsgegevens</h4>
-            <h5>Naam</h5>
-            <p>{{ $user->name }}</p>
-            <h5>Adres</h5>
-            <h4>{{ $user->adress->streetname }}</h4>
+            <div class="card">
+                <div class="card-header">
+                    <h4>Persoonsgegevens</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row pl-3">
+                        <form>
+                            <h5>Naam</h5>
+                            <input type="text" value="{{ $user->name }}" class="mb-2"/>
+                            <h5>Adres</h5>
+                            <input type="text" value="{{ $user->adress->streetname }}" class="mb-2"/>
+                            <h5>Stad</h5>
+                            <input type="text" value="{{ $user->adress->city }}" class="mb-2"/>
+                            <h5>Postcode</h5>
+                            <input type="text" value="{{ $user->adress->zipcode }}" class="mb-2"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
