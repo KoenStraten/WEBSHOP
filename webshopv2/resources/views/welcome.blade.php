@@ -12,7 +12,7 @@
             <div class="carousel-item active">
                 <img class="first-slide" src="images/coolecow.jpg" alt="First slide">
                 <div class="container">
-                    <div class="carousel-caption text-left">
+                    <div class="carousel-caption text-left carousel-background">
                         <h1>Benieuwd naar ons bedrijf?.</h1>
                         <p>Wij willen natuurlijk de lekkerste en de meest biologische kaas, om dit te bereiken geven wij onze koeien een prachtig leventje, kijk dan toch hoe blij hij is.</p>
                         <p><a class="btn btn-lg btn-primary" href="/../about" role="button">Meer weten?</a></p>
@@ -22,9 +22,9 @@
             <div class="carousel-item">
                 <img class="second-slide" src="images/coolefield.jpeg" alt="Second slide">
                 <div class="container">
-                    <div class="carousel-caption">
+                    <div class="carousel-caption carousel-background">
                         <h1>Lekker veel korting!</h1>
-                        <p>Omdat de lucht natuurlijk zo prachtig en mooi blauw is op deze foto, kun je met de volgende actie code: MooieBlauweLucht23,6 nu 25 procent korting krijgen op je allereerste aankoop!</p>
+                        <p>Omdat de lucht natuurlijk zo prachtig en mooi blauw is op deze foto, kun je met de volgende actie code: "MooieBlauweLucht23,6" nu 25% korting krijgen op je allereerste aankoop!</p>
                         <p><a class="btn btn-lg btn-primary" href="/../categoryoverview" role="button">Bekijk onze producten!</a></p>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
             <div class="carousel-item">
                 <img class="third-slide" src="images/coolekaas.jpeg" alt="Third slide">
                 <div class="container">
-                    <div class="carousel-caption text-right">
+                    <div class="carousel-caption text-right carousel-background">
                         <h1>Het product van de dag!</h1>
                         <p>De kaas hierachter ziet er toch heerlijk uit, vind je ook niet? Koop daarom nu het product van de dag!</p>
                         <p><a class="btn btn-lg btn-primary" href="/../product/2" role="button">Bekijk product</a></p>

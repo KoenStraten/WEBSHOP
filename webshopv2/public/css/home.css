@@ -6,6 +6,12 @@
     margin-bottom: 50px;
 }
 
+.carousel-background {
+    border-radius: 15px;
+    background-color: rgba(51, 51, 51, 0.6);
+    padding: 20px;
+}
+
 .h-200px {
     height: 200px;
 }
