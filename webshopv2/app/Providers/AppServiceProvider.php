@@ -23,7 +23,15 @@ class AppServiceProvider extends ServiceProvider
 
             $rightItems = Menu::where('parent_id', 0)->orderBy('order')->skip(3)->take(count(Menu::all()))->get();
 
-            $view->with('leftItems', $leftItems)->with('rightItems', $rightItems);
+            if(Auth::check()) {
+                $user = Auth::user();
+                $cart = $user->shoppingCarts->where('paid', 0)->last();
+                $amountOfProducts = count($cart->products);
+            } else {
+                $amountOfProducts = 0;
+            }
+
+            $view->with('leftItems', $leftItems)->with('rightItems', $rightItems)->with('amountOfProducts', $amountOfProducts);
         });
     }
 

@@ -29,8 +29,7 @@
                             </li>
                         @else
                             <li>
-                                <a class="pr-2 nav-link" href="{{ $item->link }}"><span
-                                            data-feather="{{ $item->icon }}"></span>{{ $item->label }}
+                                <a class="pr-2 nav-link" href="{{ $item->link }}">{{ " ". $item->label }}
                                 </a>
                             </li>
                         @endif
@@ -84,28 +83,27 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             @foreach($item->children as $child)
-                                                @if($child->label != 'Dashboard')
+                                                @if($child->label == 'Dashboard' && \Illuminate\Support\Facades\Auth::user()->role == 'admin')
                                                     <a class="dropdown-item"
                                                        href="{{ $child->link }}">{{ $child->label }}</a>
                                                     @if(!$loop->last)
                                                         <div class="dropdown-divider"></div>
                                                     @endif
-                                                @else
-                                                    @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
-                                                        <a class="dropdown-item"
-                                                           href="{{ $child->link }}">{{ $child->label }}</a>
-                                                        @if(!$loop->last)
-                                                            <div class="dropdown-divider"></div>
-                                                        @endif
-                                                    @endif
+                                                    @continue
+                                                @endif
+                                                <a class="dropdown-item"
+                                                   href="{{ $child->link }}">{{ $child->label }}</a>
+                                                @if(!$loop->last)
+                                                    <div class="dropdown-divider"></div>
                                                 @endif
                                             @endforeach
                                         </div>
                                     </li>
                                 @else
                                     <li>
-                                        <a class="pr-2 nav-link" href="{{ $item->link }}"><span
-                                                    data-feather="{{ $item->icon }}"></span>{{ $item->label }}
+                                        <a class="pr-2 nav-link position-relative" href="{{ $item->link }}"><span class="feather-lg"
+                                                    data-feather="{{ $item->icon }}"></span>
+                                            <span class="numberCircle">{{ $amountOfProducts }}</span>
                                         </a>
                                     </li>
                                 @endif
