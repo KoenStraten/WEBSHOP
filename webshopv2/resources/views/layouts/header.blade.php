@@ -12,24 +12,29 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link" href="{{ url('/') }}"><i class="fas fa-home"></i></a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle"
-                           href="{{ url('categoryoverview') }}" id="navbarDropdown" role="button"
-                           aria-haspopup="true" aria-expanded="false"> Categorieën </a>
-                        <div class="dropdown-menu droponhover" aria-labelledby="navbarDropdown">
-                            @foreach($categories as $category)
-                                <a class="dropdown-item"
-                                   href="{{ "/../category/" . $category->category }}">{{ $category->category }}</a>
-                                @if(!$loop->last)
-                                    <div class="dropdown-divider"></div>
-                                @endif
-                            @endforeach
-                        </div>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{{ url('about') }}">{{ __('Over ons') }}</a>
-                    </li>
+                    @foreach($leftItems as $item)
+                        @if(count($item->children) > 0)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   href="{{ $item->link }}" id="navbarDropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false"> {{ $item->label }} </a>
+                                <div class="dropdown-menu droponhover" aria-labelledby="navbarDropdown">
+                                    @foreach($item->children as $child)
+                                        <a class="dropdown-item" href="{{ $child->link }}">{{ $child->label }}</a>
+                                        @if(!$loop->last)
+                                            <div class="dropdown-divider"></div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </li>
+                        @else
+                            <li>
+                                <a class="pr-2 nav-link" href="{{ $item->link }}"><span
+                                            data-feather="{{ $item->icon }}"></span>{{ $item->label }}
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -37,47 +42,78 @@
                         <div class="input-group">
                             <input type="text" class="form-control" name="query"
                                    placeholder="Waar heb je zin in?"/>
-                            <button type="submit" class=" btn btn-secondary notcurved"><i class="fas fa-search"></i>
+                            <button type="submit" class=" btn btn-secondary notcurved"><i
+                                        class="fas fa-search"></i>
                             </button>
                         </div>
                     </form>
-                    <!-- Authentication Links -->
-                    @guest
-                        <li><a class="nav-link" href="/../login">Inloggen</a></li>
-                        <li><a class="nav-link" href="/../registeren">Registreren</a></li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
-                                        <a class="dropdown-item" href="/../admin/dashboard">Dashboard</a>
-                                    @endif
-                                    <a class="dropdown-item" href="/../user/">Mijn account</a>
-                                    <a class="dropdown-item">Aankoop geschiedenis</a>
-                                    <a class="dropdown-item" href="../shoppingcart">Winkelwagen</a>
-                                    <a class="dropdown-item" href="/../logout/"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Uitloggen') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                          style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                            @endguest
+                    @foreach($rightItems as $item)
+                        @guest
+                            @if($item->role == 'gast')
+                                @if(count($item->children) > 0)
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle"
+                                           href="{{ $item->link }}" id="navbarDropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false"> {{ $item->label }} </a>
+                                        <div class="dropdown-menu droponhover" aria-labelledby="navbarDropdown">
+                                            @foreach($item->children as $child)
+                                                <a class="dropdown-item"
+                                                   href="{{ $child->link }}">{{ $child->label }}</a>
+                                                @if(!$loop->last)
+                                                    <div class="dropdown-divider"></div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a class="pr-2 nav-link" href="{{ $item->link }}">{{ $item->label }}</a>
+                                    </li>
+                                @endif
+                            @endif
+                        @endguest
+                        @auth
+                            @if($item->role != 'gast')
+                                @if(count($item->children) > 0)
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                           role="button"
+                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{ \Illuminate\Support\Facades\Auth::user()->name }} <span
+                                                    class="caret"></span>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            @foreach($item->children as $child)
+                                                @if($child->label != 'Dashboard')
+                                                    <a class="dropdown-item"
+                                                       href="{{ $child->link }}">{{ $child->label }}</a>
+                                                    @if(!$loop->last)
+                                                        <div class="dropdown-divider"></div>
+                                                    @endif
+                                                @else
+                                                    @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+                                                        <a class="dropdown-item"
+                                                           href="{{ $child->link }}">{{ $child->label }}</a>
+                                                        @if(!$loop->last)
+                                                            <div class="dropdown-divider"></div>
+                                                        @endif
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a class="pr-2 nav-link" href="{{ $item->link }}"><span
+                                                    data-feather="{{ $item->icon }}"></span>{{ $item->label }}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endif
+                        @endauth
+                    @endforeach
                 </ul>
             </div>
         </div>
     </nav>
 </div>
-
-<!-- Scripts -->
-</body>
-</html>

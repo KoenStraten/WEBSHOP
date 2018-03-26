@@ -18,6 +18,7 @@ class MenuSeeder extends Seeder
             'icon' => 'gast',
             'parent_id' => 0,
             'order' => 1,
+            'role' => 'gast',
         ]);
 
         DB::table('menu')->insert([
@@ -27,6 +28,27 @@ class MenuSeeder extends Seeder
             'icon' => null,
             'parent_id' => 0,
             'order' => 2,
+            'role' => 'gast',
+        ]);
+
+        DB::table('menu')->insert([
+            'id' => 12,
+            'label' => 'Kaasletters',
+            'link' => '/../category/Kaasletters',
+            'icon' => null,
+            'parent_id' => 2,
+            'order' => 12,
+            'role' => 'gast',
+        ]);
+
+        DB::table('menu')->insert([
+            'id' => 13,
+            'label' => 'Kaasletters',
+            'link' => '/../category/Kaasletters',
+            'icon' => null,
+            'parent_id' => 2,
+            'order' => 13,
+            'role' => 'gast',
         ]);
 
         DB::table('menu')->insert([
@@ -36,6 +58,7 @@ class MenuSeeder extends Seeder
             'icon' => null,
             'parent_id' => 0,
             'order' => 3,
+            'role' => 'gast',
         ]);
 
         DB::table('menu')->insert([
@@ -45,6 +68,7 @@ class MenuSeeder extends Seeder
             'icon' => null,
             'parent_id' => 0,
             'order' => 4,
+            'role' => 'gebruiker',
         ]);
 
         DB::table('menu')->insert([
@@ -54,6 +78,7 @@ class MenuSeeder extends Seeder
             'icon' => null,
             'parent_id' => 0,
             'order' => 5,
+            'role' => 'gast',
         ]);
 
 
@@ -64,6 +89,7 @@ class MenuSeeder extends Seeder
             'icon' => null,
             'parent_id' => 0,
             'order' => 6,
+            'role' => 'gast',
         ]);
 
 
@@ -74,6 +100,7 @@ class MenuSeeder extends Seeder
             'icon' => null,
             'parent_id' => 4,
             'order' => 4,
+            'role' => 'admin',
         ]);
 
         DB::table('menu')->insert([
@@ -83,6 +110,7 @@ class MenuSeeder extends Seeder
             'icon' => null,
             'parent_id' => 4,
             'order' => 4,
+            'role' => 'gebruiker',
         ]);
 
         DB::table('menu')->insert([
@@ -92,6 +120,7 @@ class MenuSeeder extends Seeder
             'icon' => null,
             'parent_id' => 4,
             'order' => 4,
+            'role' => 'gebruiker',
         ]);
 
         DB::table('menu')->insert([
@@ -101,6 +130,7 @@ class MenuSeeder extends Seeder
             'icon' => null,
             'parent_id' => 0,
             'order' => 10,
+            'role' => 'gebruiker',
         ]);
 
         DB::table('menu')->insert([
@@ -110,6 +140,7 @@ class MenuSeeder extends Seeder
             'icon' => null,
             'parent_id' => 4,
             'order' => 11,
+            'role' => 'gebruiker',
         ]);
     }
 }
