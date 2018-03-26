@@ -43,8 +43,8 @@
                     </form>
                     <!-- Authentication Links -->
                     @guest
-                        <li><a class="nav-link" href="{{ route('login') }}">{{ __('Inloggen') }}</a></li>
-                        <li><a class="nav-link" href="{{ route('register') }}">{{ __('Registreren') }}</a></li>
+                        <li><a class="nav-link" href="/../login">Inloggen</a></li>
+                        <li><a class="nav-link" href="/../registeren">Registreren</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -59,7 +59,7 @@
                                     <a class="dropdown-item" href="/../user/">Mijn account</a>
                                     <a class="dropdown-item">Aankoop geschiedenis</a>
                                     <a class="dropdown-item" href="../shoppingcart">Winkelwagen</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="/../logout/"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Uitloggen') }}
