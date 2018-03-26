@@ -121,10 +121,21 @@ class ShoppingCartController extends Controller
     {
         $cart_id = request('cart_id');
 
+        $cart = ShoppingCart::find($cart_id);
+
         $user = Auth::user();
 
         $productsInCart = ProductInCart::where('shopping_cart_id', $cart_id)->get();
 
-        return view('pages.purchase', compact('productsInCart', 'user'));
+        return view('pages.purchase', compact('cart', 'user'));
+    }
+
+    public function emptyCart()
+    {
+        $cart_id = request('cart_id');
+
+        ShoppingCart::find($cart_id)->delete();
+
+        return redirect('/');
     }
 }
