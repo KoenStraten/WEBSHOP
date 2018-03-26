@@ -83,9 +83,21 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             @foreach($item->children as $child)
-                                                @if($child->label == 'Dashboard' && \Illuminate\Support\Facades\Auth::user()->role == 'admin')
-                                                    <a class="dropdown-item"
-                                                       href="{{ $child->link }}">{{ $child->label }}</a>
+                                                @if($child->label != 'Dashboard')
+                                                    @if($child->label == 'Uitloggen')
+                                                        <a class="dropdown-item" href="{{ $child->link }}"
+                                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                            {{ __('Uitloggen') }}
+                                                        </a>
+                                                        <form id="logout-form" action="{{ route('logout') }}"
+                                                              method="POST"
+                                                              style="display: none;">
+                                                            @csrf
+                                                        </form>
+                                                    @else
+                                                        <a class="dropdown-item"
+                                                           href="{{ $child->link }}">{{ $child->label }}</a>
+                                                    @endif
                                                     @if(!$loop->last)
                                                         <div class="dropdown-divider"></div>
                                                     @endif
