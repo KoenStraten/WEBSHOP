@@ -39,7 +39,14 @@
                     </div>
                 @endforeach
                 <div class="row lastline">
-                    <div class="col-md-4 offset-6">
+                    <div class="col-md-6">
+                        <form method="POST" action="../shoppingcart/removeAll/">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="shopping_cart_id" value="{{ $productsInCart->first()->shopping_cart_id }}">
+                            <button type="submit" class="btn btn-danger">Verwijder alles</button>
+                        </form>
+                    </div>
+                    <div class="col-md-4">
                         <p class="pt-3 price">Total price:</p>
                     </div>
                     <div class="col-md-2">

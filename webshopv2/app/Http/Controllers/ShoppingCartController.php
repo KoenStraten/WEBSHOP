@@ -117,6 +117,24 @@ class ShoppingCartController extends Controller
         return redirect('/shoppingcart/');
     }
 
+    public function removeAll() {
+        $shoppingCartId = request('shopping_cart_id');
+
+        $productsInCart = ProductInCart::where('shopping_cart_id', $shoppingCartId)->get();
+
+        foreach($productsInCart as $p) {
+            $p->delete();
+        }
+
+        $shoppingCart = ShoppingCart::find($shoppingCartId);
+        $shoppingCart->total_cost = 0;
+        $shoppingCart->save();
+
+        session()->flash('message', 'De producten zijn verwijderd van je winkelmandje.');
+
+        return redirect('/shoppingcart/');
+    }
+
     public function purchase()
     {
         $cart_id = request('cart_id');
