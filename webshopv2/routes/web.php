@@ -26,7 +26,7 @@ Route::post('/shoppingcart/empty/', 'ShoppingCartController@emptyCart');
 Route::get('/shoppingcart/purchase', 'ShoppingCartController@purchase')->name('shoppingCartPurchase');
 Route::get('/shoppingcart', 'ShoppingCartController@show')->name('shoppingCart');
 
-//Route::get('/user', 'UserController@user');
+Route::get('/user', 'UserController@user');
 
 Auth::routes();
 

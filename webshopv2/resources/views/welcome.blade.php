@@ -33,9 +33,9 @@
                 <img class="third-slide" src="images/coolekaas.jpeg" alt="Third slide">
                 <div class="container">
                     <div class="carousel-caption text-right carousel-background">
-                        <h1>Het product van de dag!</h1>
-                        <p>De kaas hierachter ziet er toch heerlijk uit, vind je ook niet? Koop daarom nu het product van de dag!</p>
-                        <p><a class="btn btn-lg btn-primary" href="/../product/2" role="button">Bekijk product</a></p>
+                        <h1>Meest verkochte product!</h1>
+                        <p>De kaas hierachter ziet er toch heerlijk uit, vind je ook niet? Koop daarom nu het meest verkochte product!</p>
+                        <p><a class="btn btn-lg btn-primary" href="/../product/{{ $populairProduct->id }}" role="button">Bekijk product</a></p>
                     </div>
                 </div>
             </div>

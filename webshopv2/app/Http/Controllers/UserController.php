@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Adress;
 use App\User;
 use App\UserRole;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -90,5 +91,10 @@ class UserController extends Controller
     {
         User::find($id)->delete();
         return redirect('/../admin/users');
+    }
+
+    public function user() {
+        $user = Auth::user();
+        return view('pages/user', compact('user'));
     }
 }
