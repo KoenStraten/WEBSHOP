@@ -32,7 +32,7 @@
 
                         </div>
 
-                        @if(\Illuminate\Support\Facades\Auth::check())
+                        {{--@if(\Illuminate\Support\Facades\Auth::check())--}}
                             <form method="POST" action="../shoppingcart/store/">
                                 <div class="form-group">
                                     <label>Cheese type</label>
@@ -53,9 +53,9 @@
                                     winkelwagen
                                 </button>
                             </form>
-                        @else
+                        {{--@else
                             <button disabled class="btn btn-block btn-warning">Log in</button>
-                        @endif
+                        @endif--}}
                     </div>
                 </div>
             </div>

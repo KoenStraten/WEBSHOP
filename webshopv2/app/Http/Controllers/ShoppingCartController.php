@@ -29,53 +29,78 @@ class ShoppingCartController extends Controller
             $amount = 1;
         }
 
-        $user = Auth::user();
-        $cart = $user->shoppingCarts->where('paid', '0')->last();
+        if (Auth::check()) {
+            $user = Auth::user();
+            $cart = $user->shoppingCarts->where('paid', '0')->last();
 
-        if (!isset($cart)) {
-            $shoppingCart = new ShoppingCart();
-            $shoppingCart->user_id = $user->id;
-            $totalCost = 0;
-            $shoppingCart->total_cost = $totalCost;
+            if (!isset($cart)) {
+                $shoppingCart = new ShoppingCart();
+                $shoppingCart->user_id = $user->id;
+                $totalCost = 0;
+                $shoppingCart->total_cost = $totalCost;
+                $shoppingCart->save();
+            } else {
+                $totalCost = $cart->total_cost;
+                $shoppingCart = $cart;
+            }
+
+            $product = Product::find($product_id);
+            $price = $product->price;
+
+            $counter = 0;
+            while ($counter < $amount) {
+                //$shoppingCart->products()->attach($product);
+                $productInCart = new ProductInCart();
+                $productInCart->shopping_cart_id = $shoppingCart->id;
+                $productInCart->product_id = $product->id;
+                $productInCart->cheese_type = $cheeseType;
+                $productInCart->save();
+
+                $totalCost = $totalCost + $price;
+                $shoppingCart->total_cost = $totalCost;
+                $counter++;
+            }
             $shoppingCart->save();
+
+            session()->flash('message', 'Het product is toegevoegd aan je winkelmandje.');
+
+            return back();
         } else {
-            $totalCost = $cart->total_cost;
-            $shoppingCart = $cart;
+            session()->push('shoppingcart.products', $product_id);
+            session()->push('product.cheesetypes', $cheeseType);
+            session()->push('shoppingcart.totalcost', $totalCost);
         }
 
-        $product = Product::find($product_id);
-        $price = $product->price;
-
-        $counter = 0;
-        while ($counter < $amount) {
-            //$shoppingCart->products()->attach($product);
-            $productInCart = new ProductInCart();
-            $productInCart->shopping_cart_id = $shoppingCart->id;
-            $productInCart->product_id = $product->id;
-            $productInCart->cheese_type = $cheeseType;
-            $productInCart->save();
-
-            $totalCost = $totalCost + $price;
-            $shoppingCart->total_cost = $totalCost;
-            $counter++;
-        }
-        $shoppingCart->save();
-
-        session()->flash('message', 'Het product is toegevoegd aan je winkelmandje.');
-
-        return back();
     }
 
     public function show()
     {
-        $user = Auth::user();
+        if (Auth::check()) {
+            $user = Auth::user();
 
-        $cart = $user->shoppingCarts->where('paid', 0)->last();
+            $cart = $user->shoppingCarts->where('paid', 0)->last();
 
-        if (isset($cart)) {
-            $productsInCart = ProductInCart::where('shopping_cart_id', $cart->id)->get();
+            if (isset($cart)) {
+                $productsInCart = ProductInCart::where('shopping_cart_id', $cart->id)->get();
+            } else {
+                $this->newCart();
+            }
         } else {
-            $this->newCart();
+            $cart = new ShoppingCart();
+            $cart->total_cost = 15;
+            $productIds = session('shoppingcart.products');
+            $cheeseTypes = session('shoppingcart.cheesetypes');
+            if (isset($productIds)) {
+                $productsInCart = array();
+                for($i = 0; $i < count($productIds); $i++) {
+                    $pic = new ProductInCart();
+                    $pic->product = Product::find($productIds[$i]);
+                    $pic->shoppingCart = $cart;
+                    $pic->cheese_type = $cheeseTypes[$i];
+                    array_push($productsInCart, $pic);
+                }
+                $productsInCart = collect($productsInCart);
+            }
         }
 
         return view('pages/shoppingcart', compact('productsInCart'));
