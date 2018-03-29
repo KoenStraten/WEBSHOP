@@ -27,8 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::limit(5)->get();
-        return view('welcome', compact('products'));
+        $products = Product::orderBy('times_sold', 'desc')->limit(5)->get();
+        $populairProduct = $products->first();
+
+        return view('welcome', compact('products', 'populairProduct'));
     }
 
     public function show($id)

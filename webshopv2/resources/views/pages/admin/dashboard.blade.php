@@ -6,44 +6,115 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-4 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
-                            <button class="btn btn-sm btn-outline-secondary">Share</button>
-                            <button class="btn btn-sm btn-outline-secondary">Export</button>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card dbg-blue">
+                            <div class="row card-body">
+                                <div class="col-md-7">
+                                    <h5 class="card-text">Gebruikers</h5>
+                                    <h3 class="card-title mb-0">{{ $userAmount }}</h3>
+                                </div>
+                                <span class="feather-lg col-md-5" data-feather="users"></span>
+                            </div>
                         </div>
-                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                            <span data-feather="calendar"></span>
-                            This week
-                        </button>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card dbg-pink">
+                            <div class="row card-body">
+                                <div class="col-md-7">
+                                    <h5 class="card-text">Orders</h5>
+                                    <h3 class="card-title mb-0">{{ $orderAmount }}</h3>
+                                </div>
+                                <span class="feather-lg col-md-5" data-feather="file"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card dbg-green">
+                            <div class="row card-body">
+                                <div class="col-md-7">
+                                    <h5 class="card-text">Producten</h5>
+                                    <h3 class="card-title mb-0">{{ $productAmount }}</h3>
+                                </div>
+                                <span class="feather-lg col-md-5" data-feather="shopping-cart"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="card dbg-yellow">
+                            <div class="row card-body">
+                                <div class="col-md-7">
+                                    <h5 class="card-text">Categorieën</h5>
+                                    <h3 class="card-title mb-0">{{ $categoryAmount }}</h3>
+                                </div>
+                                <span class="feather-lg col-md-5" data-feather="layers"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Recente gebruikers</h2>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Naam</th>
+                                    <th>Email</th>
+                                    <th>Rol</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($recentUsers as $user)
+                                    <tr>
+                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->role }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
-                <h2>Section title</h2>
-                <div class="table-responsive">
-                    <table class="table table-striped table-sm">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                            <th>Header</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1,001</td>
-                            <td>Lorem</td>
-                            <td>ipsum</td>
-                            <td>dolor</td>
-                            <td>sit</td>
-                        </tr>
-                        <tr>
+                    <div class="col-md-6">
+                        <h2>Meest verkochte producten</h2>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
 
-                        </tbody>
-                    </table>
+                                    <th>#</th>
+                                    <th>Afb.</th>
+                                    <th>Naam</th>
+                                    <th>Prijs</th>
+                                    <th>Categorie</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($mbProducts as $product)
+                                    <tr>
+                                        <td>{{ $product->id }}</td>
+                                        <td><img class="table-img" src="{{ $product->image }}"></td>
+                                        <td>{{ $product->name }}</td>
+                                        <td>{{ $product->price }}</td>
+                                        <td>{{ $product->category }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
                 </div>
             </main>
         </div>

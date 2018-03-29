@@ -111,14 +111,13 @@
                                             @endforeach
                                         </div>
                                     </li>
-                                @else
+                                {{--@else
                                     <li>
-                                        <a class="pr-2 nav-link position-relative" href="{{ $item->link }}"><span
-                                                    class="feather-lg"
+                                        <a class="pr-2 nav-link position-relative" href="{{ $item->link }}"><span class="feather-md"
                                                     data-feather="{{ $item->icon }}"></span>
                                             <span class="numberCircle">{{ $amountOfProducts }}</span>
                                         </a>
-                                    </li>
+                                    </li>--}}
                                 @endif
                             @endif
                         @endauth
