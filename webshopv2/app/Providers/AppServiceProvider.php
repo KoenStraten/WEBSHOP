@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Menu;
+use App\ShoppingCart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -23,12 +24,14 @@ class AppServiceProvider extends ServiceProvider
 
             $rightItems = Menu::where('parent_id', 0)->orderBy('order')->skip(3)->take(count(Menu::all()))->get();
 
-            if(Auth::check()) {
+            $amountOfProducts = 0;
+
+            if (Auth::check()) {
                 $user = Auth::user();
                 $cart = $user->shoppingCarts->where('paid', 0)->last();
-                $amountOfProducts = count($cart->products);
-            } else {
-                $amountOfProducts = 0;
+                if (isset($cart)) {
+                    $amountOfProducts = count($cart->products);
+                }
             }
 
             $view->with('leftItems', $leftItems)->with('rightItems', $rightItems)->with('amountOfProducts', $amountOfProducts);

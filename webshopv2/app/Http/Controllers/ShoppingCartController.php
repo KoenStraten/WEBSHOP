@@ -125,7 +125,7 @@ class ShoppingCartController extends Controller
 
         $user = Auth::user();
 
-        $productsInCart = ProductInCart::where('shopping_cart_id', $cart_id)->get();
+//        $productsInCart = ProductInCart::where('shopping_cart_id', $cart_id)->get();
 
         return view('pages.purchase', compact('cart', 'user'));
     }
