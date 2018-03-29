@@ -24,6 +24,8 @@ class ShoppingCartController extends Controller
         $product_id = request('product');
         $amount = request('amount');
         $cheeseType = request('cheeseType');
+        $totalCost = 0;
+
         if (!isset($cheeseType) && !isset($amount)) {
             $cheeseType = 'belegen';
             $amount = 1;
@@ -36,7 +38,6 @@ class ShoppingCartController extends Controller
             if (!isset($cart)) {
                 $shoppingCart = new ShoppingCart();
                 $shoppingCart->user_id = $user->id;
-                $totalCost = 0;
                 $shoppingCart->total_cost = $totalCost;
                 $shoppingCart->save();
             } else {
@@ -69,8 +70,10 @@ class ShoppingCartController extends Controller
             session()->push('shoppingcart.products', $product_id);
             session()->push('product.cheesetypes', $cheeseType);
             session()->push('shoppingcart.totalcost', $totalCost);
-        }
 
+            session()->flash('message', 'Het product is toegevoegd aan je winkelmandje.');
+            return back();
+        }
     }
 
     public function show()
