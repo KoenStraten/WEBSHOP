@@ -138,7 +138,7 @@ class MenuSeeder extends Seeder
             'id' => 10,
             'label' => 'Winkelwagen',
             'link' => '/../shoppingcart/',
-            'icon' => null,
+            'icon' => 'shopping-cart',
             'parent_id' => 0,
             'order' => 10,
             'position' => 'right',
