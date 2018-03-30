@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
+    protected $times_sold;
+
     public function reviews()
     {
         return $this->hasMany(Review::class);
@@ -29,9 +31,9 @@ class Product extends Model
         // GROUP BY p.id
         // ORDER BY COUNT(ps.id) DESC
         return static::leftJoin('product_in_shopping_cart', 'products.id', '=', 'product_in_shopping_cart.product_id')
-            ->selectRaw(DB::raw('products.*, COUNT(product_in_shopping_cart.product_id) as "total_cost"'))
+            ->selectRaw(DB::raw('products.*, COUNT(product_in_shopping_cart.product_id) as "times_sold"'))
             ->groupBy('products.id', 'products.name', 'products.price', 'products.description', 'products.image', 'products.category', 'products.created_at', 'products.updated_at')
-            ->orderBy('total_cost', 'desc');
+            ->orderBy('times_sold', 'desc');
     }
 
     public function shoppingCarts()

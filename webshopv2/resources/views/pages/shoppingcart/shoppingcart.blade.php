@@ -73,7 +73,7 @@
                     </div>
                 </div>
             @else
-                <p>You have no items in your shopping cart</p>
+                <p>U heeft geen producten in uw winkelwagentje</p>
             @endif
         </div>
     </div>

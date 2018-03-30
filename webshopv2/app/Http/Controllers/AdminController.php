@@ -20,7 +20,7 @@ class AdminController extends Controller
         $productAmount = Product::count();
         $categoryAmount = Category::count();
 
-        $recentUsers = User::orderBy('created_at')->limit(10)->get();
+        $recentUsers = User::orderBy('created_at', 'desc')->limit(10)->get();
         $mbProducts = Product::orderByPopularity()->limit(10)->get();
 
         return view('pages.admin.dashboard', compact('userAmount', 'orderAmount', 'productAmount', 'categoryAmount', 'recentUsers', 'mbProducts'));

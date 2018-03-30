@@ -97,6 +97,7 @@
                                     <th>Naam</th>
                                     <th>Prijs</th>
                                     <th>Categorie</th>
+                                    <th>Aantal</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -107,6 +108,7 @@
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->category }}</td>
+                                        <td>{{ $product->times_sold }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
