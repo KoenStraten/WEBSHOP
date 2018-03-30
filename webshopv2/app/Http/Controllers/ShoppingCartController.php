@@ -203,7 +203,9 @@ class ShoppingCartController extends Controller
 
         $deliveryDay = date('d-m-Y', strtotime("+2 day"));
 
-        return view('pages.purchase', compact('cart', 'user', 'deliveryDay'));
+        $paymentOptions = array('IDEAL', 'Achteraf Betalen', 'VISA', 'Mastercard', 'PayPal', 'Melk');
+
+        return view('pages.purchase', compact('cart', 'user', 'deliveryDay', 'paymentOptions'));
     }
 
     public function emptyCart()

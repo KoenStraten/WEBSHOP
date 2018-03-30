@@ -5,7 +5,7 @@
     <div class="container">
         @auth
             <h3 class="pt-3">Afrekenen</h3>
-            <div class="row p-3 text-left">
+            <div class="row p-3 pb-5 text-left">
                 <div class="card w-100">
                     <div class="card-header">Uw bestelling wordt bezorgd op {{ $deliveryDay }}</div>
                     <div class="card-body">
@@ -34,14 +34,21 @@
                             <div class="form-group row">
                                 <h5 class="col-md-3">Postcode</h5>
                                 <h5 class="col-md-3">{{ $user->adress->zipcode }}</h5>
+                                <h5 class="col-md-3 text-right">Betaalwijze</h5>
+                                <h5 class="col-md-3">
+                                    <select name="payment">
+                                        @foreach($paymentOptions as $payment)
+                                            <option value="{{ $payment }}">{{ $payment }}</option>
+                                        @endforeach
+                                    </select>
+                                </h5>
                             </div>
 
                             <div class="form-group row">
                                 <h5 class="col-md-3">Stad</h5>
                                 <h5 class="col-md-3">{{ $user->adress->city }}</h5>
-                                <div class="col-5 text-right">
-                                    <h5>Prijs: ${{ $cart->total_cost }}</h5>
-                                </div>
+                                <h5 class="col-md-3 text-right">Prijs</h5>
+                                <h5 class="col-md-3">{{ $cart->total_cost }}</h5>
                             </div>
                             <input type="hidden" name="cart_id" value="{{ $cart->id }}">
                             <button type="submit" class="btn btn-block btn-warning">

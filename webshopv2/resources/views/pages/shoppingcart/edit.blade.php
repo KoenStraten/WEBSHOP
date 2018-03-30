@@ -22,9 +22,10 @@
                             <label>Smaak</label>
                             <select name="cheeseType" class="form-control">
                                 @foreach($cheeseTypes as $cheeseType)
-                                    @if($cheeseType->type == $productInCart->cheeseType)
+                                    @if($cheeseType->type == $productInCart->cheese_type)
                                         <option value="{{ $cheeseType->type }}"
-                                                selected>{{ $cheeseType->type }}</option>
+                                                selected="selected">{{ $cheeseType->type }}
+                                        </option>
                                     @else
                                         <option value="{{ $cheeseType->type }}">{{ $cheeseType->type }}</option>
                                     @endif
