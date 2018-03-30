@@ -20,7 +20,7 @@
                                    aria-haspopup="true" aria-expanded="false"> {{ $item->label }} </a>
                                 <div class="dropdown-menu droponhover m-0" aria-labelledby="navbarDropdown">
                                     @foreach($categories as $category)
-                                        <a class="dropdown-item" href="/../{{ $category->category }}">{{ $category->category }}</a>
+                                        <a class="dropdown-item" href="/../category/{{ $category->category }}">{{ $category->category }}</a>
                                         @if(!$loop->last)
                                             <div class="dropdown-divider"></div>
                                         @endif

@@ -12,7 +12,7 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-           'category' => 'Kaasletters',
+            'category' => 'Kaasletters',
             'image' => '/images/kaaslettercategorie.jpg',
             'description' => 'Bekijk de lekkerste kaasletters in diverse smaken, gemaakt van de beste melk uit de Alpen.'
         ]);

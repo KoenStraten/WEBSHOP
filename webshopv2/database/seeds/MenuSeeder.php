@@ -34,28 +34,6 @@ class MenuSeeder extends Seeder
         ]);
 
         DB::table('menu')->insert([
-            'id' => 12,
-            'label' => 'Kaasfiguren',
-            'link' => '/../category/kaasfiguren',
-            'icon' => null,
-            'parent_id' => 2,
-            'order' => 12,
-            'position' => 'left',
-            'role' => null,
-        ]);
-
-        DB::table('menu')->insert([
-            'id' => 13,
-            'label' => 'Kaasletters',
-            'link' => '/../category/kaasletters',
-            'icon' => null,
-            'parent_id' => 2,
-            'order' => 13,
-            'position' => 'left',
-            'role' => null,
-        ]);
-
-        DB::table('menu')->insert([
             'id' => 3,
             'label' => 'Over ons',
             'link' => '/../about/',
