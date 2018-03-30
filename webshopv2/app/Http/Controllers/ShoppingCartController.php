@@ -182,6 +182,10 @@ class ShoppingCartController extends Controller
             $shoppingCart->save();
         } else {
             session()->forget('productsInCart');
+            $cart = session()->get('cart');
+            $cart->total_cost = 0;
+            session()->forget('cart');
+            session()->put('cart', $cart);
         }
 
         session()->flash('message', 'De producten zijn verwijderd van je winkelmandje.');
@@ -191,13 +195,10 @@ class ShoppingCartController extends Controller
 
     public function purchase()
     {
-        $cart_id = request('cart_id');
-
-        $cart = ShoppingCart::find($cart_id);
-
         $user = Auth::user();
-
-//        $productsInCart = ProductInCart::where('shopping_cart_id', $cart_id)->get();
+        if (isset($user)) {
+            $cart = $user->shoppingCarts->where('paid', '0')->last();
+        }
 
         return view('pages.purchase', compact('cart', 'user'));
     }

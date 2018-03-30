@@ -12,7 +12,7 @@
             <div class="card w-100">
                 <div class="card-header">Uw bestelling wordt bezorgd op</div>
                 <div class="card-body">
-                    <form method="POST" action="../empty/">
+                    <form method="POST" action="../shoppingcart/empty/">
                         {{ csrf_field() }}
                         <div class="form-group row">
                             <label class="col-md-6 col-form-label text-md-right">Naam</label>
@@ -88,7 +88,7 @@
                                 @endif
                             </div>
                         </div>
-                        <input type="hidden" name="cart_id" value="{{ $cart->id }}">
+                        <input type="hidden" name="purchase" value="true">
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

@@ -47,9 +47,9 @@ class SessionController extends Controller
         }
 
         // if user authenticated, redirect to home.
-        $request = request('cart_id');
+        $request = request('purchase');
         if (isset($request)) {
-            return redirect('/shoppingcart/purchase/' . $request);
+            return redirect('/shoppingcart/purchase/');
         }
         return redirect('/');
     }
