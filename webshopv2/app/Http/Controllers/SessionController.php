@@ -33,7 +33,9 @@ class SessionController extends Controller
 
         // Check if user can be authenticated, if so login, else return back.
         if (!auth()->attempt(request(['name', 'password']))) {
-            return back();
+            return back()->withErrors([
+                'message' => 'De combinatie van uw gebruikersnaam en wachtwoord is ongeldig.',
+            ]);
         }
 
         $this->transferShoppingCart($shoppingCart, $productsInCart);
