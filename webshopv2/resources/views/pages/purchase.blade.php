@@ -3,32 +3,11 @@
     {{ Breadcrumbs::render('shoppingCartPurchase') }}
 
     <div class="container">
+        @auth
         <h3 class="pt-3">Afrekenen</h3>
-        {{--<div class="my-3 p-3 bg-white rounded box-shadow">--}}
-        {{--@foreach ($productsInCart as $productInCart)--}}
-        {{--<div class="row border-bottom">--}}
-        {{--<div class="col-md-6">--}}
-        {{--<h4>--}}
-        {{--<a class="text-dark"--}}
-        {{--href="../product/{{ $productInCart->product->id }}">{{ $productInCart->product->name }}</a>--}}
-        {{--</h4>--}}
-        {{--<p>{{ "Smaak: " . $productInCart->cheese_type }}</p>--}}
-        {{--<p>{{ $productInCart->product->description  }} <br><br>--}}
-        {{--</div>--}}
-        {{--<div class="col-md-3">--}}
-        {{--<p class="price">{{ "$" . $productInCart->product->price }}</p>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--@endforeach--}}
-        {{--<div class="row">--}}
-        {{--<div class="col-3">--}}
-        {{--<h2>Totaal</h2>--}}
-        {{--</div>--}}
         <div class="col-6 offset-3">
             <h2><b>${{ $cart->total_cost }}</b></h2>
         </div>
-        {{--</div>--}}
-        {{--</div>--}}
         <div class="row p-3 justify-content-center">
             <div class="card w-100">
                 <div class="card-header">Uw bestelling wordt bezorgd op</div>
@@ -67,5 +46,18 @@
                 </div>
             </div>
         </div>
+        @endAuth
+        @guest
+            <div class="row p-3 mb-3 justify-content-center bg-white">
+                <div class="col-md-6">
+                    <h3>Al een account?</h3>
+                    <button class="btn btn-primary">Log in</button>
+                </div>
+                <div class="col-md-6">
+                    <h3>Nog geen account?</h3>
+                    <button class="btn btn-primary">Registreren</button>
+                </div>
+            </div>
+        @endguest
     </div>
 @endsection

@@ -77,6 +77,7 @@ class ShoppingCartController extends Controller
             for ($i = 0; $i < $amount; $i++) {
                 $p = Product::find($product_id);
                 $pic = new ProductInCart();
+                $pic->id = $i;
                 $pic->shoppingCart = $cart;
                 $pic->product = $p;
                 $pic->cheese_type = $cheeseType;
@@ -131,39 +132,59 @@ class ShoppingCartController extends Controller
     public function remove()
     {
         $productInCart_id = request('productInCart');
-        $productInCart = ProductInCart::find($productInCart_id);
-        $product = Product::find($productInCart->product_id);
+        if (Auth::check()) {
+            $productInCart = ProductInCart::find($productInCart_id);
+            $product = Product::find($productInCart->product_id);
 
-        $user = Auth::user();
+            $user = Auth::user();
 
-        $cart = $user->shoppingCarts->where('paid', 0)->last();
+            $cart = $user->shoppingCarts->where('paid', 0)->last();
 
-        $totalCost = $cart->total_cost;
+            $totalCost = $cart->total_cost;
 
-        $cart->total_cost = $totalCost - $product->price;
+            $cart->total_cost = $totalCost - $product->price;
 
-        $cart->save();
+            $cart->save();
 
-        ProductInCart::find($productInCart->id)->delete();
+            ProductInCart::find($productInCart->id)->delete();
+        } else {
+            $productsInCart = session()->get('productsInCart');
+            $cart = session()->get('cart');
+            unset($productsInCart[$productInCart_id]);
+            session()->forget('productsInCart');
+            $totalCost = 0;
+            foreach ($productsInCart as $p) {
+                $totalCost = $totalCost + $p->product->price;
+                session()->push('productsInCart', $p);
+            }
+            $cart->total_cost = $totalCost;
+            session()->forget('cart');
+            session()->put('cart', $cart);
+        }
 
         session()->flash('message', 'Het product is verwijderd van je winkelmandje.');
 
         return redirect('shoppingcart/shoppingcart/');
     }
 
+
     public function removeAll()
     {
-        $shoppingCartId = request('shopping_cart_id');
+        if (Auth::check()) {
+            $shoppingCartId = request('shopping_cart_id');
+            $productsInCart = ProductInCart::where('shopping_cart_id', $shoppingCartId)->get();
 
-        $productsInCart = ProductInCart::where('shopping_cart_id', $shoppingCartId)->get();
+            foreach ($productsInCart as $p) {
+                $p->delete();
+            }
 
-        foreach ($productsInCart as $p) {
-            $p->delete();
+
+            $shoppingCart = ShoppingCart::find($shoppingCartId);
+            $shoppingCart->total_cost = 0;
+            $shoppingCart->save();
+        } else {
+            session()->forget('productsInCart');
         }
-
-        $shoppingCart = ShoppingCart::find($shoppingCartId);
-        $shoppingCart->total_cost = 0;
-        $shoppingCart->save();
 
         session()->flash('message', 'De producten zijn verwijderd van je winkelmandje.');
 
