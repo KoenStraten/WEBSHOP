@@ -13,14 +13,14 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     @foreach($leftItems as $item)
-                        @if(count($item->children) > 0)
+                        @if($item->label == 'Categorieën')
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle"
                                    href="{{ $item->link }}" id="navbarDropdown" role="button"
                                    aria-haspopup="true" aria-expanded="false"> {{ $item->label }} </a>
                                 <div class="dropdown-menu droponhover m-0" aria-labelledby="navbarDropdown">
-                                    @foreach($item->children as $child)
-                                        <a class="dropdown-item" href="{{ $child->link }}">{{ $child->label }}</a>
+                                    @foreach($categories as $category)
+                                        <a class="dropdown-item" href="/../{{ $category->category }}">{{ $category->category }}</a>
                                         @if(!$loop->last)
                                             <div class="dropdown-divider"></div>
                                         @endif

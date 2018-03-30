@@ -198,10 +198,6 @@ class ShoppingCartController extends Controller
 
     public function purchase()
     {
-//        $cart_id = request('cart_id');
-//
-//        $cart = ShoppingCart::find($cart_id);
-
         $user = Auth::user();
         if (isset($user)) {
             $cart = $user->shoppingCarts->where('paid', '0')->last();

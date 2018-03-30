@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Category;
 use App\Menu;
 use App\ShoppingCart;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.header', function ($view) {
 
             $leftItems = Menu::where('parent_id', 0)->where('position', 'left')->orderBy('order')->get();
+            $categories = Category::all();
 
             $amountOfProducts = 0;
 
@@ -51,8 +53,7 @@ class AppServiceProvider extends ServiceProvider
                 // hier inlog,register,winkelwagen ophalen
                 $rightItems = Menu::where('parent_id', 0)->where('position', 'right')->where('role', null)->orWhere('role', 'gast')->orderBy('order')->get();
             }
-
-            $view->with('leftItems', $leftItems)->with('rightItems', $rightItems)->with('amountOfProducts', $amountOfProducts);
+            $view->with('leftItems', $leftItems)->with('rightItems', $rightItems)->with('amountOfProducts', $amountOfProducts)->with('categories', $categories);
         });
     }
 
