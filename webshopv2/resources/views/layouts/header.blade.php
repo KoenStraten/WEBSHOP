@@ -47,80 +47,54 @@
                         </div>
                     </form>
                     @foreach($rightItems as $item)
-                        @guest
-                            @if($item->role == 'gast')
-                                @if(count($item->children) > 0)
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle"
-                                           href="{{ $item->link }}" id="navbarDropdown" role="button"
-                                           aria-haspopup="true" aria-expanded="false"> {{ $item->label }} </a>
-                                        <div class="dropdown-menu droponhover" aria-labelledby="navbarDropdown">
-                                            @foreach($item->children as $child)
+                        @if(count($item->children) > 0)
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ \Illuminate\Support\Facades\Auth::user()->name }}
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @foreach($item->children as $child)
+                                        @if($child->label == 'Uitloggen')
+                                            <a class="dropdown-item" href="{{ $child->link }}"
+                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                {{ __('Uitloggen') }}
+                                            </a>
+                                            <form id="logout-form" action="/../logout"
+                                                  method="POST">
+                                                @csrf
+                                            </form>
+                                        @elseif($child->label == 'Dashboard')
+                                            @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
                                                 <a class="dropdown-item"
                                                    href="{{ $child->link }}">{{ $child->label }}</a>
-                                                @if(!$loop->last)
-                                                    <div class="dropdown-divider"></div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </li>
-                                @else
-                                    <li>
-                                        <a class="pr-2 nav-link" href="{{ $item->link }}">{{ $item->label }}</a>
-                                    </li>
-                                @endif
-                            @endif
-                        @endguest
-                        @auth
-                            @if($item->role != 'gast')
-                                @if(count($item->children) > 0)
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
-                                           role="button"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            {{ \Illuminate\Support\Facades\Auth::user()->name }} <span
-                                                    class="caret"></span>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            @foreach($item->children as $child)
-                                                @if($child->label != 'Dashboard')
-                                                    @if($child->label == 'Uitloggen')
-                                                        <a class="dropdown-item" href="{{ $child->link }}"
-                                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                            {{ __('Uitloggen') }}
-                                                        </a>
-                                                        <form id="logout-form" action="{{ route('logout') }}"
-                                                              method="POST"
-                                                              style="display: none;">
-                                                            @csrf
-                                                        </form>
-                                                    @else
-                                                        <a class="dropdown-item"
-                                                           href="{{ $child->link }}">{{ $child->label }}</a>
-                                                    @endif
-                                                    @if(!$loop->last)
-                                                        <div class="dropdown-divider"></div>
-                                                    @endif
-                                                    @continue
-                                                @endif
-                                                <a class="dropdown-item"
-                                                   href="{{ $child->link }}">{{ $child->label }}</a>
-                                                @if(!$loop->last)
-                                                    <div class="dropdown-divider"></div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </li>
-                                {{--@else
-                                    <li>
-                                        <a class="pr-2 nav-link position-relative" href="{{ $item->link }}"><span class="feather-md"
-                                                    data-feather="{{ $item->icon }}"></span>
-                                            <span class="numberCircle">{{ $amountOfProducts }}</span>
-                                        </a>
-                                    </li>--}}
-                                @endif
-                            @endif
-                        @endauth
+                                            @else
+                                                @continue
+                                            @endif
+                                        @else
+                                            <a class="dropdown-item"
+                                               href="{{ $child->link }}">{{ $child->label }}</a>
+                                        @endif
+                                        @if(!$loop->last)
+                                            <div class="dropdown-divider"></div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </li>
+                        @elseif($item->label == 'Winkelwagen')
+                            <li>
+                                <a class="pr-2 nav-link position-relative" href="{{ $item->link }}"><span
+                                            class="feather-md"
+                                            data-feather="{{ $item->icon }}"></span>
+                                    <span class="numberCircle">{{ $amountOfProducts }}</span>
+                                </a>
+                            </li>
+                        @else
+                            <li>
+                                <a class="pr-2 nav-link" href="{{ $item->link }}">{{ $item->label }}</a>
+                            </li>
+                        @endif
                     @endforeach
                 </ul>
             </div>

@@ -20,7 +20,8 @@ class CreateMenuTable extends Migration
             $table->string('icon')->nullable();
             $table->integer('parent_id')->default(0);
             $table->integer('order')->nullable();
-            $table->string('role');
+            $table->string('position');
+            $table->string('role')->nullable();
         });
 
         Schema::table('menu', function (Blueprint $table) {

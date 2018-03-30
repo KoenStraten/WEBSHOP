@@ -3,37 +3,16 @@
     {{ Breadcrumbs::render('shoppingCartPurchase') }}
 
     <div class="container">
+        @auth
         <h3 class="pt-3">Afrekenen</h3>
-        {{--<div class="my-3 p-3 bg-white rounded box-shadow">--}}
-        {{--@foreach ($productsInCart as $productInCart)--}}
-        {{--<div class="row border-bottom">--}}
-        {{--<div class="col-md-6">--}}
-        {{--<h4>--}}
-        {{--<a class="text-dark"--}}
-        {{--href="../product/{{ $productInCart->product->id }}">{{ $productInCart->product->name }}</a>--}}
-        {{--</h4>--}}
-        {{--<p>{{ "Smaak: " . $productInCart->cheese_type }}</p>--}}
-        {{--<p>{{ $productInCart->product->description  }} <br><br>--}}
-        {{--</div>--}}
-        {{--<div class="col-md-3">--}}
-        {{--<p class="price">{{ "$" . $productInCart->product->price }}</p>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--@endforeach--}}
-        {{--<div class="row">--}}
-        {{--<div class="col-3">--}}
-        {{--<h2>Totaal</h2>--}}
-        {{--</div>--}}
         <div class="col-6 offset-3">
             <h2><b>${{ $cart->total_cost }}</b></h2>
         </div>
-        {{--</div>--}}
-        {{--</div>--}}
         <div class="row p-3 justify-content-center">
             <div class="card w-100">
                 <div class="card-header">Uw bestelling wordt bezorgd op</div>
                 <div class="card-body">
-                    <form method="POST" action="../empty/">
+                    <form method="POST" action="../shoppingcart/empty/">
                         {{ csrf_field() }}
                         <div class="form-group row">
                             <label class="col-md-6 col-form-label text-md-right">Naam</label>
@@ -67,5 +46,64 @@
                 </div>
             </div>
         </div>
+        @endAuth
+        @guest
+            <div class="row p-3 mb-3 justify-content-center bg-white">
+                <div class="col-md-6 p-5 border-right">
+                    <h3>Al een account?</h3>
+                    <p>Bent u al een bestaande klant? dat zijn wij zeer dankbaar! log wel eerst in om je producten te kunnen afrekenen.</p>
+                    <form method="POST" action="/../login">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="name"
+                                   class="col-sm-4 col-form-label text-md-right">{{ __('Gebruikersnaam') }}</label>
+
+                            <div class="col-md-7">
+                                <input id="name" type="name"
+                                       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                       name="name" value="{{ old('name') }}" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password"
+                                   class="col-md-4 col-form-label text-md-right">{{ __('Wachtwoord') }}</label>
+
+                            <div class="col-md-7">
+                                <input id="password" type="password"
+                                       class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                       name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <input type="hidden" name="purchase" value="true">
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Inloggen') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 p-5">
+                    <h3>Nog geen account?</h3>
+                    <p>Binnen een paar minuten heeft u uw product besteld!</p>
+                    <a class="btn btn-primary" role="button" href="/../register">Registreren</a>
+                </div>
+            </div>
+        @endguest
     </div>
 @endsection

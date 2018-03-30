@@ -24,6 +24,8 @@ class ShoppingCartController extends Controller
         $product_id = request('product');
         $amount = request('amount');
         $cheeseType = request('cheeseType');
+        $totalCost = 0;
+
         if (!isset($cheeseType) && !isset($amount)) {
             $cheeseType = 'belegen';
             $amount = 1;
@@ -36,7 +38,6 @@ class ShoppingCartController extends Controller
             if (!isset($cart)) {
                 $shoppingCart = new ShoppingCart();
                 $shoppingCart->user_id = $user->id;
-                $totalCost = 0;
                 $shoppingCart->total_cost = $totalCost;
                 $shoppingCart->save();
             } else {
@@ -66,11 +67,31 @@ class ShoppingCartController extends Controller
 
             return back();
         } else {
-            session()->push('shoppingcart.products', $product_id);
-            session()->push('product.cheesetypes', $cheeseType);
-            session()->push('shoppingcart.totalcost', $totalCost);
-        }
+            $cart = new ShoppingCart();
+            if (session()->has('cart')) {
+                $cart = session()->get('cart');
+            }
 
+            $totalCost = 0;
+
+            for ($i = 0; $i < $amount; $i++) {
+                $p = Product::find($product_id);
+                $pic = new ProductInCart();
+                $pic->id = $i;
+                $pic->shoppingCart = $cart;
+                $pic->product = $p;
+                $pic->cheese_type = $cheeseType;
+                $totalCost += $p->price;
+
+                session()->push('productsInCart', $pic);
+            }
+
+            $cart->total_cost = $cart->total_cost + $totalCost;
+            session()->put('cart', $cart);
+
+            session()->flash('message', 'Het product is toegevoegd aan je winkelmandje.');
+            return back();
+        }
     }
 
     public function show()
@@ -86,19 +107,8 @@ class ShoppingCartController extends Controller
                 $this->newCart();
             }
         } else {
-            $cart = new ShoppingCart();
-            $cart->total_cost = 15;
-            $productIds = session('shoppingcart.products');
-            $cheeseTypes = session('shoppingcart.cheesetypes');
-            if (isset($productIds)) {
-                $productsInCart = array();
-                for($i = 0; $i < count($productIds); $i++) {
-                    $pic = new ProductInCart();
-                    $pic->product = Product::find($productIds[$i]);
-                    $pic->shoppingCart = $cart;
-                    $pic->cheese_type = $cheeseTypes[$i];
-                    array_push($productsInCart, $pic);
-                }
+            $productsInCart = session('productsInCart');
+            if (isset($productsInCart)) {
                 $productsInCart = collect($productsInCart);
             }
         }
@@ -122,20 +132,35 @@ class ShoppingCartController extends Controller
     public function remove()
     {
         $productInCart_id = request('productInCart');
-        $productInCart = ProductInCart::find($productInCart_id);
-        $product = Product::find($productInCart->product_id);
+        if (Auth::check()) {
+            $productInCart = ProductInCart::find($productInCart_id);
+            $product = Product::find($productInCart->product_id);
 
-        $user = Auth::user();
+            $user = Auth::user();
 
-        $cart = $user->shoppingCarts->where('paid', 0)->last();
+            $cart = $user->shoppingCarts->where('paid', 0)->last();
 
-        $totalCost = $cart->total_cost;
+            $totalCost = $cart->total_cost;
 
-        $cart->total_cost = $totalCost - $product->price;
+            $cart->total_cost = $totalCost - $product->price;
 
-        $cart->save();
+            $cart->save();
 
-        ProductInCart::find($productInCart->id)->delete();
+            ProductInCart::find($productInCart->id)->delete();
+        } else {
+            $productsInCart = session()->get('productsInCart');
+            $cart = session()->get('cart');
+            unset($productsInCart[$productInCart_id]);
+            session()->forget('productsInCart');
+            $totalCost = 0;
+            foreach($productsInCart as $p) {
+                $totalCost = $totalCost + $p->product->price;
+                session()->push('productsInCart', $p);
+            }
+            $cart->total_cost = $totalCost;
+            session()->forget('cart');
+            session()->put('cart', $cart);
+        }
 
         session()->flash('message', 'Het product is verwijderd van je winkelmandje.');
 
@@ -143,17 +168,25 @@ class ShoppingCartController extends Controller
     }
 
     public function removeAll() {
-        $shoppingCartId = request('shopping_cart_id');
+        if (Auth::check()) {
+            $shoppingCartId = request('shopping_cart_id');
 
-        $productsInCart = ProductInCart::where('shopping_cart_id', $shoppingCartId)->get();
+            $productsInCart = ProductInCart::where('shopping_cart_id', $shoppingCartId)->get();
 
-        foreach($productsInCart as $p) {
-            $p->delete();
+            foreach($productsInCart as $p) {
+                $p->delete();
+            }
+
+            $shoppingCart = ShoppingCart::find($shoppingCartId);
+            $shoppingCart->total_cost = 0;
+            $shoppingCart->save();
+        } else {
+            session()->forget('productsInCart');
+            $cart = session()->get('cart');
+            $cart->total_cost = 0;
+            session()->forget('cart');
+            session()->put('cart', $cart);
         }
-
-        $shoppingCart = ShoppingCart::find($shoppingCartId);
-        $shoppingCart->total_cost = 0;
-        $shoppingCart->save();
 
         session()->flash('message', 'De producten zijn verwijderd van je winkelmandje.');
 
@@ -162,13 +195,10 @@ class ShoppingCartController extends Controller
 
     public function purchase()
     {
-        $cart_id = request('cart_id');
-
-        $cart = ShoppingCart::find($cart_id);
-
         $user = Auth::user();
-
-        $productsInCart = ProductInCart::where('shopping_cart_id', $cart_id)->get();
+        if (isset($user)) {
+            $cart = $user->shoppingCarts->where('paid', '0')->last();
+        }
 
         return view('pages.purchase', compact('cart', 'user'));
     }

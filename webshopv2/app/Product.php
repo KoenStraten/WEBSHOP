@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
@@ -19,6 +20,18 @@ class Product extends Model
     public static function getAllProductsByCategory($category)
     {
         return static::where('category', $category);
+    }
+
+    public static function orderByPopularity() {
+        //query:: SELECT p.*, COUNT(ps.id) as 'times_sold'
+        // FROM products p
+        // LEFT OUTER JOIN product_in_shopping_cart ps ON p.id = ps.product_id
+        // GROUP BY p.id
+        // ORDER BY COUNT(ps.id) DESC
+        return static::leftJoin('product_in_shopping_cart', 'products.id', '=', 'product_in_shopping_cart.product_id')
+            ->selectRaw(DB::raw('products.*, COUNT(product_in_shopping_cart.product_id) as "total_cost"'))
+            ->groupBy('products.id', 'products.name', 'products.price', 'products.description', 'products.image', 'products.category', 'products.created_at', 'products.updated_at')
+            ->orderBy('total_cost', 'desc');
     }
 
     public function shoppingCarts()

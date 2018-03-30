@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Menu;
+use App\ShoppingCart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -19,16 +20,36 @@ class AppServiceProvider extends ServiceProvider
         Schema::DefaultStringLength(191);
         view()->composer('layouts.header', function ($view) {
 
-            $leftItems = Menu::where('parent_id', 0)->orderBy('order')->take(3)->get();
+            $leftItems = Menu::where('parent_id', 0)->where('position', 'left')->orderBy('order')->get();
 
-            $rightItems = Menu::where('parent_id', 0)->orderBy('order')->skip(3)->take(count(Menu::all()))->get();
+            $amountOfProducts = 0;
 
-            if(Auth::check()) {
+            if (Auth::check()) {
                 $user = Auth::user();
                 $cart = $user->shoppingCarts->where('paid', 0)->last();
-                $amountOfProducts = count($cart->products);
+
+                if (isset($cart)) {
+                    $amountOfProducts = count($cart->products);
+                }
+
+                if ($user->role == 'admin') {
+                    // menu, winkelwagen, dashboard ophalen
+                    $rightItems = Menu::where('parent_id', 0)->where('position', 'right')->where(function ($query) {
+                        $query->where('role', 'gebruiker')->orWhere('role', null)->orWhere('role', 'admin');
+                    })->orderBy('order')->get();
+                } else {
+                    // menu, winkelwagen ophalen
+                    $rightItems = Menu::where('parent_id', 0)->where('position', 'right')->where(function ($query) {
+                        $query->where('role', 'gebruiker')->orWhere('role', null);
+                    })->orderBy('order')->get();
+                }
             } else {
-                $amountOfProducts = 0;
+                // De counter voor een 'gast' die producten in zijn winkelwagentje heeft.
+                if (session()->has('productsInCart')) {
+                    $amountOfProducts = count(session()->get('productsInCart'));
+                }
+                // hier inlog,register,winkelwagen ophalen
+                $rightItems = Menu::where('parent_id', 0)->where('position', 'right')->where('role', null)->orWhere('role', 'gast')->orderBy('order')->get();
             }
 
             $view->with('leftItems', $leftItems)->with('rightItems', $rightItems)->with('amountOfProducts', $amountOfProducts);
