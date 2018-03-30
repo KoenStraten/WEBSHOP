@@ -112,7 +112,7 @@ class ShoppingCartController extends Controller
             }
         }
 
-        return view('pages/shoppingcart', compact('productsInCart'));
+        return view('pages/shoppingcart/shoppingcart', compact('productsInCart'));
     }
 
     public function newCart()
@@ -148,15 +148,16 @@ class ShoppingCartController extends Controller
 
         session()->flash('message', 'Het product is verwijderd van je winkelmandje.');
 
-        return redirect('/shoppingcart/');
+        return redirect('shoppingcart/shoppingcart/');
     }
 
-    public function removeAll() {
+    public function removeAll()
+    {
         $shoppingCartId = request('shopping_cart_id');
 
         $productsInCart = ProductInCart::where('shopping_cart_id', $shoppingCartId)->get();
 
-        foreach($productsInCart as $p) {
+        foreach ($productsInCart as $p) {
             $p->delete();
         }
 
@@ -166,7 +167,7 @@ class ShoppingCartController extends Controller
 
         session()->flash('message', 'De producten zijn verwijderd van je winkelmandje.');
 
-        return redirect('/shoppingcart/');
+        return redirect('shoppingcart/shoppingcart/');
     }
 
     public function purchase()
@@ -193,5 +194,14 @@ class ShoppingCartController extends Controller
         $cart->save();
 
         return redirect('/');
+    }
+
+    public function edit($id)
+    {
+        $productInCart = ProductInCart::find($id);
+
+        dd($productInCart);
+
+        return view('pages/shoppingcart/edit', compact('productInCart'));
     }
 }
