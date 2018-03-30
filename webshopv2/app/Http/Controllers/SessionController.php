@@ -42,9 +42,15 @@ class SessionController extends Controller
         }
 
         // Transfer shopping cart, it checks if it needs to be transfered.
-        $this->transferShoppingCart($shoppingCart, $productsInCart);
+        if (isset($shoppingCart) && isset($productsInCart)) {
+            $this->transferShoppingCart($shoppingCart, $productsInCart);
+        }
 
         // if user authenticated, redirect to home.
+        $request = request('cart_id');
+        if (isset($request)) {
+            return redirect('/shoppingcart/purchase/' . $request);
+        }
         return redirect('/');
     }
 

@@ -56,7 +56,9 @@ class RegistrationController extends Controller
         auth()->login($user);
 
         // Transfer shopping cart, it checks if it needs to be transfered.
-        $this->transferShoppingCart($shoppingCart, $productsInCart);
+        if (isset($shoppingCart) && isset($productsInCart)) {
+            $this->transferShoppingCart($shoppingCart, $productsInCart);
+        }
 
         return redirect('/');
     }
