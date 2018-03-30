@@ -44,6 +44,9 @@ class AppServiceProvider extends ServiceProvider
                     })->orderBy('order')->get();
                 }
             } else {
+                if (session()->has('productsInCart')) {
+                    $amountOfProducts = count(session()->get('productsInCart'));
+                }
                 // hier inlog,register,winkelwagen ophalen
                 $rightItems = Menu::where('parent_id', 0)->where('position', 'right')->where('role', null)->orWhere('role', 'gast')->orderBy('order')->get();
             }

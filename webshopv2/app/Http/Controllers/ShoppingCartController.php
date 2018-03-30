@@ -67,9 +67,26 @@ class ShoppingCartController extends Controller
 
             return back();
         } else {
-            session()->push('shoppingcart.products', $product_id);
-            session()->push('product.cheesetypes', $cheeseType);
-            session()->push('shoppingcart.totalcost', $totalCost);
+            $cart = new ShoppingCart();
+            if (session()->has('cart')) {
+                $cart = session()->get('cart');
+            }
+
+            $totalCost = 0;
+
+            for ($i = 0; $i < $amount; $i++) {
+                $p = Product::find($product_id);
+                $pic = new ProductInCart();
+                $pic->shoppingCart = $cart;
+                $pic->product = $p;
+                $pic->cheese_type = $cheeseType;
+                $totalCost += $p->price;
+
+                session()->push('productsInCart', $pic);
+            }
+
+            $cart->total_cost = $cart->total_cost + $totalCost;
+            session()->put('cart', $cart);
 
             session()->flash('message', 'Het product is toegevoegd aan je winkelmandje.');
             return back();
@@ -89,19 +106,8 @@ class ShoppingCartController extends Controller
                 $this->newCart();
             }
         } else {
-            $cart = new ShoppingCart();
-            $cart->total_cost = 15;
-            $productIds = session('shoppingcart.products');
-            $cheeseTypes = session('shoppingcart.cheesetypes');
-            if (isset($productIds)) {
-                $productsInCart = array();
-                for($i = 0; $i < count($productIds); $i++) {
-                    $pic = new ProductInCart();
-                    $pic->product = Product::find($productIds[$i]);
-                    $pic->shoppingCart = $cart;
-                    $pic->cheese_type = $cheeseTypes[$i];
-                    array_push($productsInCart, $pic);
-                }
+            $productsInCart = session('productsInCart');
+            if (isset($productsInCart)) {
                 $productsInCart = collect($productsInCart);
             }
         }
