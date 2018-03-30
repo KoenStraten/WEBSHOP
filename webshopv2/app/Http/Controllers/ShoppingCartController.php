@@ -201,7 +201,9 @@ class ShoppingCartController extends Controller
 
         $user = Auth::user();
 
-        return view('pages.purchase', compact('cart', 'user'));
+        $deliveryDay = date('d-m-Y', strtotime("+2 day"));
+
+        return view('pages.purchase', compact('cart', 'user', 'deliveryDay'));
     }
 
     public function emptyCart()
@@ -233,7 +235,6 @@ class ShoppingCartController extends Controller
     public function update()
     {
         $productInCart_id = request('product');
-
         if (Auth::check()) {
             $productInCart = ProductInCart::find($productInCart_id);
             $productInCart->cheese_type = request('cheeseType');
