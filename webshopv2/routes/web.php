@@ -13,6 +13,14 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
+
+//Authentication
+Route::get('/register', 'RegistrationController@create');
+Route::post('/register/', 'RegistrationController@store');
+Route::get('/login', 'SessionController@create');
+Route::post('/login', 'SessionController@store');
+Route::post('/logout', 'SessionController@destroy');
+
 Route::get('/product/{product}', 'HomeController@show')->name('product');
 
 Route::get('/category/{category}', 'CategoryController@show')->name('category');
@@ -28,7 +36,7 @@ Route::get('/shoppingcart', 'ShoppingCartController@show')->name('shoppingCart')
 
 Route::get('/user', 'UserController@user');
 
-Auth::routes();
+//Auth::routes();
 
 Route::post('/postReview', 'ReviewController@store');
 
