@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\ProductInCart;
 use App\ShoppingCart;
+use App\Specification;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -74,10 +75,11 @@ class ShoppingCartController extends Controller
 
             $totalCost = 0;
 
+            $productsInCart = session()->get('productsInCart');
+
             for ($i = 0; $i < $amount; $i++) {
                 $p = Product::find($product_id);
                 $pic = new ProductInCart();
-                $pic->id = $i;
                 $pic->shoppingCart = $cart;
                 $pic->product = $p;
                 $pic->cheese_type = $cheeseType;
@@ -162,9 +164,9 @@ class ShoppingCartController extends Controller
             session()->put('cart', $cart);
         }
 
-        session()->flash('message', 'Het product is verwijderd van je winkelmandje.');
+        session()->flash('message', 'Het product is verwijderd uit je winkelmandje.');
 
-        return redirect('shoppingcart/shoppingcart/');
+        return back();
     }
 
 
@@ -188,7 +190,7 @@ class ShoppingCartController extends Controller
 
         session()->flash('message', 'De producten zijn verwijderd van je winkelmandje.');
 
-        return redirect('shoppingcart/shoppingcart/');
+        return back();
     }
 
     public function purchase()
@@ -198,8 +200,6 @@ class ShoppingCartController extends Controller
         $cart = ShoppingCart::find($cart_id);
 
         $user = Auth::user();
-
-//        $productsInCart = ProductInCart::where('shopping_cart_id', $cart_id)->get();
 
         return view('pages.purchase', compact('cart', 'user'));
     }
@@ -219,10 +219,31 @@ class ShoppingCartController extends Controller
 
     public function edit($id)
     {
-        $productInCart = ProductInCart::find($id);
+        if (Auth::check()) {
+            $productInCart = ProductInCart::find($id);
+        } else {
+            $productsInCart = session()->get('productsInCart');
+            $productInCart = $productsInCart[$id];
+        }
+        $cheeseTypes = DB::table('cheese_types')->get();
 
-        dd($productInCart);
+        return view('pages/shoppingcart/edit', compact('productInCart', 'cheeseTypes', 'id'));
+    }
 
-        return view('pages/shoppingcart/edit', compact('productInCart'));
+    public function update()
+    {
+        $productInCart_id = request('product');
+
+        if (Auth::check()) {
+            $productInCart = ProductInCart::find($productInCart_id);
+            $productInCart->cheese_type = request('cheeseType');
+            $productInCart->save();
+        } else {
+            $productsInCart = session()->get('productsInCart');
+            $product = $productsInCart[$productInCart_id];
+            $product->cheese_type = request('cheeseType');
+        }
+        session()->flash('message', 'Het product is aangepast.');
+        return $this->show();
     }
 }

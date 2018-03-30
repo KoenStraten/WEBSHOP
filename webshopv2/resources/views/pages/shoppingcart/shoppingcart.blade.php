@@ -30,14 +30,28 @@
                         </div>
                         <div class="col-md-2">
                             <p class="price">{{ "$" . $productInCart->product->price }}</p>
-                            <form method="POST" action="../shoppingcart/remove/">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="productInCart" value="{{ $productInCart->id }}">
-                                <button type="submit" class="btn btn-block btn-warning">Verwijder</button>
-                            </form>
-                            <a class="mt-2 btn btn-block btn-warning" href="../shoppingcart/edit/{{ $productInCart->id }}">
-                                Bewerk
-                            </a>
+                            @auth
+                                <form method="POST" action="../shoppingcart/remove/">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="productInCart" value="{{ $productInCart->id }}">
+                                    <button type="submit" class="btn btn-block btn-warning">Verwijder</button>
+                                </form>
+                                <a class="mt-2 btn btn-block btn-warning"
+                                   href="../shoppingcart/edit/{{ $productInCart->id }}">
+                                    Bewerk
+                                </a>
+                            @endauth
+                            @guest
+                                <form method="POST" action="../shoppingcart/remove/">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="productInCart" value="{{ $loop->index }}">
+                                    <button type="submit" class="btn btn-block btn-warning">Verwijder</button>
+                                </form>
+                                <a class="mt-2 btn btn-block btn-warning"
+                                   href="../shoppingcart/edit/{{ $loop->index }}">
+                                    Bewerk
+                                </a>
+                            @endguest
                         </div>
                     </div>
                 @endforeach
