@@ -25,7 +25,7 @@ class MenuSeeder extends Seeder
         DB::table('menu')->insert([
             'id' => 2,
             'label' => 'Categorieën',
-            'link' => '/../category/',
+            'link' => '/../categoryoverview/',
             'icon' => null,
             'parent_id' => 0,
             'order' => 2,
@@ -35,8 +35,8 @@ class MenuSeeder extends Seeder
 
         DB::table('menu')->insert([
             'id' => 12,
-            'label' => 'Kaasletters',
-            'link' => '/../category/Kaasletters',
+            'label' => 'Kaasfiguren',
+            'link' => '/../category/kaasfiguren',
             'icon' => null,
             'parent_id' => 2,
             'order' => 12,
@@ -47,7 +47,7 @@ class MenuSeeder extends Seeder
         DB::table('menu')->insert([
             'id' => 13,
             'label' => 'Kaasletters',
-            'link' => '/../category/Kaasletters',
+            'link' => '/../category/kaasletters',
             'icon' => null,
             'parent_id' => 2,
             'order' => 13,

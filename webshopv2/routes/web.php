@@ -31,6 +31,8 @@ Route::post('/shoppingcart/remove', 'ShoppingCartController@remove');
 
 Route::post('/shoppingcart/removeAll', 'ShoppingCartController@removeAll');
 Route::post('/shoppingcart/empty/', 'ShoppingCartController@emptyCart');
+Route::get('/shoppingcart/edit/{product}', 'ShoppingCartController@edit');
+Route::post('/shoppingcart/edit', 'ShoppingCartController@update');
 Route::get('/shoppingcart/purchase', 'ShoppingCartController@purchase')->name('shoppingCartPurchase');
 Route::get('/shoppingcart', 'ShoppingCartController@show')->name('shoppingCart');
 

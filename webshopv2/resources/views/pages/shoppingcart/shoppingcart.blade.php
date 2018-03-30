@@ -30,11 +30,28 @@
                         </div>
                         <div class="col-md-2">
                             <p class="price">{{ "$" . $productInCart->product->price }}</p>
-                            <form method="POST" action="../shoppingcart/remove/">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="productInCart" value="{{ $productInCart->id }}">
-                                <button type="submit" class="btn btn-block btn-warning">Verwijder</button>
-                            </form>
+                            @auth
+                                <form method="POST" action="../shoppingcart/remove/">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="productInCart" value="{{ $productInCart->id }}">
+                                    <button type="submit" class="btn btn-block btn-warning">Verwijder</button>
+                                </form>
+                                <a class="mt-2 btn btn-block btn-warning"
+                                   href="../shoppingcart/edit/{{ $productInCart->id }}">
+                                    Bewerk
+                                </a>
+                            @endauth
+                            @guest
+                                <form method="POST" action="../shoppingcart/remove/">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="productInCart" value="{{ $loop->index }}">
+                                    <button type="submit" class="btn btn-block btn-warning">Verwijder</button>
+                                </form>
+                                <a class="mt-2 btn btn-block btn-warning"
+                                   href="../shoppingcart/edit/{{ $loop->index }}">
+                                    Bewerk
+                                </a>
+                            @endguest
                         </div>
                     </div>
                 @endforeach
@@ -42,7 +59,8 @@
                     <div class="col-md-6">
                         <form method="POST" action="../shoppingcart/removeAll/">
                             {{ csrf_field() }}
-                            <input type="hidden" name="shopping_cart_id" value="{{ $productsInCart->first()->shopping_cart_id }}">
+                            <input type="hidden" name="shopping_cart_id"
+                                   value="{{ $productsInCart->first()->shopping_cart_id }}">
                             <button type="submit" class="btn btn-danger">Verwijder alles</button>
                         </form>
                     </div>

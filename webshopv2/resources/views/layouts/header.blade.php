@@ -18,7 +18,7 @@
                                 <a class="nav-link dropdown-toggle"
                                    href="{{ $item->link }}" id="navbarDropdown" role="button"
                                    aria-haspopup="true" aria-expanded="false"> {{ $item->label }} </a>
-                                <div class="dropdown-menu droponhover" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu droponhover m-0" aria-labelledby="navbarDropdown">
                                     @foreach($item->children as $child)
                                         <a class="dropdown-item" href="{{ $child->link }}">{{ $child->label }}</a>
                                         @if(!$loop->last)
