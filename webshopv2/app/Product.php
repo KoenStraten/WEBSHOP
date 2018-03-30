@@ -30,7 +30,7 @@ class Product extends Model
         // ORDER BY COUNT(ps.id) DESC
         return static::leftJoin('product_in_shopping_cart', 'products.id', '=', 'product_in_shopping_cart.product_id')
             ->selectRaw(DB::raw('products.*, COUNT(product_in_shopping_cart.product_id) as "total_cost"'))
-            ->groupBy('products.id')
+            ->groupBy('products.id', 'products.name', 'products.price', 'products.description', 'products.image', 'products.category', 'products.created_at', 'products.updated_at')
             ->orderBy('total_cost', 'desc');
     }
 
