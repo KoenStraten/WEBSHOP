@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\ProductInCart;
 use Illuminate\Http\Request;
+use App\Traits\TransferShoppingCart;
 
 class SessionController extends Controller
 {
+    use TransferShoppingCart;
+
     public function __construct()
     {
         $this->middleware('guest')->except('destroy');
@@ -38,27 +41,11 @@ class SessionController extends Controller
             ]);
         }
 
+        // Transfer shopping cart, it checks if it needs to be transfered.
         $this->transferShoppingCart($shoppingCart, $productsInCart);
 
         // if user authenticated, redirect to home.
         return redirect('/');
-    }
-
-    private function transferShoppingCart($cart, $productsInCart) {
-        $oldCart = auth()->user()->shoppingCarts->where('paid', '0')->last();
-        if (!isset($oldCart)) {
-            $user = auth()->user();
-            $cart->user_id = $user->id;
-            $cart->save();
-
-            foreach($productsInCart as $p) {
-                $productInCart = new ProductInCart();
-                $productInCart->product_id = $p->product->id;
-                $productInCart->shopping_cart_id = $p->shoppingCart->id;
-                $productInCart->cheese_type = $p->cheese_type;
-                $productInCart->save();
-            }
-        }
     }
 
     public function destroy() {

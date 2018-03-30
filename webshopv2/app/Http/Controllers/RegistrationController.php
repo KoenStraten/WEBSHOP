@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Adress;
 use App\User;
-use Illuminate\Http\Request;
+use App\Traits\TransferShoppingCart;
 use Illuminate\Support\Facades\Hash;
 
 class RegistrationController extends Controller
 {
+    use TransferShoppingCart;
+
     public function create() {
         return view('auth.register');
     }
@@ -42,8 +44,19 @@ class RegistrationController extends Controller
             'role' => 'gebruiker',
         ]);
 
+        // check if user has shopping cart
+        $shoppingCart = null;
+        $productsInCart = null;
+        if (session()->has('cart') && session()->has('productsInCart')) {
+            $shoppingCart = session()->get('cart');
+            $productsInCart = session()->get('productsInCart');
+        }
+
         // Authenticate user (login)
         auth()->login($user);
+
+        // Transfer shopping cart, it checks if it needs to be transfered.
+        $this->transferShoppingCart($shoppingCart, $productsInCart);
 
         return redirect('/');
     }

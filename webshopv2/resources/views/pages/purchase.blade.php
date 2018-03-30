@@ -51,11 +51,12 @@
             <div class="row p-3 mb-3 justify-content-center bg-white">
                 <div class="col-md-6">
                     <h3>Al een account?</h3>
-                    <button class="btn btn-primary">Log in</button>
+                    <a class="btn btn-primary" role="button" href="/../login">inloggen</a>
                 </div>
                 <div class="col-md-6">
                     <h3>Nog geen account?</h3>
-                    <button class="btn btn-primary">Registreren</button>
+                    <p>Binnen een paar minuten heeft u uw product besteld!</p>
+                    <a class="btn btn-primary" role="button" href="/../register">Registreren</a>
                 </div>
             </div>
         @endguest
