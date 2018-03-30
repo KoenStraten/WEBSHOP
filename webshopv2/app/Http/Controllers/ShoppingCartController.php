@@ -75,8 +75,6 @@ class ShoppingCartController extends Controller
 
             $totalCost = 0;
 
-            $productsInCart = session()->get('productsInCart');
-
             for ($i = 0; $i < $amount; $i++) {
                 $p = Product::find($product_id);
                 $pic = new ProductInCart();
