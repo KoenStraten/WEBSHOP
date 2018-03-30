@@ -74,7 +74,7 @@
                                 <tbody>
                                     @foreach($recentUsers as $user)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->role }}</td>
@@ -102,7 +102,7 @@
                                 <tbody>
                                 @foreach($mbProducts as $product)
                                     <tr>
-                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td><img class="table-img" src="{{ $product->image }}"></td>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->price }}</td>

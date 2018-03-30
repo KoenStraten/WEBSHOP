@@ -44,6 +44,7 @@ class AppServiceProvider extends ServiceProvider
                     })->orderBy('order')->get();
                 }
             } else {
+                // De counter voor een 'gast' die producten in zijn winkelwagentje heeft.
                 if (session()->has('productsInCart')) {
                     $amountOfProducts = count(session()->get('productsInCart'));
                 }
