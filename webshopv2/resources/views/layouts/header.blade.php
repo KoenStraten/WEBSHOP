@@ -61,9 +61,8 @@
                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                 {{ __('Uitloggen') }}
                                             </a>
-                                            <form id="logout-form" action="{{ route('logout') }}"
-                                                  method="POST"
-                                                  style="display: none;">
+                                            <form id="logout-form" action="/../logout"
+                                                  method="POST">
                                                 @csrf
                                             </form>
                                         @elseif($child->label == 'Dashboard')

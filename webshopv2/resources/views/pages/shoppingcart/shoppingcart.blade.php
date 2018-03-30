@@ -68,12 +68,8 @@
                         <p class="pt-3 price">Total price:</p>
                     </div>
                     <div class="col-md-2">
-                        <p class="pt-3 price">{{" $" . $productInCart->shoppingCart->total_cost }}</p>
-                        <form method="GET" action="../shoppingcart/purchase/">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="cart_id" value="{{ $productInCart->shopping_cart_id }}">
-                            <button type="submit" class="btn btn-block btn-warning">Afrekenen</button>
-                        </form>
+                        <p class="pt-3 price">{{" $" . $productsInCart->first()->shoppingCart->total_cost }}</p>
+                        <a href="/../shoppingcart/purchase/" role="button" class="btn btn-block btn-warning">Afrekenen</a>
                     </div>
                 </div>
             @else
