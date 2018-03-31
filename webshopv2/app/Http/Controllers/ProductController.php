@@ -13,23 +13,27 @@ class ProductController extends Controller
         $this->middleware('admin');
     }
 
-    public function index() {
+    public function index()
+    {
         $products = Product::all();
         return view('pages/admin/products/index', compact('products'));
     }
 
-    public function create() {
+    public function create()
+    {
         $categories = Category::all();
         return view('pages/admin/products/create', compact('categories'));
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $categories = Category::all();
         $product = Product::find($id);
         return view('pages/admin/products/edit', compact('categories', 'product'));
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $this->validate(request(), [
             'name' => 'required|min:4',
             'price' => 'required|numeric|min:0',
@@ -37,22 +41,26 @@ class ProductController extends Controller
             'category' => 'required',
         ]);
 
-        $path = $request->file('image')->store('public');
-
-        $path = str_replace('public', '/storage', $path);
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('public');
+            $path = str_replace('public', '/storage', $path);
+        }
 
         $product = Product::find(request('id'));
         $product->name = request('name');
         $product->price = request('price');
         $product->description = request('description');
-        $product->image = $path;
+        if (isset($path)) {
+            $product->image = $path;
+        }
         $product->category = request('category');
         $product->save();
 
         return redirect('/admin/products');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $this->validate(request(), [
             'name' => 'required|min:4',
             'price' => 'required|numeric|min:0',
@@ -74,7 +82,9 @@ class ProductController extends Controller
 
         return redirect('/../admin/products');
     }
-    public function remove($id) {
+
+    public function remove($id)
+    {
         Product::find($id)->delete();
         return redirect('/../admin/products');
     }
